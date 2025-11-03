@@ -6,8 +6,7 @@ import styles from "./page.module.css";
 
 export default function LoginRegister() {
   const [isActive, setIsActive] = useState(false);
-  const [showLogin, setShowLogin] = useState(false);
-
+  const [showLogin, setShowLogin] = useState(true);
 
   return (
     <div className={styles.loginPage}>
