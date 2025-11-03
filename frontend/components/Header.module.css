@@ -3,11 +3,13 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding: 15px 30px;
-  background: rgba(22, 66, 94, 0.2);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  padding: 12px 24px;
+  /* usar mesma cor do footer */
+  background-color: rgba(22, 66, 94, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
 .navbar {
@@ -21,6 +23,10 @@
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.logoImage {
+  border-radius: 6px;
 }
 
 .logo img {
@@ -40,6 +46,25 @@
   gap: 25px;
   padding: 0;
   margin: 0;
+}
+
+/* removed empty .navLinks utility class (use .nav-links) */
+
+.menuToggle {
+  display: none; /* visible on mobile */
+  background: transparent;
+  border: none;
+  color: white;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.menuToggle svg {
+  width: 22px;
+  height: 22px;
 }
 
 .nav-links a {
@@ -72,10 +97,74 @@
 }
 
 @media (max-width: 768px) {
+  .menuToggle {
+    display: flex;
+  }
+
   .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(22, 66, 94, 0.95);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    margin-top: 10px;
+    margin: 0;
+    padding: 20px 0;
+    transform: translateY(-10px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 200ms ease, transform 200ms ease, visibility 200ms;
+  }
+
+  .nav-links.open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .loginButton {
+    display: none; /* hide desktop login in mobile, we'll show mobileLogin inside menu */
+  }
+
+  .mobileLogin {
+    display: block;
+  }
+}
+
+/* Desktop styles (ensure visibility) */
+@media (min-width: 769px) {
+  .nav-links {
+    position: static;
+    background: transparent;
+    flex-direction: row;
+    align-items: center;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    padding: 0;
+  }
+
+  .mobileLogin {
+    display: none;
+  }
+}
+
+/* espaçador para evitar sobreposição do conteúdo pelo header fixo */
+.headerSpacer {
+  height: 64px; /* valor aproximado da altura do header; ajusta conforme necessário */
+  width: 100%;
+}
+
+/* ajustar a altura do header em telas pequenas */
+@media (max-width: 480px) {
+  .header {
+    padding: 10px 16px;
+  }
+  .headerSpacer {
+    height: 56px;
   }
 }
