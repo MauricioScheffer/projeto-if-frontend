@@ -1,4 +1,13 @@
 
+.pageWrapper {
+  background-color: var(--dark-blue); 
+  color: var(--light);
+  min-height: 100vh;
+  padding-top: 1px;
+  margin-top: -1px;
+}
+
+
 .container {
     width: 90%;
     max-width: 1200px;
