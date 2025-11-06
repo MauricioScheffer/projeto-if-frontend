@@ -38,7 +38,7 @@ export default function HomePage() {
 
   return (
     <>
-      
+      <div className={styles.pageWrapper}>
       <main className={styles.container}>
 
         {/* --- 1. Seção Hero --- */}
@@ -124,6 +124,7 @@ export default function HomePage() {
           </div>
         </section>
       </main>
+      </div>
 
       {/* --- Modal Fly-out (Renderização Condicional) --- */}
       <div 
