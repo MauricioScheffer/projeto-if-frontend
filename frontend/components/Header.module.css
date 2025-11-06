@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   padding: 12px 24px;
-  /* usar mesma cor do footer */
+
   background-color: rgba(22, 66, 94, 0.4);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -48,10 +48,10 @@
   margin: 0;
 }
 
-/* removed empty .navLinks utility class (use .nav-links) */
+
 
 .menuToggle {
-  display: none; /* visible on mobile */
+  display: none;
   background: transparent;
   border: none;
   color: white;
@@ -74,6 +74,62 @@
   font-weight: 500;
   padding: 5px 0;
   transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.loginButton {
+  display: inline-block;
+}
+
+.loginButton a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: rgb(22, 66, 94);
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 150ms ease, box-shadow 200ms ease, background 150ms ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.loginButton a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.28);
+  background: #f8f9fa;
+}
+
+.loginButton a:active {
+  transform: scale(0.98);
+}
+
+.loginButton a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  background: rgba(22, 66, 94, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  transition: transform 450ms ease, opacity 450ms ease;
+  pointer-events: none;
+}
+
+.loginButton a:active::after {
+  transform: translate(-50%, -50%) scale(8);
+  opacity: 0.18;
+  transition: transform 450ms ease, opacity 450ms ease;
+}
+
+.loginButton a:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.25);
+  outline-offset: 3px;
 }
 
 .nav-links a::after {
@@ -127,7 +183,7 @@
   }
 
   .loginButton {
-    display: none; /* hide desktop login in mobile, we'll show mobileLogin inside menu */
+    display: none;
   }
 
   .mobileLogin {
@@ -135,7 +191,7 @@
   }
 }
 
-/* Desktop styles (ensure visibility) */
+
 @media (min-width: 769px) {
   .nav-links {
     position: static;
@@ -153,13 +209,14 @@
   }
 }
 
-/* espaçador para evitar sobreposição do conteúdo pelo header fixo */
+
 .headerSpacer {
-  height: 64px; /* valor aproximado da altura do header; ajusta conforme necessário */
+  height: 64px; 
   width: 100%;
 }
 
-/* ajustar a altura do header em telas pequenas */
+
+
 @media (max-width: 480px) {
   .header {
     padding: 10px 16px;
