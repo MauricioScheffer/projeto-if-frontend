@@ -1,0 +1,334 @@
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- 1. Seção Hero --- */
+.hero {
+    display: flex;
+    align-items: flex-start;
+    gap: 3rem;
+    padding: 4rem 0;
+    margin-top: 2rem;
+}
+
+.heroContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.heroImageWrapper {
+    flex: 1;
+    display: block;
+}
+
+.heroImageWrapper img {
+    border-radius: 12px;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* --- 2. Seção de Botões --- */
+.quickNav {
+    padding: 2rem 0;
+    padding-bottom: 6rem;
+}
+
+.buttonGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 1rem;
+}
+
+
+.navButton {
+    background-color: transparent;
+    border: 1px solid transparent; 
+    color: var(--light-blue); 
+    border-radius: 8px;
+    padding: 1.25rem;
+    padding-left: 0; 
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    text-align: left; 
+    text-decoration: none;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.navButton:hover {
+    background-color: transparent;
+    border: 1px solid transparent;
+    color: var(--light); 
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+
+/* --- 3. Seção de Projetos --- */
+.projects {
+    padding: 3rem 0;
+    margin-top: 6rem;
+}
+
+
+.filters {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+    background-color: var(--dark-blue);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.filters select {
+    flex: 1;
+    background-color: var(--dark);
+    color: var(--light); 
+    border: 1px solid var(--blue); 
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    min-width: 150px;
+    appearance: none;
+    -webkit-appearance: none;
+    /* Seta atualizada para cor clara (fill='%23fff') */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23fff' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+}
+
+.filters button.filterButton {
+    background-color: var(--light-blue); 
+    color: var(--dark-blue); /* Invertido para combinar com .heroButton */
+    border: none;
+    border-radius: 6px;
+    padding: 0.75rem 1.75rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.filters button.filterButton:hover {
+    background-color: var(--light); /* Efeito hover do .heroButton */
+    color: var(--dark-blue);
+}
+
+.projectList {
+    display: grid;
+    gap: 1.5rem;
+}
+
+/* Cards de Projeto atualizados para o tema escuro */
+.projectCard {
+    display: flex;
+    background-color: var(--dark-blue); 
+    border-radius: 8px;
+    overflow: hidden;
+    transition: 2s; 
+    gap: 1.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Sombra base */
+}
+
+/* Efeito hover copiado do CSS global */
+.projectCard:hover {
+    margin: 0;
+    box-shadow: var(--dark-blue) 5px 5px, var(--dark) 10px 10px, var(--blue) 15px 15px, var(--light-blue) 20px 20px ,var(--light) 25px 25px;
+}
+
+.projectCard img {
+    width: 200px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.projectInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.projectInfo h3 {
+    font-size: 1.2rem;
+    color: var(--light); 
+}
+
+.projectInfo p {
+    font-size: 0.9rem;
+    color: var(--light); 
+    margin-top: 0.5rem;
+    opacity: 0.8; 
+}
+
+.projectLink {
+    color: var(--light-blue); 
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 0.75rem;
+    transition: 0.3s;
+}
+
+.projectLink:hover {
+    text-decoration: underline;
+}
+
+
+/* --- Modal Centralizado --- */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalOverlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.flyoutMenu {
+    position: relative;
+    width: 360px;
+    max-width: 90%;
+    background-color: var(--dark-blue); 
+    border-radius: 12px;
+    padding: 2.5rem;
+    border: 1px solid var(--blue); 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.95);
+    transition: all 0.3s ease;
+    z-index: 1001;
+}
+
+.flyoutMenu.activeMenu {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+.flyoutMenu h2 {
+    text-align: left;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    color: var(--light);
+}
+
+.menuSection {
+    margin-bottom: 1.5rem;
+}
+.menuSection:last-child { margin-bottom: 0; }
+
+.menuSection h3 {
+    font-size: 1.1rem;
+    color: var(--light-blue); 
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.menuLinks {
+    background-color: var(--blue); 
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+}
+
+.menuLinks a {
+    display: block;
+    color: var(--light); 
+    text-decoration: none;
+    padding: 0.75rem 0;
+    font-size: 1rem;
+    font-weight: 400;
+    transition: all 0.2s ease;
+}
+
+.menuLinks a:hover {
+    color: #fff;
+    transform: translateX(5px);
+    font-weight: 600;
+}
+
+/* --- Botão de Fechar (X) --- */
+.modalClose {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    color: var(--light); 
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    transition: color 0.2s ease;
+}
+
+.modalClose:hover {
+    color: var(--light-blue); 
+}
+
+
+/* --- Responsividade (Sem alterações) --- */
+@media (max-width: 992px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 0;
+    }
+    .heroContent {
+        align-items: center;
+    }
+    .heroImageWrapper img {
+        min-height: auto;
+        height: 300px;
+    }
+    .projectCard {
+        flex-direction: column;
+    }
+    .projectCard img {
+        width: 100%;
+        height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+@media (max-width: 480px) {
+    .buttonGrid {
+        grid-template-columns: 1fr;
+    }
+    .container {
+        width: 95%;
+    }
+}
