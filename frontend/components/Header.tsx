@@ -41,7 +41,7 @@ export default function Header() {
             <li><Link href="/about">Cursos</Link></li>
             <li><Link href="/events-news">Eventos</Link></li>
             <li><Link href="/institution">Instituição</Link></li>
-            <li><Link href="/mentors">Orientadores</Link></li>
+            <li><Link href="/profile">Orientadores</Link></li>
             <li><Link href="/contact">Contate-nos</Link></li>
             <li className={styles.mobileLogin}><Link href="/login-sign">Entrar</Link></li>
           </ul>
@@ -52,7 +52,7 @@ export default function Header() {
         </nav>
       </header>
 
-      {/* spacer para evitar que o conteúdo fique por baixo do header fixo */}
+
       <div className={styles.headerSpacer} aria-hidden="true" />
     </>
   );
