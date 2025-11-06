@@ -77,21 +77,23 @@
 }
 
 
+/* Filtros revertidos para o tema claro */
 .filters {
     display: flex;
     gap: 1.5rem;
     margin-bottom: 2.5rem;
     flex-wrap: wrap;
-    background-color: var(--dark-blue);
+    background-color: #ffffff; /* MUDANÇA: Voltando para branco */
     padding: 1.5rem;
     border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .filters select {
     flex: 1;
-    background-color: var(--dark);
-    color: var(--light); 
-    border: 1px solid var(--blue); 
+    background-color: #f0f0f0; 
+    color: #1b263b; 
+    border: none;
     border-radius: 6px;
     padding: 0.75rem 1rem;
     font-family: 'Inter', sans-serif;
@@ -99,16 +101,16 @@
     min-width: 150px;
     appearance: none;
     -webkit-appearance: none;
-    /* Seta atualizada para cor clara (fill='%23fff') */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23fff' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+    /* Seta escura */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 1rem center;
     background-size: 1em;
 }
 
 .filters button.filterButton {
-    background-color: var(--light-blue); 
-    color: var(--dark-blue); /* Invertido para combinar com .heroButton */
+    background-color: var(--blue); 
+    color: #ffffff; 
     border: none;
     border-radius: 6px;
     padding: 0.75rem 1.75rem;
@@ -120,7 +122,7 @@
 }
 
 .filters button.filterButton:hover {
-    background-color: var(--light); /* Efeito hover do .heroButton */
+    background-color: var(--light-blue); 
     color: var(--dark-blue);
 }
 
@@ -129,22 +131,21 @@
     gap: 1.5rem;
 }
 
-/* Cards de Projeto atualizados para o tema escuro */
+/* Cards de Projeto atualizados */
 .projectCard {
     display: flex;
-    background-color: var(--dark-blue); 
+    background-color: #ffffff; 
     border-radius: 8px;
     overflow: hidden;
-    transition: 2s; 
+    transition: 0.3s; 
     gap: 1.5rem;
     padding: 1.5rem;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Sombra base */
+    border: 1px solid #ddd;
 }
 
-/* Efeito hover copiado do CSS global */
 .projectCard:hover {
-    margin: 0;
-    box-shadow: var(--dark-blue) 5px 5px, var(--dark) 10px 10px, var(--blue) 15px 15px, var(--light-blue) 20px 20px ,var(--light) 25px 25px;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .projectCard img {
@@ -164,18 +165,17 @@
 
 .projectInfo h3 {
     font-size: 1.2rem;
-    color: var(--light); 
+    color: #1b263b; 
 }
 
 .projectInfo p {
     font-size: 0.9rem;
-    color: var(--light); 
+    color: #555; 
     margin-top: 0.5rem;
-    opacity: 0.8; 
 }
 
 .projectLink {
-    color: var(--light-blue); 
+    color: var(--blue); 
     text-decoration: none;
     font-weight: 600;
     margin-top: 0.75rem;
@@ -183,6 +183,7 @@
 }
 
 .projectLink:hover {
+    color: var(--light-blue);
     text-decoration: underline;
 }
 
