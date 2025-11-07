@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import styles from "./page.module.css";
+import Image from "next/image";
 
 
 export default function LoginRegister() {
@@ -21,12 +22,10 @@ export default function LoginRegister() {
 
               <div className={styles.inputBox}>
                 <input type="text" placeholder="Nome" required />
-                {/* <FaUser className={styles.icon} />*/}
               </div>
 
               <div className={styles.inputBox}>
                 <input type="password" placeholder="Senha" required />
-                {/*<FaLock className={styles.icon} />*/}
               </div>
 
               <div className={styles.forgotLink}>
@@ -46,17 +45,14 @@ export default function LoginRegister() {
 
               <div className={styles.inputBox}>
                 <input type="text" placeholder="Nome" required />
-                {/*<FaUser className={styles.icon} />*/}
               </div>
 
               <div className={styles.inputBox}>
                 <input type="email" placeholder="Email" required />
-                {/*<FaEnvelope className={styles.icon} />*/}
               </div>
 
               <div className={styles.inputBox}>
                 <input type="password" placeholder="Senha" required />
-                {/* <FaLock className={styles.icon} />*/}
               </div>
 
               <button type="submit" className={styles.btn}>Concluir</button>
