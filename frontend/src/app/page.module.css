@@ -212,12 +212,8 @@
 .cardContent {
   padding: 20px;
   text-align: left;
-  border: 2px solid black;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
 }
-
-/* .cardContent:hover{
-
-} */
 
 .cardContent h3 {
   font-size: 1.1rem;
@@ -283,16 +279,15 @@
 .news .newsContent {
   display: flex;
   justify-content: space-between;
-  align-items: stretch; /* mantém mesma altura */
+  align-items: stretch; /* mantendo mesma altura */
   width: 100%;
   gap: 30px;
   background-color: var(--dark-blue);
   border-radius: 12px;
-  padding: 20px;
+  padding: 80px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* --- Lado esquerdo --- */
 .news .cardLeft {
   flex: 1;
   background-color: var(--dark);
@@ -392,6 +387,88 @@
   background-color: var(--blue);
   color: var(--light);
 }
+
+/* PROFESSORES */
+.teachers {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 60px 100px;
+  background-color: var(--dark-blue);
+  color: var(--light);
+  width: 100%;
+}
+
+.teachers h1 {
+  font-size: 2.8rem;
+  line-height: 1.2;
+  flex: 1;
+}
+
+.carouselContainer {
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex: 2;
+}
+
+.carousel {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px;
+  background: linear-gradient(to right, rgba(255,255,255,0.1), rgba(255,255,255,0));
+  border-radius: 30px;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.teacherCard {
+  flex: 0 0 auto;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 100px;
+  height: 100px;
+  transition: transform 0.3s;
+}
+
+.teacherCard:hover {
+  transform: scale(1.1);
+}
+
+.teacherImage {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.arrow {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  transition: background 0.3s;
+}
+
+.arrow:hover {
+  background: rgba(255,255,255,0.4);
+}
+
+.carousel-item img {
+  filter: grayscale(20%);
+}
+
+.carousel-item.active img {
+  filter: none;
+}
+
 
 
 

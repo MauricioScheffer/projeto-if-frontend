@@ -213,6 +213,12 @@
   transition-delay: 1.2s;
 }
 
+.portal{
+  width: 100%;
+  padding: 40px 30px;
+  text-align: center;
+}
+
 /* RESPONSIVIDADE */
 @media screen and (max-width: 1020px) {
   .container {
