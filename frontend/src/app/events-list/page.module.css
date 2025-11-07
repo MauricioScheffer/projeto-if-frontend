@@ -1,0 +1,120 @@
+.eventsContainer {
+  background-color: #0e3a53;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  min-height: 100vh;
+  padding: 50px 80px;
+}
+
+.eventsContainer h2 {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.searchbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.searchbar input {
+  width: 70%;
+  max-width: 600px;
+  padding: 14px 25px;
+  border-radius: 40px;
+  border: 2px solid #84c2ca;
+  background: transparent;
+  color: white;
+  font-size: 14px;
+  outline: none;
+}
+
+.searchbar input::placeholder {
+  color: #c5d7df;
+  letter-spacing: 0.5px;
+}
+
+.eventsgrid {
+  background: linear-gradient(135deg, #3b6c74, #84c2ca);
+  padding: 40px;
+  border-radius: 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.eventcard {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  height: 250px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.eventcard:hover {
+  transform: scale(1.03);
+}
+
+.eventcard img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.4s ease;
+  z-index: 1;
+}
+
+.cardoverlay {
+  position: relative;
+  z-index: 2;
+  background: rgba(0, 45, 80, 0.7);
+  padding: 20px;
+  border-radius: 0 0 18px 18px;
+  backdrop-filter: blur(2px);
+}
+
+.tag {
+  background-color: #0e3a53;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 15px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.cardoverlay h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 5px 0;
+}
+
+.cardoverlay p {
+  font-size: 13px;
+  color: #d5e8ec;
+  margin-bottom: 10px;
+}
+
+.btnvermais {
+  background-color: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 12px;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btnvermais:hover {
+  background-color: #fff;
+  color: #0e3a53;
+}
