@@ -1,65 +1,43 @@
 "use client";
-// import { useRef } from "react";
+
 import { useEffect } from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
-import "bootstrap/dist/css/bootstrap.min.css";
-// importante para rodar o carousel no lado do cliente
+import "bootstrap/dist/css/bootstrap.min.css"; // importante para rodar o carousel no lado do cliente
 
 export default function Home() {
-  // const options = {
-  //   items: 1,
-  //   loop: true,
-  //   autoplay: true,
-  //   autoplayTimeout: 4000,
-  //   dots: true,
-  //   nav: false,
-  //   animateOut: "fadeOut",
-  // };
-
   useEffect(() => {
     // Importa dinamicamente o JS do Bootstrap no lado do cliente
     import("bootstrap/dist/js/bootstrap.bundle.min.js");
   }, []);
 
   const professores = [
-    '/images/image.jpg',
-    '/images/image.jpg',
-    '/images/image.jpg',
-    '/images/image.jpg',
-    '/images/image.jpg',
-    '/images/image.jpg',
-    '/images/image.jpg',
-    '/images/image.jpg',
-    '/images/image.jpg',
+    "/images/image.jpg",
+    "/images/image.jpg",
+    "/images/image.jpg",
+    "/images/image.jpg",
+    "/images/image.jpg",
+    "/images/image.jpg",
+    "/images/image.jpg",
+    "/images/image.jpg",
+    "/images/image.jpg",
   ];
-  // const carouselRef = useRef<HTMLDivElement>(null);
-
-  // function scrollLeft() {
-  //   carouselRef.current?.scrollBy({ left: -200, behavior: "smooth" });
-  // }
-
-  // function scrollRight() {
-  //   carouselRef.current?.scrollBy({ left: 200, behavior: "smooth" });
-  // }
-
 
   return (
-
     <main className={styles.main}>
-      {/* inicio */}
-
+      {/* INÍCIO */}
       <section className={styles.hero}>
         <div className={styles.heroContent}>
           <div className={styles.heroLeft}>
-            <h1>Bem vindo ao Nosso Site</h1>
+            <h1>Bem-vindo ao Nosso Site</h1>
             <p>
-              Conheça mais sobre Tecnologias e Educação aqui.
-              <br />
-              Se inscreva em Eventos e Participe da Nossa Comunidade de Estudantes de T.I!
+              Conheça mais sobre Tecnologias e Educação aqui. <br />
+              Se inscreva em Eventos e Participe da Nossa Comunidade de
+              Estudantes de T.I!
             </p>
             <button className={styles.heroButton}>Saiba mais</button>
           </div>
+
           <div className={styles.heroRight}>
             <Image
               src="/images/image.jpg"
@@ -67,19 +45,21 @@ export default function Home() {
               width={570}
               height={400}
               className={styles.heroImage}
-              priority />
+              priority
+            />
             <button className={styles.heroButton}>Nossos cursos</button>
           </div>
         </div>
       </section>
 
-      {/* sobre  o curso*/}
+      {/* SOBRE OS CURSOS */}
       <section className={styles.sobre}>
         <h2>Sobre os cursos</h2>
         <p className={styles.descricao}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-          nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.
         </p>
 
         <div className={styles.cursosContainer}>
@@ -96,7 +76,9 @@ export default function Home() {
             <div className={styles.cardContent}>
               <h3>Técnico em Desenvolvimento de Sistemas</h3>
               <p>Integrado ao Ensino Médio. Lorem ipsum dolor sit amet.</p>
-              <a href="#" className={styles.verMais}>VEJA MAIS</a>
+              <a href="#" className={styles.verMais}>
+                VEJA MAIS
+              </a>
             </div>
           </div>
 
@@ -113,7 +95,9 @@ export default function Home() {
             <div className={styles.cardContent}>
               <h3>Tecnólogo em Análise e Desenvolvimento de Sistemas</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              <a href="#" className={styles.verMais}>VEJA MAIS</a>
+              <a href="#" className={styles.verMais}>
+                VEJA MAIS
+              </a>
             </div>
           </div>
         </div>
@@ -128,7 +112,7 @@ export default function Home() {
         </p>
       </section>
 
-      {/* news e eventos */}
+      {/* NOTÍCIAS E EVENTOS */}
       <section className={styles.news}>
         <h1>Notícias e Eventos</h1>
         <div className={styles.newsContent}>
@@ -141,36 +125,41 @@ export default function Home() {
               className={styles.cardImage}
             />
             <p className={styles.descricao}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Deserunt dolorum sequi, dolorem possimus amet voluptatibus
-              at asperiores tempore debitis illo aspernatur blanditiis tenetur
-              labore in, cupiditate, nulla temporibus ab. Quas.</p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
+              dolorum sequi, dolorem possimus amet voluptatibus at asperiores
+              tempore debitis illo aspernatur blanditiis tenetur labore in,
+              cupiditate, nulla temporibus ab. Quas.
+            </p>
           </div>
+
           <div className={styles.cardRight}>
             <div className={styles.list}>
               {Array.from({ length: 10 }).map((_, i) => (
                 <div key={i} className={styles.listNews}>
                   <div>
                     <h2>Evento {i + 1}: Subtítulo interessante</h2>
-                    <span className={styles.dataEvento}>15 de setembro, 2025</span>
+                    <span className={styles.dataEvento}>
+                      15 de setembro, 2025
+                    </span>
                   </div>
                   <span className={styles.seta}>→</span>
                 </div>
               ))}
             </div>
-
-            <button className={styles.botaoEventos}>Veja todos os eventos</button>
+            <button className={styles.botaoEventos}>
+              Veja todos os eventos
+            </button>
           </div>
         </div>
       </section>
 
-      {/* professores */}
+      {/* PROFESSORES */}
       <section className={`${styles.teachers} bg-primary text-white py-5`}>
         <div className="container">
           <div className="row align-items-center">
             <div className="col-md-4">
               <h2 className="fw-bold">
-                Conheça <br /> nossos <br /> professores
+                Conheça <br /> Nossos <br /> Professores
               </h2>
             </div>
 
@@ -181,18 +170,22 @@ export default function Home() {
                 data-bs-ride="carousel"
                 data-bs-interval="4000"
               >
-                <div className="carousel-inner text-center" style={{ padding: "10px 60px" }}>
-                  {/*
-              Build slides em chunks de 3 (ou altere para quantos quiser).
-              Fazemos isso fora do JSX principal para evitar problemas de tipagem.
-            */}
+                <div
+                  className="carousel-inner text-center"
+                  style={{ padding: "10px 60px" }}
+                >
+                  {/* Cria slides em grupos de 3 */}
                   {(() => {
                     const slides: React.ReactElement[] = [];
                     const perSlide = 3;
+
                     for (let i = 0; i < professores.length; i += perSlide) {
                       const chunk = professores.slice(i, i + perSlide);
                       slides.push(
-                        <div key={i} className={`carousel-item ${i === 0 ? "active" : ""}`}>
+                        <div
+                          key={i}
+                          className={`carousel-item ${i === 0 ? "active" : ""}`}
+                        >
                           <div className="d-flex justify-content-center gap-4 flex-wrap">
                             {chunk.map((f, idx) => {
                               const realIndex = i + idx;
@@ -210,7 +203,9 @@ export default function Home() {
                                       margin: "0 auto",
                                     }}
                                   />
-                                  <p className="mt-3 fw-semibold">Professor {realIndex + 1}</p>
+                                  <p className="mt-3 fw-semibold">
+                                    Professor {realIndex + 1}
+                                  </p>
                                 </div>
                               );
                             })}
@@ -218,11 +213,12 @@ export default function Home() {
                         </div>
                       );
                     }
+
                     return slides;
                   })()}
                 </div>
 
-                {/* Controles laterais (com z-index para ficar acima das imagens) */}
+                {/* Controles laterais */}
                 <button
                   className="carousel-control-prev"
                   type="button"
@@ -230,9 +226,13 @@ export default function Home() {
                   data-bs-slide="prev"
                   style={{ zIndex: 20 }}
                 >
-                  <span className="carousel-control-prev-icon" aria-hidden="true" />
+                  <span
+                    className="carousel-control-prev-icon"
+                    aria-hidden="true"
+                  />
                   <span className="visually-hidden">Anterior</span>
                 </button>
+
                 <button
                   className="carousel-control-next"
                   type="button"
@@ -240,7 +240,10 @@ export default function Home() {
                   data-bs-slide="next"
                   style={{ zIndex: 20 }}
                 >
-                  <span className="carousel-control-next-icon" aria-hidden="true" />
+                  <span
+                    className="carousel-control-next-icon"
+                    aria-hidden="true"
+                  />
                   <span className="visually-hidden">Próximo</span>
                 </button>
               </div>
@@ -259,98 +262,47 @@ export default function Home() {
             sint aspernatur totam! Eius vitae sit distinctio
             vero, et odio!</p>
 
-          <div className="carousel-content">
+          <div className="carouselcontent">
             <article className={styles.cardCarousel}>
-              <div className={styles.carouselImage}>
-                <Image
-                  src="/images/github.jpg"
-                  alt="Pessoas"
-                  width={40}
-                  height={35}
-                  className={styles.carouselImg}
-                />
-              </div>
-              <h3>Mauricio Scheffer</h3>
 
+              {/* <div className={styles.carouselImage}>
+                <Image src="/images/profile.jpg" alt="Pessoas" width={40} height={35} className={styles.carouselImg}/>
+              </div> */}
+
+              <h3>Mauricio Scheffer</h3><p>Tech Lead Frontend</p>
               <div className="iconsCard">
-                <Image
-                  src="/images/github.jpg"
-                  alt="Pessoas"
-                  width={40}
-                  height={35}
-                  className={styles.icons}
-                />
-                <Image
-                  src="/images/linkedin.jpg"
-                  alt="Pessoas"
-                  width={40}
-                  height={35}
-                  className={styles.icons}
-                />
+                <Image src="/images/github.png" alt="Pessoas" width={40} height={35} className={styles.icons}/>
+                <Image src="/images/linkedin.png" alt="Pessoas" width={40} height={35} className={styles.icons}/>
               </div>
             </article>
 
             <article className={styles.cardCarousel}>
-              <div className={styles.carouselImage}>
-                <Image
-                  src="/images/github.jpg"
-                  alt="Pessoas"
-                  width={40}
-                  height={35}
-                  className={styles.carouselImg}
-                />
-              </div>
-              <h3>Bianca Cabral</h3>
 
+              {/* <div className={styles.carouselImage}>
+                <Image src="/images/github.png" alt="Pessoas" width={40} height={35} className={styles.carouselImg}/>
+              </div> */}
+
+              <h3>Bianca Cabral</h3><p>Desenvolvedora Frontend</p>
               <div className="iconsCard">
-                <Image
-                  src="/images/github.jpg"
-                  alt="Pessoas"
-                  width={40}
-                  height={35}
-                  className={styles.icons}
-                />
-                <Image
-                  src="/images/linkedin.jpg"
-                  alt="Pessoas"
-                  width={40}
-                  height={35}
-                  className={styles.icons}
-                />
+                <Image src="/images/github.png" alt="Pessoas" width={40} height={35} className={styles.icons} />
+                <Image src="/images/linkedin.png" alt="Pessoas" width={40} height={35} className={styles.icons}/>
               </div>
             </article>
 
             <article className={styles.cardCarousel}>
-              <div className={styles.carouselImage}>
-                <Image
-                  src="/images/github.jpg"
-                  alt="Pessoas"
-                  width={40}
-                  height={35}
-                  className={styles.carouselImg}
-                />
-              </div>
+              {/* <div className={styles.carouselImage}>
+                <Image src="/images/github.png" alt="Pessoas" width={40} height={35} className={styles.carouselImg}/>
+              </div> */}
+
               <h3>Arthur Hoffelder</h3>
-
+                <p>Desenvolvedor Frontend</p>
               <div className="iconsCard">
-                <Image
-                  src="/images/github.jpg"
-                  alt="Pessoas"
-                  width={40}
-                  height={35}
-                  className={styles.icons}
-                />
-                <Image
-                  src="/images/linkedin.jpg"
-                  alt="Pessoas"
-                  width={40}
-                  height={35}
-                  className={styles.icons}
-                />
+                <Image src="/images/github.png" alt="Pessoas" width={40} height={35} className={styles.icons}/>
+                <Image src="/images/linkedin.png" alt="Pessoas" width={40} height={35} className={styles.icons}/>
               </div>
-            </article>
-          </div>
+            </article> 
 
+          </div>
         </div>
       </section>
 
