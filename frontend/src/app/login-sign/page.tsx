@@ -33,6 +33,14 @@ export default function LoginRegister() {
                 <img className={styles.icon} src="/icons/iconPassWord.png" alt="Icon PassWord" />
               </div>
 
+              <div className={styles.inputBox}>
+                <select>
+                  <option value="" disabled selected>Ocupação</option>
+                  <option value="Aluno">Aluno</option>
+                  <option value="Docente">Docente</option>
+                </select>
+              </div>
+
               <div className={styles.forgotLink}>
                 <a href="#">Esqueceu a sua senha?</a>
               </div>
@@ -66,6 +74,7 @@ export default function LoginRegister() {
 
               <div className={styles.inputBox}>
                 <select>
+                  <option value="" selected >Ocupação</option>
                   <option value="Aluno">Aluno</option>
                   <option value="Docente">Docente</option>
                 </select>
