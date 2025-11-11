@@ -254,7 +254,7 @@ export default function Home() {
 
       {/* sobre o portal */}
       <section className={styles.portal}>
-        <div className={styles.container}>
+        <div className={styles.containerPortal}>
           <h1>Sobre o Portal</h1>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing
             elit. Adipisci aliquid repellendus nobis deserunt?
@@ -262,45 +262,88 @@ export default function Home() {
             sint aspernatur totam! Eius vitae sit distinctio
             vero, et odio!</p>
 
-          <div className="carouselcontent">
-            <article className={styles.cardCarousel}>
+          <div className={styles.cardPortalContainer}>
+            <div className={styles.cards}>
 
               {/* <div className={styles.carouselImage}>
                 <Image src="/images/profile.jpg" alt="Pessoas" width={40} height={35} className={styles.carouselImg}/>
               </div> */}
 
-              <h3>Mauricio Scheffer</h3><p>Tech Lead Frontend</p>
+              <h3>Mauricio Scheffer</h3>
+              Tech Lead Frontend
               <div className="iconsCard">
                 <Image src="/images/github.png" alt="Pessoas" width={40} height={35} className={styles.icons}/>
                 <Image src="/images/linkedin.png" alt="Pessoas" width={40} height={35} className={styles.icons}/>
               </div>
-            </article>
+            </div>
 
-            <article className={styles.cardCarousel}>
+            <div className={styles.cards}>
 
               {/* <div className={styles.carouselImage}>
                 <Image src="/images/github.png" alt="Pessoas" width={40} height={35} className={styles.carouselImg}/>
               </div> */}
 
-              <h3>Bianca Cabral</h3><p>Desenvolvedora Frontend</p>
+              <h3>Bianca Cabral</h3>
+              Desenvolvedora Frontend
               <div className="iconsCard">
                 <Image src="/images/github.png" alt="Pessoas" width={40} height={35} className={styles.icons} />
                 <Image src="/images/linkedin.png" alt="Pessoas" width={40} height={35} className={styles.icons}/>
               </div>
-            </article>
+            </div>
 
-            <article className={styles.cardCarousel}>
+            <div className={styles.cards}>
               {/* <div className={styles.carouselImage}>
                 <Image src="/images/github.png" alt="Pessoas" width={40} height={35} className={styles.carouselImg}/>
               </div> */}
 
               <h3>Arthur Hoffelder</h3>
-                <p>Desenvolvedor Frontend</p>
+                Desenvolvedor Frontend
               <div className="iconsCard">
                 <Image src="/images/github.png" alt="Pessoas" width={40} height={35} className={styles.icons}/>
                 <Image src="/images/linkedin.png" alt="Pessoas" width={40} height={35} className={styles.icons}/>
               </div>
-            </article> 
+            </div>
+
+            <div className={styles.cards}>
+              {/* <div className={styles.carouselImage}>
+                <Image src="/images/github.png" alt="Pessoas" width={40} height={35} className={styles.carouselImg}/>
+              </div> */}
+
+              <h3>Arthur Hoffelder</h3>
+                Desenvolvedor Frontend
+              <div className="iconsCard">
+                <Image src="/images/github.png" alt="Pessoas" width={40} height={35} className={styles.icons}/>
+                <Image src="/images/linkedin.png" alt="Pessoas" width={40} height={35} className={styles.icons}/>
+              </div>
+            </div> 
+
+            <div className={styles.cards}>
+              {/* <div className={styles.carouselImage}>
+                <Image src="/images/github.png" alt="Pessoas" width={40} height={35} className={styles.carouselImg}/>
+              </div> */}
+
+              <h3>Arthur Hoffelder</h3>
+                Desenvolvedor Frontend
+              <div className="iconsCard">
+                <Image src="/images/github.png" alt="Pessoas" width={40} height={35} className={styles.icons}/>
+                <Image src="/images/linkedin.png" alt="Pessoas" width={40} height={35} className={styles.icons}/>
+              </div>
+            </div>
+
+            <div className={styles.cards}>
+              {/* <div className={styles.carouselImage}>
+                <Image src="/images/github.png" alt="Pessoas" width={40} height={35} className={styles.carouselImg}/>
+              </div> */}
+
+              <h3>Arthur Hoffelder</h3>
+                Desenvolvedor Frontend
+              <div className="iconsCard">
+                <Image src="/images/github.png" alt="Pessoas" width={40} height={35} className={styles.icons}/>
+                <Image src="/images/linkedin.png" alt="Pessoas" width={40} height={35} className={styles.icons}/>
+              </div>
+            </div>
+
+            
 
           </div>
         </div>
