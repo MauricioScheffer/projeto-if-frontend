@@ -5,16 +5,12 @@ import styles from "./page.module.css";
 import Image from "next/image";
 import iconProfile from "../icons/iconProfile.png";
 
-
-
-
 export default function LoginRegister() {
   const [isActive, setIsActive] = useState(false);
   const [showLogin, setShowLogin] = useState(true);
 
   return (
     <div className={styles.loginPage}>
-
       <div className={`${styles.container} ${isActive ? styles.active : ""}`}>
 
         {/* LOGIN */}
@@ -35,9 +31,10 @@ export default function LoginRegister() {
 
               <div className={styles.inputBox}>
                 <select>
-                  <option value="" disabled selected>Ocupação</option>
+                  <option value=" " disabled selected>Ocupação</option>
                   <option value="Aluno">Aluno</option>
                   <option value="Docente">Docente</option>
+                  <option value="Egresso">Egresso</option>
                 </select>
               </div>
 
@@ -66,7 +63,7 @@ export default function LoginRegister() {
                 <img className={styles.icon} src="/icons/iconEmail.png" alt="Icon Email" />
 
               </div>
-
+              
               <div className={styles.inputBox}>
                 <input type="password" placeholder="Senha" required />
                 <img className={styles.icon} src="/icons/iconPassWord.png" alt="Icon PassWord" />
@@ -74,9 +71,10 @@ export default function LoginRegister() {
 
               <div className={styles.inputBox}>
                 <select>
-                  <option value="" selected >Ocupação</option>
+                  <option value=" " disabled selected >Ocupação</option>
                   <option value="Aluno">Aluno</option>
                   <option value="Docente">Docente</option>
+                  <option value="Egresso">Egresso</option>
                 </select>
 
               </div>
