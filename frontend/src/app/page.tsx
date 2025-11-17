@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       {/* INÍCIO */}
-      <section className={styles.hero}>
+      <section className={styles.inicio}>
         <div className={styles.heroContent}>
           <div className={styles.heroLeft}>
             <h1>Bem-vindo ao Nosso Site</h1>
@@ -42,8 +42,8 @@ export default function Home() {
             <Image
               src="/images/image.jpg"
               alt="Imagem Institucional"
-              width={570}
-              height={400}
+              width={510}
+              height={370}
               className={styles.heroImage}
               priority
             />
@@ -56,10 +56,12 @@ export default function Home() {
       <section className={styles.sobre}>
         <h2>Sobre os cursos</h2>
         <p className={styles.descricao}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
+          O Campus Sapucaia do Sul do IFSUL oferece formações completas na área
+          de Tecnologia da Informação, preparando estudantes para o mercado de
+          trabalho e para atuar em projetos de inovação, pesquisa aplicada e
+          desenvolvimento de soluções tecnológicas. Os cursos unem teoria,
+          prática em laboratório e participação em eventos como hackathons,
+          palestras e feiras tecnológicas.
         </p>
 
         <div className={styles.cursosContainer}>
@@ -69,16 +71,20 @@ export default function Home() {
             <Image
               src="/images/image.jpg"
               alt="Curso Técnico em Desenvolvimento de Sistemas"
-              width={400}
-              height={250}
+              width={350}
+              height={220}
               className={styles.cardImage}
             />
             <div className={styles.cardContent}>
               <h3>Técnico em Desenvolvimento de Sistemas</h3>
-              <p>Integrado ao Ensino Médio. Lorem ipsum dolor sit amet.</p>
-              <a href="#" className={styles.verMais}>
+              <p>Integrado ao Ensino Médio. Capacita estudantes para atuar com programação, banco de dados, aplicações
+                web e lógica computacional. Os alunos aprendem a desenvolver sistemas reais,
+                participar de projetos e trabalhar em equipe utilizando metodologias ágeis.
+              </p>
+
+              {/* <a href="#" className={styles.verMais}>
                 VEJA MAIS
-              </a>
+              </a> */}
             </div>
           </div>
 
@@ -88,16 +94,21 @@ export default function Home() {
             <Image
               src="/images/image.jpg"
               alt="Curso de Análise e Desenvolvimento de Sistemas"
-              width={400}
-              height={250}
+              width={350}
+              height={220}
               className={styles.cardImage}
             />
             <div className={styles.cardContent}>
               <h3>Tecnólogo em Análise e Desenvolvimento de Sistemas</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p>O curso forma profissionais capazes de projetar, desenvolver e gerenciar sistemas de software. O
+                curso possui forte foco em desenvolvimento full stack, redes, bancos
+                de dados, computação em nuvem, arquitetura de software e inovação
+                tecnológica.
+              </p>
+{/* 
               <a href="#" className={styles.verMais}>
-                VEJA MAIS
-              </a>
+                  VEJA MAIS
+              </a> */}
             </div>
           </div>
         </div>
@@ -125,10 +136,12 @@ export default function Home() {
               className={styles.cardImage}
             />
             <p className={styles.descricao}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
-              dolorum sequi, dolorem possimus amet voluptatibus at asperiores
-              tempore debitis illo aspernatur blanditiis tenetur labore in,
-              cupiditate, nulla temporibus ab. Quas.
+              O IFSUL promove anualmente diversos eventos voltados à área de
+              tecnologia, como feiras de inovação, semanas acadêmicas e
+              competições de programação. Nossos estudantes participam de
+              projetos de extensão, maratonas de desenvolvimento e palestras
+              ministradas por profissionais da indústria, fortalecendo a
+              integração entre ensino e mercado de trabalho.
             </p>
           </div>
 
@@ -256,96 +269,61 @@ export default function Home() {
       <section className={styles.portal}>
         <div className={styles.containerPortal}>
           <h1>Sobre o Portal</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Adipisci aliquid repellendus nobis deserunt?
-            Quo, culpa voluptatem tenetur iusto harum deserunt
-            sint aspernatur totam! Eius vitae sit distinctio
-            vero, et odio!</p>
+          <p>
+            Este portal foi desenvolvido pelos estudantes dos cursos Técnico em
+            Informática e Tecnólogo em Análise e Desenvolvimento de Sistemas do
+            IFSUL – Campus Sapucaia do Sul. O objetivo do projeto é divulgar
+            atividades acadêmicas, eventos, projetos, pesquisas e iniciativas da
+            área de Tecnologia da Informação. O site também visa aproximar a
+            comunidade estudantil, facilitar o acesso a informações relevantes e
+            promover a visibilidade dos cursos oferecidos pela instituição.
+          </p>
 
-          <div className={styles.cardPortalContainer}>
-            <div className={styles.cards}>
 
-              {/* <div className={styles.carouselImage}>
-                <Image src="/images/profile.jpg" alt="Pessoas" width={40} height={35} className={styles.carouselImg}/>
-              </div> */}
+          <div className={styles.cardsWrapper}>
+            {[
+              { nome: "Mauricio Scheffer", linkedin: "https://www.linkedin.com/in/maur%C3%ADcio-scheffer-silveira-95b972279/", github: "https://github.com/MauricioScheffer" },
+              { nome: "Andrew Mattheus", linkedin: "https://www.linkedin.com/in/andrew-mattheus/", github: "" },
+              { nome: "Bianca Cabral", linkedin: "", github: "https://github.com/BiancaCabral0312" },
+              { nome: "Denis Jesus", linkedin: "https://www.linkedin.com/in/denis-jesus-/", github: "https://github.com/Denio-Jesus2005" },
+              { nome: "Arthur Hoffelder", linkedin: "https://www.linkedin.com/in/arthur-hoffelder-4b22322a0/", github: "https://github.com/cmoficial" },
+              { nome: "Ismael Machado", linkedin: "https://www.linkedin.com/in/ismaelcostamachado/", github: "https://github.com/icmci" },
+              { nome: "Fernanda Walther", linkedin: "https://www.linkedin.com/in/fernanda-walther-fernandes/", github: "https://github.com/aferwf" },
+              { nome: "Bianca Leite", linkedin: "https://www.linkedin.com/in/bianca-leite-14502a212/", github: "" },
+              { nome: "Cauane Santos", linkedin: "https://www.linkedin.com/in/cauane-santos-269a2b215/", github: "https://github.com/cauanesantosinacio" },
+              { nome: "Julio Nascimento", linkedin: "https://www.linkedin.com/in/julio-nascimento-b092811b4/", github: "https://github.com/nascimentoJulio" },
+              { nome: "Guilherme Silva", linkedin: "https://www.linkedin.com/in/guilherme-silva-fagundes-5b99551bb/", github: "https://github.com/guilhermesfagundes04" },
+              { nome: "João Andrey", linkedin: "https://www.linkedin.com/in/joao-andrey/", github: "https://github.com/Antochevis" },
+              { nome: "Rafael Steffen", linkedin: "https://www.linkedin.com/in/rafaeu/", github: "https://github.com/rafasteffen" },
+              { nome: "Rodrigo Remor", linkedin: "https://www.linkedin.com/in/rodrigoremor/", github: "" }
+            ].map((pessoa, index) => (
+              <div key={index} className={styles.card}>
+                <div className={styles.cardContent}>
+                  <a href={pessoa.linkedin}>
+                    <Image
+                      className={styles.iconsP}
+                      src="/images/linkedin.png"
+                      alt="Linkedin"
+                      width={28}
+                      height={28}
+                    />
+                  </a>
 
-              <h3>Mauricio Scheffer</h3>
-              Tech Lead Frontend
-              <div className="iconsCard">
-                <Image src="/images/github.png" alt="Pessoas" width={40} height={35} className={styles.icons}/>
-                <Image src="/images/linkedin.png" alt="Pessoas" width={40} height={35} className={styles.icons}/>
+                  <a href={pessoa.github}>
+                    <Image
+                      className={styles.iconsP}
+                      src="/images/github.png"
+                      alt="Linkedin"
+                      width={28}
+                      height={28}
+                    />
+                  </a>
+                  <span>{pessoa.nome}</span>
+                </div>
               </div>
-            </div>
-
-            <div className={styles.cards}>
-
-              {/* <div className={styles.carouselImage}>
-                <Image src="/images/github.png" alt="Pessoas" width={40} height={35} className={styles.carouselImg}/>
-              </div> */}
-
-              <h3>Bianca Cabral</h3>
-              Desenvolvedora Frontend
-              <div className="iconsCard">
-                <Image src="/images/github.png" alt="Pessoas" width={40} height={35} className={styles.icons} />
-                <Image src="/images/linkedin.png" alt="Pessoas" width={40} height={35} className={styles.icons}/>
-              </div>
-            </div>
-
-            <div className={styles.cards}>
-              {/* <div className={styles.carouselImage}>
-                <Image src="/images/github.png" alt="Pessoas" width={40} height={35} className={styles.carouselImg}/>
-              </div> */}
-
-              <h3>Arthur Hoffelder</h3>
-                Desenvolvedor Frontend
-              <div className="iconsCard">
-                <Image src="/images/github.png" alt="Pessoas" width={40} height={35} className={styles.icons}/>
-                <Image src="/images/linkedin.png" alt="Pessoas" width={40} height={35} className={styles.icons}/>
-              </div>
-            </div>
-
-            <div className={styles.cards}>
-              {/* <div className={styles.carouselImage}>
-                <Image src="/images/github.png" alt="Pessoas" width={40} height={35} className={styles.carouselImg}/>
-              </div> */}
-
-              <h3>Arthur Hoffelder</h3>
-                Desenvolvedor Frontend
-              <div className="iconsCard">
-                <Image src="/images/github.png" alt="Pessoas" width={40} height={35} className={styles.icons}/>
-                <Image src="/images/linkedin.png" alt="Pessoas" width={40} height={35} className={styles.icons}/>
-              </div>
-            </div> 
-
-            <div className={styles.cards}>
-              {/* <div className={styles.carouselImage}>
-                <Image src="/images/github.png" alt="Pessoas" width={40} height={35} className={styles.carouselImg}/>
-              </div> */}
-
-              <h3>Arthur Hoffelder</h3>
-                Desenvolvedor Frontend
-              <div className="iconsCard">
-                <Image src="/images/github.png" alt="Pessoas" width={40} height={35} className={styles.icons}/>
-                <Image src="/images/linkedin.png" alt="Pessoas" width={40} height={35} className={styles.icons}/>
-              </div>
-            </div>
-
-            <div className={styles.cards}>
-              {/* <div className={styles.carouselImage}>
-                <Image src="/images/github.png" alt="Pessoas" width={40} height={35} className={styles.carouselImg}/>
-              </div> */}
-
-              <h3>Arthur Hoffelder</h3>
-                Desenvolvedor Frontend
-              <div className="iconsCard">
-                <Image src="/images/github.png" alt="Pessoas" width={40} height={35} className={styles.icons}/>
-                <Image src="/images/linkedin.png" alt="Pessoas" width={40} height={35} className={styles.icons}/>
-              </div>
-            </div>
-
-            
-
+            ))}
           </div>
+
         </div>
       </section>
 

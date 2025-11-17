@@ -6,6 +6,8 @@
   --dark-green: #3a6b2f;
   --dark: #333334;
   --light: #f8fceb;
+  --font-title: var(--font-poppins);
+  --font-text: var(--font-inter);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -27,6 +29,14 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, .titulo {
+  font-family: var(--font-title);
+}
+
+p, span, li, a {
+  font-family: var(--font-text);
 }
 
 * {

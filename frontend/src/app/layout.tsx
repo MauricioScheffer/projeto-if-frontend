@@ -4,7 +4,20 @@ import "../../styles/globals.css";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
-import styles from "./layout.module.css"
+import styles from "./layout.module.css";
+import { Inter, Poppins } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+const poppins = Poppins({
+  weight: ["400", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-poppins",
+});
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin", "latin-ext"],
@@ -28,7 +41,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-      <html className={styles.body} lang="pt-br">
+      <html className={`${styles.body} ${inter.variable} ${poppins.variable}`} lang="pt-br">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Header/>
         {children}
