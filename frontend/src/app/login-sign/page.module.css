@@ -2,12 +2,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: auto;
+  min-height: 100vh;
   background-image: url(/icons/fundo.png);
   background-size: 150%;
   animation: gradient 50s ease-in-out infinite;
 }
 
+.loginPage * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 .container {
   position: relative;
