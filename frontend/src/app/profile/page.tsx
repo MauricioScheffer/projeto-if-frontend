@@ -1,52 +1,172 @@
 "use client";
 
-//import Image from "next/image";
-import { title } from "process";
+import React, { useState, ChangeEvent, FormEvent, useRef } from "react";
 import styles from "./page.module.css";
-import Image from "next/image";
-// importante para rodar o carousel no lado do cliente
 
-export default function Profile() {
+interface UserData {
+  fullName: string;
+  email: string;
+  dateOfBirth: string;
+  address: string;
+  gender: string;
+  phone: string;
+  about: string;
+}
+
+export default function ProfilePage() {
+  const [user, setUser] = useState<UserData>({
+    fullName: "",
+    email: "",
+    dateOfBirth: "",
+    address: "",
+    gender: "Other",
+    phone: "",
+    about: "",
+  });
+
+  const [preview, setPreview] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  function handleChange(
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) {
+    const { name, value } = e.target;
+    setUser((prev) => ({ ...prev, [name]: value }));
+  }
+
+  // abrir explorador de arquivos
+  function openFilePicker() {
+    fileInputRef.current?.click();
+  }
+
+  // pegar foto escolhida
+  function handleSelectedImage(e: ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const url = URL.createObjectURL(file);
+    setPreview(url);
+  }
+
+  function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+    console.log(user);
+    alert("Account updated!");
+  }
+
   return (
-    <main>
-      <div className={styles.container}>
-        {/* <section className={styles.Profile}> */}
-        <div className={styles.sideLeftProfile}>
+    <div className={styles.wrapper}>
+      
+      {/* COLUNA 1 - FOTO */}
+      <div className={styles.left}>
+        <h3 className={styles.sectionTitle}>Profile Photo</h3>
 
-          {/* <div className="photoProfile"> */}
-          <Image
-            src="/images/user.png"
-            alt="Notícias e Eventos"
-            width={340}
-            height={325}
-            className={styles.cardImage}
-          />
-          <h2>Nome Completo do Aluno</h2>
-          <h3>Nome Perfil</h3>
+        <img
+          src={preview || "/placeholder.png"}
+          alt="Profile"
+          className={styles.preview}
+        />
 
-          <button className={styles.button}>Editar Perfil</button>
-          {/* </div> */}
-        </div>
+        <input
+          type="file"
+          ref={fileInputRef}
+          onChange={handleSelectedImage}
+          accept="image/*"
+          style={{ display: "none" }}
+        />
 
-        <div className={styles.coursesProfile}>
-          <div className={styles.courses}>
-            {Array.from({ length:10 }).map((_, i) => (
-                <div key={i} className={styles.listNews}>
-                  <div>
-                  <h1>Nome do Curso</h1>
-                  <p>Primeiro Semestre</p>
-                </div>
-
-                <button>Provas</button>
-                <button>Trabalhos</button>
-                <button>Notas</button>
-                </div>
-              ))}
-
-          </div>
-        </div>
-        {/* </section> */}
+        <button className={styles.changeButton} onClick={openFilePicker}>
+          Trocar imagem
+        </button>
       </div>
-    </main>
+
+      {/* COLUNA 2 - FORMULÁRIO */}
+      <div className={styles.right}>
+        <h1 className={styles.title}>Account Information</h1>
+
+        <form onSubmit={handleSubmit} className={styles.form}>
+          
+          <div className={styles.field}>
+            <label>Full name</label>
+            <input
+              name="fullName"
+              value={user.fullName}
+              onChange={handleChange}
+              className={styles.input}
+            />
+          </div>
+
+          <div className={styles.field}>
+            <label>Email</label>
+            <input
+              name="email"
+              type="email"
+              value={user.email}
+              onChange={handleChange}
+              className={styles.input}
+            />
+          </div>
+
+          <div className={styles.field}>
+            <label>Date of Birth</label>
+            <input
+              name="dateOfBirth"
+              type="date"
+              value={user.dateOfBirth}
+              onChange={handleChange}
+              className={styles.input}
+            />
+          </div>
+
+          <div className={styles.field}>
+            <label>Address</label>
+            <input
+              name="address"
+              value={user.address}
+              onChange={handleChange}
+              className={styles.input}
+            />
+          </div>
+
+          <div className={styles.field}>
+            <label>Gender</label>
+            <select
+              name="gender"
+              value={user.gender}
+              onChange={handleChange}
+              className={styles.input}
+            >
+              <option>Male</option>
+              <option>Female</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div className={styles.field}>
+            <label>Phone number</label>
+            <input
+              name="phone"
+              value={user.phone}
+              onChange={handleChange}
+              className={styles.input}
+            />
+          </div>
+
+          <div className={styles.field}>
+            <label>About you</label>
+            <textarea
+              name="about"
+              value={user.about}
+              onChange={handleChange}
+              className={styles.textarea}
+            />
+          </div>
+
+          <button className={styles.button} type="submit">
+            Update account
+          </button>
+        </form>
+      </div>
+    </div>
   );
 }
