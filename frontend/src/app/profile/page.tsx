@@ -2,26 +2,28 @@
 
 import React, { useState, ChangeEvent, FormEvent, useRef } from "react";
 import styles from "./page.module.css";
+import fotoPerfilPadrão from "../icons/fotoPerfilPadrão.webp";
+import { Life_Savers } from "next/font/google";
+
 
 interface UserData {
-  fullName: string;
+  nomeCompleto: string;
   email: string;
-  dateOfBirth: string;
-  address: string;
-  gender: string;
-  phone: string;
-  about: string;
+  linkedin: string;
+  github: string;
+  ocupacao: string;
+  sobreMim: string;
 }
 
 export default function ProfilePage() {
   const [user, setUser] = useState<UserData>({
-    fullName: "",
+    nomeCompleto: "",
     email: "",
-    dateOfBirth: "",
-    address: "",
-    gender: "Other",
-    phone: "",
-    about: "",
+    linkedin: "",
+    github: "",
+    ocupacao: " ",
+    sobreMim
+      : "",
   });
 
   const [preview, setPreview] = useState<string | null>(null);
@@ -51,19 +53,19 @@ export default function ProfilePage() {
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
     console.log(user);
-    alert("Account updated!");
+    alert("Dados atualizados com sucesso!");
   }
 
   return (
     <div className={styles.wrapper}>
-      
+
       {/* COLUNA 1 - FOTO */}
       <div className={styles.left}>
-        <h3 className={styles.sectionTitle}>Profile Photo</h3>
+        <h3 className={styles.sectionTitle}>Foto de perfil</h3>
 
         <img
-          src={preview || "/placeholder.png"}
-          alt="Profile"
+          src={preview || "/icons/fotoPerfilPadrão.webp"}
+          alt="Foto"
           className={styles.preview}
         />
 
@@ -82,15 +84,15 @@ export default function ProfilePage() {
 
       {/* COLUNA 2 - FORMULÁRIO */}
       <div className={styles.right}>
-        <h1 className={styles.title}>Account Information</h1>
+        <h1 className={styles.title}>Dados pessoais</h1>
 
         <form onSubmit={handleSubmit} className={styles.form}>
-          
+
           <div className={styles.field}>
-            <label>Full name</label>
+            <label>Nome completo</label>
             <input
-              name="fullName"
-              value={user.fullName}
+              name="nomeCompleto"
+              value={user.nomeCompleto}
               onChange={handleChange}
               className={styles.input}
             />
@@ -108,62 +110,54 @@ export default function ProfilePage() {
           </div>
 
           <div className={styles.field}>
-            <label>Date of Birth</label>
-            <input
-              name="dateOfBirth"
-              type="date"
-              value={user.dateOfBirth}
-              onChange={handleChange}
-              className={styles.input}
-            />
-          </div>
-
-          <div className={styles.field}>
-            <label>Address</label>
-            <input
-              name="address"
-              value={user.address}
-              onChange={handleChange}
-              className={styles.input}
-            />
-          </div>
-
-          <div className={styles.field}>
-            <label>Gender</label>
+            <label>Ocupação</label>
             <select
-              name="gender"
-              value={user.gender}
+              name="Ocupação"
+              value={user.ocupacao}
               onChange={handleChange}
               className={styles.input}
             >
-              <option>Male</option>
-              <option>Female</option>
-              <option>Other</option>
+              <option selected disabled> </option>
+              <option>Aluno</option>
+              <option>Egresso</option>
+              <option>Docente</option>
             </select>
           </div>
 
           <div className={styles.field}>
-            <label>Phone number</label>
+            <label>Github</label>
             <input
-              name="phone"
-              value={user.phone}
+              name="github"
+              type="github"
+              value={user.github}
               onChange={handleChange}
               className={styles.input}
             />
           </div>
 
           <div className={styles.field}>
-            <label>About you</label>
+            <label>Linkedin</label>
+            <input
+              name="linkedin"
+              type="linkedin"
+              value={user.linkedin}
+              onChange={handleChange}
+              className={styles.input}
+            />
+          </div>
+
+          <div className={styles.field}>
+            <label>Sobre mim</label>
             <textarea
-              name="about"
-              value={user.about}
+              name="sobreMim"
+              value={user.sobreMim}
               onChange={handleChange}
               className={styles.textarea}
             />
           </div>
 
           <button className={styles.button} type="submit">
-            Update account
+            Concluir
           </button>
         </form>
       </div>

@@ -1,17 +1,22 @@
 .wrapper {
   display: flex;
-  gap: 30px;
   padding: 30px;
 }
 
 /* COLUNA ESQUERDA */
 .left {
   flex: 1;
-  background: #f4f4f4;
+  display: flex;           
+  flex-direction: column;  
+  align-items: center;     
+  background: #eee;
   padding: 20px;
-  border-radius: 16px;
+  border-right-style: ridge;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
   text-align: center;
 }
+
 
 .sectionTitle {
   font-size: 18px;
@@ -19,17 +24,19 @@
 }
 
 .preview {
-  width: 100%;
-  height: 320px;
+  margin: 0 auto;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 50%;    
   background: #ddd;
+  display: block; 
 }
 
 .changeButton {
   margin-top: 15px;
   padding: 10px;
-  background: #0070f3;
+  background: #16425e;
   color: white;
   border: none;
   cursor: pointer;
@@ -39,9 +46,10 @@
 /* COLUNA DIREITA */
 .right {
   flex: 2;
-  background: #fff;
+  background: #eee;
   padding: 25px;
-  border-radius: 16px;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px ;
 }
 
 .title {
@@ -76,7 +84,7 @@
 .button {
   margin-top: 10px;
   padding: 14px;
-  background: #22c55e;
+  background:#16425e;
   color: white;
   border: none;
   cursor: pointer;
