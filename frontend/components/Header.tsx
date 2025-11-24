@@ -14,13 +14,13 @@ export default function Header() {
         <nav className={styles.navbar}>
           <div className={styles.logo}>
             <Image
-              src="/images/logo.png"
+              src="/logos/Logo3 br.png"
               alt="Logo DevConecta"
               width={50}
               height={50}
               className={styles.logoImage}
             />
-            <span>DevConecta</span>
+            <span>DEVCONECTA</span>
           </div>
 
           <button
@@ -39,15 +39,29 @@ export default function Header() {
           <ul className={`${styles["nav-links"]} ${open ? styles.open : ""}`}>
             <li><Link href="/">Início</Link></li>
             <li><Link href="/about">Cursos</Link></li>
-            <li><Link href="/events-list">Eventos</Link></li>
+            <li><Link href="/events-news">Eventos</Link></li>
             <li><Link href="/institution">Instituição</Link></li>
-            <li><Link href="/profile">Orientadores</Link></li>
+            <li><Link href="">Orientadores</Link></li>
             <li><Link href="/contact">Contate-nos</Link></li>
             <li className={styles.mobileLogin}><Link href="/login-sign">Entrar</Link></li>
           </ul>
 
-          <div className={styles.loginButton}>
-            <Link href="/login-sign">Entrar</Link>
+          <div className={styles.profileAccess}>
+            <Link href="/login-sign" className={styles.loginButton} aria-label="Acessar perfil">
+              Entrar
+            </Link>
+
+            <div className={styles.avatarWrapper}>
+              <Link href="/profile" aria-label="Acessar perfil">
+                <Image
+                  src="/images/sapuca.png"
+                  alt="Foto do perfil"
+                  width={40}
+                  height={40}
+                  className={styles.avatar}
+                />
+              </Link>
+            </div>
           </div>
         </nav>
       </header>
