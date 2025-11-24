@@ -74,13 +74,10 @@
 }
 
 .loginButton {
-  display: inline-block;
-}
-
-.loginButton a {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px; /* manter o botão e o avatar próximos */
+  /* estilos aplicáveis quando a própria âncora/link recebe a classe */
   padding: 8px 14px;
   border-radius: 8px;
   background: #ffffff;
@@ -93,17 +90,24 @@
   overflow: hidden;
 }
 
-.loginButton a:hover {
+/* manter compatibilidade quando a âncora estiver dentro do container */
+.loginButton a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.loginButton:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.28);
   background: #f8f9fa;
 }
 
-.loginButton a:active {
+.loginButton:active {
   transform: scale(0.98);
 }
 
-.loginButton a::after {
+.loginButton::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -118,15 +122,49 @@
   pointer-events: none;
 }
 
-.loginButton a:active::after {
+.loginButton:active::after {
   transform: translate(-50%, -50%) scale(8);
   opacity: 0.18;
   transition: transform 450ms ease, opacity 450ms ease;
 }
 
-.loginButton a:focus-visible {
+.loginButton:focus-visible {
   outline: 2px solid rgba(255,255,255,0.25);
-  outline-offset: 3px;
+}
+
+/* Avatar/profile image next to login */
+.avatarWrapper {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 6px; /* reduzido para aproximar do botão */
+}
+
+.profileAccess {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255,255,255,0.9);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+  transition: transform 150ms ease, box-shadow 180ms ease, filter 150ms ease;
+  display: block;
+}
+
+.avatarWrapper a:hover .avatar {
+  transform: scale(1.06);
+  filter: brightness(1.02);
+}
+
+@media (max-width: 768px) {
+  .avatarWrapper {
+    display: none; /* esconder avatar em mobile, usar mobileLogin dentro do menu */
+  }
 }
 
 .nav-links a::after {
