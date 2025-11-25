@@ -14,7 +14,7 @@ interface Event {
 }
 
 const EventsList: React.FC = () => {
-  const events: Event[] = [
+  const [events, setEvents] = useState<Event[]>([
     {
       id: 1,
       titulo: "CODA",
@@ -22,8 +22,8 @@ const EventsList: React.FC = () => {
         "Evento que reuniu desenvolvedores e entusiastas para criar soluções inovadoras em tecnologia. Durante o encontro, equipes colaboraram em projetos que exploraram novas formas de aplicar a tecnologia em problemas do mundo real.",
       imagem: "/images/image.jpg",
       publico: "Interno (Acadêmico)",
-      data: "15 de Outubro de 2025",
-      hora: "09:00 - 18:00",
+      data: "2025-10-15",
+      hora: "09:00",
       local: "Auditório Central - Campus I",
     },
     {
@@ -33,57 +33,74 @@ const EventsList: React.FC = () => {
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur viverra lacus non lectus fringilla, in maximus erat congue.",
       imagem: "/images/image.jpg",
       publico: "Interno (Acadêmico)",
-      data: "15 de Outubro de 2025",
-      hora: "09:00 - 18:00",
+      data: "2025-10-15",
+      hora: "09:00",
       local: "Auditório Central - Campus I",
     },
-    {
-      id: 3,
-      titulo: "Evento",
-      descricao:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget sem sit amet sapien viverra volutpat.",
-      imagem: "/images/image.jpg",
-      publico: "Interno (Acadêmico)",
-      data: "15 de Outubro de 2025",
-      hora: "09:00 - 18:00",
-      local: "Auditório Central - Campus I",
-    },
-    {
-      id: 4,
-      titulo: "Evento",
-      descricao:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent cursus sapien non metus suscipit, et egestas justo fermentum.",
-      imagem: "/images/image.jpg",
-      publico: "Interno (Acadêmico)",
-      data: "15 de Outubro de 2025",
-      hora: "09:00 - 18:00",
-      local: "Auditório Central - Campus I",
-    },
-    {
-      id: 5,
-      titulo: "Evento",
-      descricao:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus commodo risus a massa blandit, a posuere sapien aliquam.",
-      imagem: "/images/image.jpg",
-      publico: "Interno (Acadêmico)",
-      data: "15 de Outubro de 2025",
-      hora: "09:00 - 18:00",
-      local: "Auditório Central - Campus I",
-    },
-    {
-      id: 6,
-      titulo: "Evento",
-      descricao:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed facilisis risus, ut malesuada urna.",
-      imagem: "/images/image.jpg",
-      publico: "Interno (Acadêmico)",
-      data: "15 de Outubro de 2025",
-      hora: "09:00 - 18:00",
-      local: "Auditório Central - Campus I",
-    },
-  ];
+  ]);
 
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
+  const [createModalOpen, setCreateModalOpen] = useState(false);
+  const [titulo, setTitulo] = useState("");
+  const [descricao, setDescricao] = useState("");
+  const [publico, setPublico] = useState("");
+  const [data, setData] = useState("");
+  const [hora, setHora] = useState("");
+  const [local, setLocal] = useState("");
+  const [imagemPreview, setImagemPreview] = useState<string | null>(null);
+  const [imagemArquivo, setImagemArquivo] = useState<File | null>(null);
+
+  function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (file) {
+      setImagemArquivo(file);
+      setImagemPreview(URL.createObjectURL(file));
+    }
+  }
+
+  function salvarNovoEvento() {
+    if (!titulo.trim()) {
+      alert("O título é obrigatório");
+      return;
+    }
+    if (!data) {
+      alert("A data é obrigatória");
+      return;
+    }
+    if (!hora) {
+      alert("O horário é obrigatório");
+      return;
+    }
+
+    const novoEvento: Event = {
+      id: Date.now(),
+      titulo,
+      descricao,
+      publico,
+      data,
+      hora,
+      local,
+      imagem: imagemPreview ?? "/images/image.jpg",
+    };
+
+    setEvents([...events, novoEvento]);
+
+    setTitulo("");
+    setDescricao("");
+    setPublico("");
+    setData("");
+    setHora("");
+    setLocal("");
+    setImagemPreview(null);
+    setImagemArquivo(null);
+
+    setCreateModalOpen(false);
+  }
+
+  function formatarDataISO(iso: string) {
+    if (!iso) return "";
+    return new Date(iso).toLocaleDateString("pt-BR");
+  }
 
   return (
     <div className={styles.eventsContainer}>
@@ -98,12 +115,12 @@ const EventsList: React.FC = () => {
           <div className={styles.eventcard} key={event.id}>
             <img src={event.imagem} alt={event.titulo} />
             <div className={styles.cardoverlay}>
-              <span className={styles.tag}>{event.publico}</span>
+              {/* REMOVIDO PUBLICO */}
               <h3>{event.titulo}</h3>
               <p>{event.descricao}</p>
 
               <div className={styles.infobox}>
-                <p>📅 {event.data}</p>
+                <p>📅 {formatarDataISO(event.data)}</p>
                 <p>🕒 {event.hora}</p>
                 <p>📍 {event.local}</p>
               </div>
@@ -119,6 +136,15 @@ const EventsList: React.FC = () => {
         ))}
       </div>
 
+      <div className={styles.addEventContainer}>
+        <button
+          className={styles.addEventBtn}
+          onClick={() => setCreateModalOpen(true)}
+        >
+          + Adicionar Evento
+        </button>
+      </div>
+
       {selectedEvent && (
         <div className={styles.modalOverlay}>
           <div className={styles.modalContent}>
@@ -131,10 +157,18 @@ const EventsList: React.FC = () => {
             <p className={styles.modalDescricao}>{selectedEvent.descricao}</p>
 
             <div className={styles.modalDetails}>
-              <p><strong>📅 Data:</strong> {selectedEvent.data}</p>
-              <p><strong>🕒 Horário:</strong> {selectedEvent.hora}</p>
-              <p><strong>📍 Local:</strong> {selectedEvent.local}</p>
-              <p><strong>👥 Público:</strong> {selectedEvent.publico}</p>
+              <p>
+                <strong>📅 Data:</strong> {formatarDataISO(selectedEvent.data)}
+              </p>
+              <p>
+                <strong>🕒 Horário:</strong> {selectedEvent.hora}
+              </p>
+              <p>
+                <strong>📍 Local:</strong> {selectedEvent.local}
+              </p>
+              <p>
+                <strong>👥 Público:</strong> {selectedEvent.publico}
+              </p>
             </div>
 
             <button
@@ -142,6 +176,79 @@ const EventsList: React.FC = () => {
               onClick={() => setSelectedEvent(null)}
             >
               Fechar
+            </button>
+          </div>
+        </div>
+      )}
+
+      {createModalOpen && (
+        <div className={styles.modalOverlay}>
+          <div className={styles.modalContent}>
+            <h2 style={{ marginBottom: "15px" }}>Criar Novo Evento</h2>
+
+            <input
+              className={styles.input}
+              placeholder="Título"
+              value={titulo}
+              onChange={(e) => setTitulo(e.target.value)}
+            />
+
+            <textarea
+              className={styles.textarea}
+              placeholder="Descrição"
+              value={descricao}
+              onChange={(e) => setDescricao(e.target.value)}
+            />
+
+            <input
+              className={styles.input}
+              placeholder="Público"
+              value={publico}
+              onChange={(e) => setPublico(e.target.value)}
+            />
+
+            <input
+              type="date"
+              className={styles.input}
+              value={data}
+              onChange={(e) => setData(e.target.value)}
+            />
+
+            <input
+              type="time"
+              className={styles.input}
+              value={hora}
+              onChange={(e) => setHora(e.target.value)}
+            />
+
+            <input
+              className={styles.input}
+              placeholder="Local"
+              value={local}
+              onChange={(e) => setLocal(e.target.value)}
+            />
+
+            <input
+              className={styles.fileInput}
+              type="file"
+              accept="image/*"
+              onChange={handleImageUpload}
+            />
+
+            {imagemPreview && (
+              <img src={imagemPreview} className={styles.previewImage} />
+            )}
+
+            <button className={styles.saveBtn} onClick={salvarNovoEvento}>
+              Salvar Evento
+            </button>
+
+            <button
+              className={styles.modalClose}
+              onClick={() => setCreateModalOpen(false)}
+              style={{ marginTop: "10px" }}
+            >
+              Cancelar
             </button>
           </div>
         </div>
