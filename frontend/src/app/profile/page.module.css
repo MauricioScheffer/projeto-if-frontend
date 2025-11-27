@@ -1,6 +1,8 @@
 .wrapper {
   display: flex;
-  padding: 30px;
+  padding: 80px;
+  background-image: url(/icons/fundo.png);
+  
 }
 
 /* COLUNA ESQUERDA */
@@ -15,8 +17,8 @@
   border-bottom-left-radius: 20px;
   border-top-left-radius: 20px;
   text-align: center;
+  box-shadow: 0 0 25px rgba(181, 217, 204, 0.5);
 }
-
 
 .sectionTitle {
   font-size: 18px;
@@ -50,6 +52,7 @@
   padding: 25px;
   border-bottom-right-radius: 20px;
   border-top-right-radius: 20px ;
+  box-shadow: 0 0 25px rgba(181, 217, 204, 0.5);
 }
 
 .title {
@@ -74,6 +77,7 @@
   border: 1px solid #d1d1d1;
   border-radius: 8px;
   font-size: 15px;
+  background: #d1d1d1;
 }
 
 .textarea {
@@ -92,8 +96,26 @@
 }
 
 /* RESPONSIVO */
-@media (max-width: 900px) {
-  .wrapper {
+@media screen and (max-width: 768px) { 
+   .wrapper {
     flex-direction: column;
+    padding: 20px;
+
   }
+
+  /* COLUNA DIREITA */
+.right {
+  border-bottom-right-radius: 20px ;
+  border-bottom-left-radius: 20px ;
+  border-top-right-radius: 0px ;
+  border-top-left-radius: 0px ;
 }
+
+.left {
+  border-top-right-radius: 20px ;
+  border-top-left-radius: 20px ;
+  border-bottom-right-radius: 0px ;
+  border-bottom-left-radius: 0px ;
+}
+}
+
