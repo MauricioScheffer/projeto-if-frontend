@@ -53,11 +53,10 @@
     gap: 1rem;
 }
 
-
 .navButton {
     background-color: transparent;
     border: 1px solid transparent; 
-    color: var(--light-blue); 
+    color: var(--light-blue);
     border-radius: 8px;
     padding: 1.25rem;
     padding-left: 0; 
@@ -66,18 +65,32 @@
     font-family: 'Inter', sans-serif;
     cursor: pointer;
     text-align: left; 
-    text-decoration: none;
-    transition: color 0.3s ease, text-decoration 0.3s ease;
+    text-decoration: none; 
+    transition: color 0.3s ease;
+    position: relative; 
+    width: fit-content; 
 }
 
 .navButton:hover {
     background-color: transparent;
     border: 1px solid transparent;
-    color: var(--light); 
-    text-decoration: underline;
-    text-underline-offset: 4px;
+    color: var(--light);
 }
 
+.navButton::after {
+    content: '';
+    position: absolute;
+    width: 0%; 
+    height: 2px; 
+    bottom: 1rem; 
+    left: 0;
+    background-color: var(--light); 
+    transition: width 0.3s ease-in-out;
+}
+
+.navButton:hover::after {
+    width: 100%;
+}
 
 /* --- 3. Seção de Projetos --- */
 .projects {
