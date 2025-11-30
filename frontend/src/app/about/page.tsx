@@ -4,10 +4,10 @@ import { useState } from 'react';
 import styles from './page.module.css'; // <-- Importa os estilos
 
 // String das imagens
-const heroImage = '/img/IMG_0538.jpg';
-const projectImg1 = '/img/placeholder-code.jpg';
-const projectImg2 = '/img/placeholder-mobile.jpg';
-const projectImg3 = '/img/placeholder-dash.jpg';
+  const heroImage = '/imagens/image.jpg' ;
+  const projectImg1 = '/imagens/image.jpg';
+  const projectImg2 = '/imagens/image.jpg';
+  const projectImg3 = '/imagens/image.jpg';
 
 
 // padrão para páginas
