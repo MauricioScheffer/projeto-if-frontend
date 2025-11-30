@@ -81,80 +81,128 @@
 
 /* --- 3. Seção de Projetos --- */
 .projects {
-    padding: 3rem 0;
+    padding: 3rem 0; 
     margin-top: 6rem;
+    
+
+    background-color: var(--blue);
+    border-radius: 12px; 
+    padding: 2.5rem 2rem; 
+    margin-bottom: 3rem; 
+    color: var(--light); 
 }
 
 
-/* Filtros revertidos para o tema claro */
+.projects > p {
+    margin-bottom: 2rem; 
+    color: var(--light);  
+    max-width: 800px;      
+}
+
+
+
+/* --- Filtros (Dentro do Envelope) --- */
 .filters {
     display: flex;
-    gap: 1.5rem;
-    margin-bottom: 2.5rem;
+    gap: 1rem;
+    margin-bottom: 2rem;
     flex-wrap: wrap;
-    background-color: #ffffff; /* MUDANÇA: Voltando para branco */
-    padding: 1.5rem;
+    background-color: var(--dark-blue); 
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .filters select {
     flex: 1;
-    background-color: #f0f0f0; 
-    color: #1b263b; 
+    background-color: #ffffff; 
+    color: #333; 
     border: none;
     border-radius: 6px;
-    padding: 0.75rem 1rem;
+    padding: 12px 16px;
     font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
-    min-width: 150px;
+    font-size: 0.95rem;
+    cursor: pointer;
     appearance: none;
     -webkit-appearance: none;
-    /* Seta escura */
+    -moz-appearance: none; 
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 1rem center;
     background-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.filters select:hover {
+    background-color: #f0f0f0;
 }
 
 .filters button.filterButton {
-    background-color: var(--blue); 
-    color: #ffffff; 
+    background-color: var(--light-blue); 
+    color: var(--dark-blue); 
     border: none;
     border-radius: 6px;
-    padding: 0.75rem 1.75rem;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 600;
+    padding: 0 2rem;
+    font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
+    transition: background-color 0.3s;
 }
 
 .filters button.filterButton:hover {
-    background-color: var(--light-blue); 
-    color: var(--dark-blue);
+    background-color: var(--blue); 
+    color: var(--light); 
 }
 
+
+/* --- Cards de Projeto --- */
 .projectList {
     display: grid;
     gap: 1.5rem;
+    max-height: 500px;
+    overflow-y: auto;
+    padding-right: 1rem;
+    padding-bottom: 2rem;
 }
 
-/* Cards de Projeto atualizados */
+.projectList::-webkit-scrollbar {
+    width: 8px;
+}
+
+.projectList::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.projectList::-webkit-scrollbar-thumb {
+    background-color: var(--light-blue);
+    border-radius: 4px;
+}
+
+.projectList::-webkit-scrollbar-thumb:hover {
+    background-color: var(--light);
+}
+
 .projectCard {
     display: flex;
-    background-color: #ffffff; 
+    background-color: var(--dark-blue); 
     border-radius: 8px;
     overflow: hidden;
-    transition: 0.3s; 
+    transition: background-color 0.3s, color 0.3s; 
     gap: 1.5rem;
     padding: 1.5rem;
-    border: 1px solid #ddd;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    color: var(--light); 
 }
 
+
 .projectCard:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background-color: var(--light); 
+   
+    
+    transform: none;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }
 
 .projectCard img {
@@ -172,27 +220,44 @@
     align-items: flex-start;
 }
 
+/* Títulos e Textos normais */
 .projectInfo h3 {
     font-size: 1.2rem;
-    color: #1b263b; 
+    color: var(--light); 
+    margin-bottom: 5px;
+    transition: color 0.3s;
 }
 
 .projectInfo p {
     font-size: 0.9rem;
-    color: #555; 
-    margin-top: 0.5rem;
+    color: var(--light);
+    margin-top: 0;
+    opacity: 0.8;
+    transition: color 0.3s;
 }
 
 .projectLink {
-    color: var(--blue); 
+    color: var(--light-blue);
     text-decoration: none;
     font-weight: 600;
     margin-top: 0.75rem;
-    transition: 0.3s;
+    font-size: 0.9rem;
+    transition: color 0.3s;
 }
 
-.projectLink:hover {
-    color: var(--light-blue);
+
+/* --- MUDANÇA DE COR DO TEXTO NO HOVER --- */
+.projectCard:hover .projectInfo h3 {
+    color: var(--dark-blue); 
+}
+
+.projectCard:hover .projectInfo p {
+    color: var(--dark-blue);
+    opacity: 1;
+}
+
+.projectCard:hover .projectLink {
+    color: var(--dark-blue); 
     text-decoration: underline;
 }
 
