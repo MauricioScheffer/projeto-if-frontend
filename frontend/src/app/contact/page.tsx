@@ -16,11 +16,12 @@ export default function ContactPage() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    alert("Formulário enviado!");
+    alert("Mensagem enviada! Agradecemos o seu contato.");
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.contactPage}>
+      <div className={styles.container}>
       <h1 className={styles.title}>Entre em Contato</h1>
 
       <form onSubmit={handleSubmit} className={styles.form} aria-label="Formulário de contato">
@@ -63,13 +64,14 @@ export default function ContactPage() {
             placeholder="Digite sua mensagem"
             required
           ></textarea>
-          <div className={styles.helper} aria-hidden="true">Responda em até 48h.</div>
+          <div className={styles.helper} aria-hidden="true">Retorno em até 48h.</div>
         </div>
 
         <button type="submit" className={styles.button}>
           Enviar
         </button>
       </form>
+      </div>
     </div>
   );
 }
