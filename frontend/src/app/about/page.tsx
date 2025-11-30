@@ -4,10 +4,10 @@ import { useState } from 'react';
 import styles from './page.module.css';
 
 // --- CONFIGURAÇÃO DAS IMAGENS ---
-const heroImage = '/img/IMG_0538.jpg';
-const projectImg1 = '/img/placeholder-code.jpg';
-const projectImg2 = '/img/placeholder-mobile.jpg';
-const projectImg3 = '/img/placeholder-dash.jpg';
+const heroImage = '/images/image.jpg';
+const projectImg1 = '/images/image.jpg';
+const projectImg2 = '/images/image.jpg';
+const projectImg3 = '/images/image.jpg';
 
 // --- CONFIGURAÇÃO DO CONTEÚDO DOS MODAIS ---
 const conteudoModais: Record<string, { titulo: string; links: string[] }[]> = {
