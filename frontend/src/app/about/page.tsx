@@ -115,7 +115,7 @@ export default function HomePage() {
           <section className={styles.hero}>
             <div className={styles.heroContent}>
               <h1>Tecnólogo em Análise e Desenvolvimento de Sistemas</h1>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+              <p>O curso de Análise e Desenvolvimento de Sistemas do IFSul prepara profissionais para desenvolver e manter softwares, com foco em programação, bancos de dados e soluções tecnológicas.</p>
             </div>
             <div className={styles.heroImageWrapper}>
               <img src={heroImage} alt="Imagem principal" /> 
@@ -137,7 +137,7 @@ export default function HomePage() {
           {/* --- 3. Seção de Projetos --- */}
           <section className={styles.projects}>
             <h2>Confira os projetos do TADS</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>Confira os projetos desenvolvidos pelos alunos do curso de TADS, que unem criatividade, tecnologia e soluções práticas para desafios reais. Aqui você encontra sistemas, aplicações e ideias inovadoras que mostram na prática o que é aprendido em sala de aula.</p>
 
             <div className={styles.filters}>
               <select name="ano">
