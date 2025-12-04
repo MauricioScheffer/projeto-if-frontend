@@ -1,0 +1,308 @@
+/* Container Principal da Página */
+.pageWrapper {
+    background-color: var(--dark-blue); 
+    color: #ffffff;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 4rem;
+}
+
+/* --- Cabeçalho --- */
+.header {
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.logoContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.logo {
+    max-height: 80px; 
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+/* --- Botão Padrão (Borda Branca) --- */
+.outlineButton {
+    display: inline-block;
+    padding: 10px 24px;
+    border: 1px solid #ffffff;
+    border-radius: 20px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    background: transparent;
+    margin-top: 1rem;
+}
+
+.outlineButton:hover {
+    background-color: #ffffff;
+    color: #0E2A3C;
+}
+
+/* --- Seções de Informação (Texto + Imagem) --- */
+.infoSection {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    margin-bottom: 4rem;
+}
+
+.infoText {
+    flex: 1;
+}
+
+.infoText h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.infoText p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: #e0e0e0;
+}
+
+.infoImage {
+    flex: 1;
+}
+
+.infoImage img {
+    width: 100%;
+    border-radius: 20px; 
+    object-fit: cover;
+    height: 300px;
+}
+
+/* --- Seção Cursos (O Card Especial) --- */
+.coursesSection {
+    margin-bottom: 5rem;
+}
+
+.coursesCardOuter {
+    background: var(--blue);
+    border-radius: 20px;
+    padding: 2rem;
+    position: relative;
+}
+
+.coursesCardOuter h3 {
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    margin-left: 1rem;
+}
+
+.coursesCardInner {
+    background-color: var(--dark-blue);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 15px;
+    padding: 3rem 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.coursesGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.courseColumn h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.courseItem {
+    margin-bottom: 1.5rem;
+}
+
+.courseItem strong {
+    display: block;
+    color: #98C1C3; 
+    margin-bottom: 0.3rem;
+}
+
+.courseItem p {
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.cardButtonWrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+/* --- Seção Infraestrutura --- */
+.infraSection {
+    margin-bottom: 5rem;
+}
+
+.infraSection h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.infraSection p {
+    max-width: 1200px;
+    margin-bottom: 2rem;
+}
+
+/* Container que envolve a galeria e os botões */
+.carouselWrapper {
+    position: relative; 
+    display: flex;
+    align-items: center;
+}
+
+/* A Galeria em si (o trilho das imagens) */
+.infraGallery {
+    display: flex; 
+    gap: 1rem;
+    overflow-x: auto; 
+    scroll-behavior: smooth; 
+    scrollbar-width: none; 
+    -ms-overflow-style: none;  
+    scroll-snap-type: x mandatory;
+    width: 100%;
+}
+
+.infraGallery::-webkit-scrollbar {
+    display: none; 
+}
+
+.infraGallery img {
+    min-width: 300px; 
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    scroll-snap-align: start;
+    flex-shrink: 0; 
+}
+
+/* Botões de Navegação (< e >) */
+.navBtn {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.navBtn:hover {
+    background-color: white;
+    color: #0E2A3C;
+}
+
+.prevBtn {
+    left: -20px; 
+}
+
+.nextBtn {
+    right: -20px; 
+}
+
+@media (max-width: 768px) {
+    .prevBtn { left: 10px; }
+    .nextBtn { right: 10px; }
+}
+
+/* --- Footer --- */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 3rem;
+}
+
+.footerColumn {
+    flex: 1;
+}
+
+.footerColumn h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.footerColumn p {
+    margin-bottom: 0.5rem;
+    color: #e0e0e0;
+}
+
+.mapContainer {
+    width: 100%;
+    max-width: 500px; 
+    margin-top: 1rem;
+    border-radius: 8px;
+    overflow: hidden; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.mapContainer iframe {
+    display: block; 
+}
+
+.contactBlock {
+    margin-bottom: 2rem;
+}
+
+/* --- Responsividade --- */
+@media (max-width: 900px) {
+    .infoSection {
+        flex-direction: column;
+    }
+    .infoImage img {
+        height: auto;
+    }
+    
+    .coursesGrid {
+        grid-template-columns: 1fr;
+    }
+    
+    .infraGallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer {
+        flex-direction: column;
+    }
+}
