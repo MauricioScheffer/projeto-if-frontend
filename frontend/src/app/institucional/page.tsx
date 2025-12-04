@@ -156,8 +156,7 @@ export default function InstitucionalPage() {
         <footer className={styles.footer}>
           <div className={styles.footerColumn}>
             <h3>Localização</h3>
-            <p>Av. Copacabana - Piratini,</p>
-            <p>Sapucaia do Sul – RS, 93216-120</p>
+            <p>Av. Copacabana - Piratini, Sapucaia do Sul – RS, 93216-120</p>
             <div className={styles.mapContainer}>
               <iframe 
                 width="100%" 
