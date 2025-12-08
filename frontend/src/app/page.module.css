@@ -17,6 +17,7 @@
   color: #080808;
 }
 
+/* MAIN */
 .main {
   display: flex;
   flex-direction: column;
@@ -26,61 +27,46 @@
   background-color: var(--dark);
 }
 
+/* INICIO */
 .inicio {
-  background: linear-gradient(270deg, var(--dark-blue), var(--blue), var(--blue));
-  background-size: 600% 600%;
-  animation: gradient 15s ease infinite;
-  /* animacao dos guri */
-  /* background-image: url("/images/image.jpg");
-  background-size: 200% 200%;
+  position: relative;
+  overflow: hidden;
+
+  background-image: url("/images/testeMauricio/fundo3Edit.jpg");
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
-  background-position: 0% 50%;
-  animation: bgMove 20s linear infinite; */
 
   color: var(--light);
   width: 100%;
-  padding: 30px 20px;
+  min-height: 100vh;
+  padding: 80px 20px;
+  box-sizing: border-box;
+
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* dos guris */
-/* @keyframes bgMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-} */
-
 .heroContent{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
+  max-width: 1300px;
   width: 100%;
   gap: 40px;
+  animation: fadeUp 4s ease-out forwards;
 }
 
 .heroLeft{
   flex: 1;
-  min-width: 300px
+  min-width: 300px;
 }
 
 .heroLeft h1 {
   font-size: 2.8rem;
   margin-bottom: 20px;
+  color: white;
 }
 
 .heroLeft p {
@@ -88,6 +74,7 @@
   line-height: 1.6;
   margin-bottom: 30px;
   font-weight: 200;
+  color: white;
 }
 
 .heroButton {
@@ -100,7 +87,7 @@
   cursor: pointer;
   transition: 0.3s;
   font-size: 18px;
-  margin-top: 6px;
+  margin-top: 1px;
 }
 
 .heroButton:hover {
@@ -109,21 +96,48 @@
 }
 
 .heroRight{
-  width: 50%;
+  margin-right: 100px;
+  width: 40%;
   display: block;
 }
 
 .heroImage{
-  border-radius: 10px;
+  border-radius: 100% ;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 4s ease-out forwards;
+  margin: 0;
 }
 
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* SOBRE OS CURSOS */
 .sobre {
   text-align: center;
-  background-color: var(--dark-blue);
+
+  /* background-image: url("../../public/images/testeMauricio/airplane.jpg"); */
+  /* background-image: url("../../public/images/testeMauricio/business1Edited.jpg"); */
+  /* background-image: url("../../public/images/testeMauricio/business2.jpg"); */
+  background-image: url("../../public/images/testeMauricio/peopleBlur.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
   color: white;
   padding: 40px 20px;
   width: 100%;
-  height: 80%;
+  min-height: 100vh;
+  padding: 80px 20px;
+  box-sizing: border-box;
 }
 
 .sobre h2 {
@@ -131,11 +145,21 @@
   margin-bottom: 10px;
 }
 
-.descricao {
+.sobre .sobreCurso{
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+  word-spacing: 1px;
+}
+
+.sobre p {
   max-width: 800px;
   line-height: 1.6;
   margin-left: auto;
   margin-right: auto;
+  font-family: var(--font-inter);
+  font-weight: 400;
 }
 
 .cursosContainer {
@@ -145,50 +169,60 @@
   gap: 40px;
 }
 
-.cursosContainer .card {
+.cardCursos {
   position: relative;
   background-color: var(--dark-blue);
   border-radius: 12px;
-  overflow: hidden;
-  width: 550px;
-  height: 400px;
+  width: 400px;
+  min-height: 420px; /* altura mínima para manter o padrão */
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  border: 2px solid white;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #0c3c57;
 }
 
-.card:hover{
-  margin: 0;
-  transition: 2s;
-  /* box-shadow: 5px 5px 0px 10px var(--light); */
-  box-shadow: var(--dark-blue) 5px 5px, var(--dark) 10px 10px, var(--blue) 15px 15px, var(--light-blue) 20px 20px ,var(--light) 25px 25px;
+.cardCursos:hover {
+  border: 2px solid #fff;
+  transition: 1s;
+  box-shadow: var(--dark-blue) 5px 5px, var(--blue) 15px 15px, 
+              var(--light-blue) 20px 20px ,var(--light) 25px 25px;
 }
 
 .tag {
   position: absolute;
   top: 12px;
-  left: 20px;
+  left: 12px;
   background: var(--light-blue);
   color: var(--dark-blue);
   font-weight: bold;
   padding: 6px 14px;
   border-radius: 30px;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  z-index: 2;
 }
 
-.card .cardImage {
+.cardImage {
   width: 100%;
-  display: block;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
 }
 
-.cardContent {
+.boxCard {
   padding: 20px;
   text-align: left;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
 }
 
-.cardContent h3 {
+.boxCard h3 {
   font-size: 1.1rem;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+}
+
+.boxCard p {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  font-weight: 200;
 }
 
 .verMais {
@@ -228,8 +262,7 @@
   color: var(--dark-blue);
 }
 
-.linkInstituicao {
-  margin-top: 50px;
+.sobre .linkInstituicao {
   font-size: 0.9rem;
   color: var(--light-blue);
 }
@@ -238,13 +271,27 @@
   padding: 50px 20px;
   width: 100%;
   margin: 0 30px;
+  position: relative;
+  overflow: hidden;
+
+  background-image: url("/images/testeMauricio/fundo1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
 }
 
 .news h1 {
   text-align: left;
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   margin-bottom: 20px;
-  color: var(--light-blue);
+  color: var(--light);
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  background-color: #0c3c57;
+  width: 320px;
 }
 
 .news .newsContent {
@@ -253,15 +300,15 @@
   align-items: stretch; /* mantendo mesma altura */
   width: 100%;
   gap: 23px;
-  background-color: var(--dark-blue);
+  /* background-color: var(--dark-blue); */
   border-radius: 12px;
   padding: 80px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); */
 }
 
 .news .cardLeft {
   flex: 1;
-  background-color: var(--dark);
+  background-color: var(--light);
   border-radius: 10px;
   overflow: hidden;
   display: flex;
@@ -278,19 +325,20 @@
 .news .cardLeft .descricao {
   padding: 14px;
   font-size: 0.95rem;
-  color: #ddd;
+  color: #0c3c57;
+  font-weight: bold;
   text-align: justify;
 }
 
 .news .cardRight {
   flex: 1;
-  background-color: #0c1d2b;
+  background-color: transparent;
   border-radius: 10px;
   padding: 14px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 320px; 
+  height: 520px; 
 }
 
 .news .cardRight .list {
@@ -309,7 +357,7 @@
 
 .listNews {
   background-color: var(--dark-blue);
-  padding: 10px 12px;
+  padding: 23px 12px;
   border-radius: 8px;
   margin-bottom: 8px;
   display: flex;
@@ -345,8 +393,8 @@
   background-color: var(--light-blue);
   color: var(--dark-blue);
   border: none;
-  padding: 8px 14px;
-  border-radius: 6px;
+  padding: 12px 14px;
+  border-radius: 20px;
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
@@ -362,19 +410,39 @@
 /* PROFESSORES */
 .teachers {
   display: flex;
-  justify-content: space-between;
-  gap: 40px;
-  padding: 60px 100px;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 5vw;
+  min-height: 50vh;
   background-color: var(--dark-blue);
   color: var(--light);
   width: 100%;
 }
 
+.teachers .container{
+  max-width: 1300px;
+  width: 100%;
+}
+
 .teachers h2 {
-  font-size: 2.8rem;
+  font-size: clamp(2rem, 4vw, 3rem);
   line-height: 1.2;
-  flex: 1;
   text-align: left;
+}
+
+.teachers img{
+  width: clamp(110px, 10vw, 160px);
+  height: clamp(110px, 10vw, 160px);
+  object-fit: cover;
+}
+
+.teachers .carousel-inner {
+  padding: 0 3vw !important;
+}
+
+.teachers .carousel-control-prev,
+.teachers .carousel-control-next {
+  width: 4%;
 }
 
 .carouselContainer {
@@ -461,12 +529,13 @@
 }
 
 .portal .containerPortal p{
-  max-width: 500px;
-  margin:  auto 40px auto;
+  max-width: 900px;
+  width: 100%;
   font-size: 16px;
   line-height: 1.6;
   margin-left: auto;
   margin-right: auto;
+  padding: 0 15px;
 }
 
 .cardsWrapper{
@@ -476,7 +545,7 @@
   gap: 15px;
 }
 
-.cardsWrapper .card{
+.cardsWrapper .cardPessoas{
   background: transparent;
   border: 2px solid #fff;
   border-radius: 50px;
@@ -489,7 +558,7 @@
   transition: 0.3s;
 }
 
-.cardsWrapper .card:hover{
+.cardsWrapper .cardPessoas:hover{
   background: rgba(255, 255, 255, 0.1);
 }
 
@@ -497,7 +566,6 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  background-color: #0c3c57;
   box-shadow: none;
 }
 
@@ -506,27 +574,236 @@
   font-weight: 500;
 }
 
-/* Responsividade */
-@media (max-width: 900px) {
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+  will-change: opacity, transform;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* atrasos ( tags internas) */
+.reveal.delay-1 { transition-delay: 0.12s; }
+.reveal.delay-2 { transition-delay: 0.28s; }
+.reveal.delay-3 { transition-delay: 0.44s; }
+
+/* RESPONSIVIDADE MOBILE */
+@media (max-width: 600px) {
+
+  .inicio {
+    padding: 40px 20px;
+  }
+
   .heroContent {
-    flex-direction: column-reverse;
+    flex-direction: column;
+    gap: 25px;
     text-align: center;
   }
 
   .heroLeft h1 {
-    font-size: 2.2rem;
+    font-size: 1.9rem;
   }
 
   .heroLeft p {
-    font-size: 1rem;
-    margin: 0 auto 25px;
+    font-size: 0.95rem;
   }
 
-  .heroButton {
-    padding: 12px 28px;
+  .heroRight {
+    margin: 0;
+    width: 80%;
   }
 
-  .button {
-    padding: 10px 24px;
+  .heroImage {
+    width: 100%;
+  }
+
+  /* CURSOS */
+  .cursosContainer .cardCursos {
+    width: 100%;
+    height: auto;
+  }
+
+  .cardContent {
+    padding: 16px;
+  }
+
+  /* NEWS */
+  .news .newsContent {
+    flex-direction: column;
+    padding: 24px;
+    gap: 20px;
+  }
+
+  .news .cardLeft,
+  .news .cardRight {
+    width: 100%;
+    height: auto;
+  }
+
+  /* PROFESSORES */
+  .teachers {
+    padding: 3rem 20px;
+  }
+
+  .carouselContainer {
+    padding: 5px;
+  }
+
+  .teacherCard {
+    width: 80px;
+    height: 80px;
+  }
+
+  /* PORTAL */
+  .portal .containerPortal h1 {
+    font-size: 26px;
+  }
+
+  .cardsWrapper .cardPessoas {
+    width: 80%;
   }
 }
+
+/* RESPONSIVIDADE TABLET */
+@media (min-width: 600px) and (max-width: 992px) {
+
+  /* HERO */
+  .heroContent {
+    flex-direction: column;
+    text-align: center;
+    gap: 35px;
+  }
+
+  .heroRight {
+    margin: 0;
+    width: 60%;
+  }
+
+  /* CURSOS */
+  .cursosContainer .cardCursos {
+    width: 80%;
+  }
+
+  /* NEWS */
+  .news .newsContent {
+    flex-direction: column;
+    padding: 50px;
+  }
+
+  .news .cardLeft,
+  .news .cardRight {
+    width: 100%;
+  }
+
+  .news h1 {
+    font-size: 1.5rem;
+  }
+
+  /* PROFESSORES */
+  .teacherCard {
+    width: 100px;
+    height: 100px;
+  }
+
+  /* PORTAL */
+  .cardsWrapper .cardPessoas {
+    width: 40%;
+  }
+}
+
+/* NOTEBOOK */
+@media (min-width: 992px) and (max-width: 1366px) {
+
+  .heroLeft h1 {
+    font-size: 2.4rem;
+  }
+
+  .cursosContainer .cardCursos {
+    width: 450px;
+    height: 380px;
+  }
+
+  .news .newsContent {
+    padding: 60px;
+  }
+
+  .teacherCard {
+    width: 110px;
+    height: 110px;
+  }
+
+  .cardsWrapper .cardPessoas {
+    width: 28%;
+  }
+
+}
+
+/* MONITORES GRANDES */
+@media (min-width: 1366px) {
+
+  .heroLeft h1 {
+    font-size: 3.2rem;
+  }
+
+  .heroLeft p {
+    font-size: 1.2rem;
+  }
+
+  .heroRight {
+    width: 45%;
+  }
+
+  .cursosContainer .cardCursos {
+    width: 600px;
+    height: 420px;
+  }
+
+  .news .newsContent {
+    padding: 90px;
+  }
+
+  .teacherCard {
+    width: 130px;
+    height: 130px;
+  }
+}
+
+/* PARA TELAS MENORES */
+@media (max-width: 768px) {
+  .heroContent {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .heroRight {
+    margin-right: 0;
+    width: 70%;
+  }
+
+  .sobre .sobreCurso {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+
+  .cursosContainer {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .cardCursos {
+    width: 90%;
+    max-width: 400px;
+  }
+
+  .portal{
+    max-width: 100%;
+    text-align: center;
+  }
+}
+
+

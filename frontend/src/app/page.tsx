@@ -1,17 +1,56 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { NewsAPI, News } from "./src/api/news";
+
 import styles from "./page.module.css";
 import Image from "next/image";
-import "bootstrap/dist/css/bootstrap.min.css"; // importante para rodar o carousel no lado do cliente
+import "bootstrap/dist/css/bootstrap.min.css"; // rodar o carousel no lado do cliente
 
 export default function Home() {
   useEffect(() => {
-    // Importa dinamicamente o JS do Bootstrap no lado do cliente
-    import("bootstrap/dist/js/bootstrap.bundle.min.js");
-  }, []);
+  import("bootstrap/dist/js/bootstrap.bundle.min.js");
 
-  const professores = [
+  // intersection observer para revelar elementos
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+          io.unobserve(entry.target); // não precisa observar mais depois de ativo
+        }
+      });
+    },
+    {
+      threshold: 0.18,
+      root: null,
+      rootMargin: "0px 0px -10% 0px", // sobe um pouco o gatilho
+    }
+  );
+
+  const observeAll = () => {
+    document.querySelectorAll<HTMLElement>(".reveal:not([data-observed])").forEach((el) => {
+      el.setAttribute("data-observed", "true");
+      io.observe(el);
+    });
+  };
+  // observa os já existentes
+  observeAll();
+
+  // observa se novos nós com .reveal aparecem (útil em apps SPA)
+  const mo = new MutationObserver((mutations) => {
+    observeAll();
+  });
+  mo.observe(document.body, { childList: true, subtree: true });
+
+  return () => {
+    io.disconnect();
+    mo.disconnect();
+  };
+}, []);
+
+
+const professores = [
     "/images/image.jpg",
     "/images/image.jpg",
     "/images/image.jpg",
@@ -23,10 +62,19 @@ export default function Home() {
     "/images/image.jpg",
   ];
 
+const [noticias, setNoticias] = useState<News[]>([]);
+
+  useEffect(() => {
+    NewsAPI.getAll()
+      .then(setNoticias)
+      .catch(err => console.error("Erro ao carregar notícias:", err));
+  }, []);
+
+
   return (
     <main className={styles.main}>
       {/* INÍCIO */}
-      <section className={styles.inicio}>
+      <section className={`${styles.inicio} reveal`}>
         <div className={styles.heroContent}>
           <div className={styles.heroLeft}>
             <h1>Bem-vindo ao Nosso Site</h1>
@@ -40,9 +88,9 @@ export default function Home() {
 
           <div className={styles.heroRight}>
             <Image
-              src="/images/image.jpg"
+              src="/icons/fotoPerfilPadrão.webp"
               alt="Imagem Institucional"
-              width={510}
+              width={490}
               height={370}
               className={styles.heroImage}
               priority
@@ -55,18 +103,18 @@ export default function Home() {
       {/* SOBRE OS CURSOS */}
       <section className={styles.sobre}>
         <h2>Sobre os cursos</h2>
-        <p className={styles.descricao}>
+        <p className={styles.sobreCurso}>
           O Campus Sapucaia do Sul do IFSUL oferece formações completas na área
           de Tecnologia da Informação, preparando estudantes para o mercado de
           trabalho e para atuar em projetos de inovação, pesquisa aplicada e
           desenvolvimento de soluções tecnológicas. Os cursos unem teoria,
           prática em laboratório e participação em eventos como hackathons,
           palestras e feiras tecnológicas.
-        </p>
+        </p><br />
 
         <div className={styles.cursosContainer}>
           {/* CARD 1 - TDS */}
-          <div className={styles.card}>
+          <div className={styles.cardCursos}>
             <div className={styles.tag}>TDS</div>
             <Image
               src="/images/image.jpg"
@@ -75,21 +123,18 @@ export default function Home() {
               height={220}
               className={styles.cardImage}
             />
-            <div className={styles.cardContent}>
+            <div className={styles.boxCard}>
               <h3>Técnico em Desenvolvimento de Sistemas</h3>
               <p>Integrado ao Ensino Médio. Capacita estudantes para atuar com programação, banco de dados, aplicações
                 web e lógica computacional. Os alunos aprendem a desenvolver sistemas reais,
                 participar de projetos e trabalhar em equipe utilizando metodologias ágeis.
               </p>
 
-              {/* <a href="#" className={styles.verMais}>
-                VEJA MAIS
-              </a> */}
             </div>
           </div>
 
           {/* CARD 2 - TADS */}
-          <div className={styles.card}>
+          <div className={styles.cardCursos}>
             <div className={styles.tag}>TADS</div>
             <Image
               src="/images/image.jpg"
@@ -98,17 +143,13 @@ export default function Home() {
               height={220}
               className={styles.cardImage}
             />
-            <div className={styles.cardContent}>
+            <div className={styles.boxCard}>
               <h3>Tecnólogo em Análise e Desenvolvimento de Sistemas</h3>
               <p>O curso forma profissionais capazes de projetar, desenvolver e gerenciar sistemas de software. O
                 curso possui forte foco em desenvolvimento full stack, redes, bancos
-                de dados, computação em nuvem, arquitetura de software e inovação
+                de dados, computação em arquitetura de software e inovação
                 tecnológica.
               </p>
-{/* 
-              <a href="#" className={styles.verMais}>
-                  VEJA MAIS
-              </a> */}
             </div>
           </div>
         </div>
@@ -118,13 +159,14 @@ export default function Home() {
           <button className={styles.btn}>Veja também os projetos do TADS</button>
         </div>
 
-        <p className={styles.linkInstituicao}>
-          Acesse o site do IFSUL para saber mais sobre a instituição &gt;
-        </p>
+        <br />
+        <a href="https://www.sapucaia.ifsul.edu.br/" className={styles.linkInstituicao}>
+          Acesse o site do IFSUL Sapucaia para saber mais sobre a instituição &gt; &gt; &gt;
+        </a>
       </section>
 
       {/* NOTÍCIAS E EVENTOS */}
-      <section className={styles.news}>
+      <section className={`${styles.news} reveal`}>
         <h1>Notícias e Eventos</h1>
         <div className={styles.newsContent}>
           <div className={styles.cardLeft}>
@@ -147,12 +189,12 @@ export default function Home() {
 
           <div className={styles.cardRight}>
             <div className={styles.list}>
-              {Array.from({ length: 10 }).map((_, i) => (
-                <div key={i} className={styles.listNews}>
+              {noticias.map((n) => (
+                <div key={n.id} className={styles.listNews}>
                   <div>
-                    <h2>Evento {i + 1}: Subtítulo interessante</h2>
+                    <h2>{n.titulo}</h2>
                     <span className={styles.dataEvento}>
-                      15 de setembro, 2025
+                      {n.data}
                     </span>
                   </div>
                   <span className={styles.seta}>→</span>
@@ -297,7 +339,7 @@ export default function Home() {
               { nome: "Rafael Steffen", linkedin: "https://www.linkedin.com/in/rafaeu/", github: "https://github.com/rafasteffen" },
               { nome: "Rodrigo Remor", linkedin: "https://www.linkedin.com/in/rodrigoremor/", github: "" }
             ].map((pessoa, index) => (
-              <div key={index} className={styles.card}>
+              <div key={index} className={styles.cardPessoas}>
                 <div className={styles.cardContent}>
                   <a href={pessoa.linkedin}>
                     <Image
