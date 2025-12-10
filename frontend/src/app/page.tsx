@@ -1,56 +1,57 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { NewsAPI, News } from "./src/api/news";
 
 import styles from "./page.module.css";
 import Image from "next/image";
 import "bootstrap/dist/css/bootstrap.min.css"; // rodar o carousel no lado do cliente
+import { News, NewsAPI } from "../../api/news.api";
 
 export default function Home() {
   useEffect(() => {
-  import("bootstrap/dist/js/bootstrap.bundle.min.js");
+    import("bootstrap/dist/js/bootstrap.bundle.min.js");
 
-  // intersection observer para revelar elementos
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("active");
-          io.unobserve(entry.target); // não precisa observar mais depois de ativo
-        }
-      });
-    },
-    {
-      threshold: 0.18,
-      root: null,
-      rootMargin: "0px 0px -10% 0px", // sobe um pouco o gatilho
-    }
-  );
+    // intersection observer para revelar elementos
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+            io.unobserve(entry.target); // não precisa observar mais depois de ativo
+          }
+        });
+      },
+      {
+        threshold: 0.18,
+        root: null,
+        rootMargin: "0px 0px -10% 0px", // sobe um pouco o gatilho
+      }
+    );
 
-  const observeAll = () => {
-    document.querySelectorAll<HTMLElement>(".reveal:not([data-observed])").forEach((el) => {
-      el.setAttribute("data-observed", "true");
-      io.observe(el);
-    });
-  };
-  // observa os já existentes
-  observeAll();
-
-  // observa se novos nós com .reveal aparecem (útil em apps SPA)
-  const mo = new MutationObserver((mutations) => {
+    const observeAll = () => {
+      document
+        .querySelectorAll<HTMLElement>(".reveal:not([data-observed])")
+        .forEach((el) => {
+          el.setAttribute("data-observed", "true");
+          io.observe(el);
+        });
+    };
+    // observa os já existentes
     observeAll();
-  });
-  mo.observe(document.body, { childList: true, subtree: true });
 
-  return () => {
-    io.disconnect();
-    mo.disconnect();
-  };
-}, []);
+    // observa se novos nós com .reveal aparecem (útil em apps SPA)
+    const mo = new MutationObserver((mutations) => {
+      observeAll();
+    });
+    mo.observe(document.body, { childList: true, subtree: true });
 
+    return () => {
+      io.disconnect();
+      mo.disconnect();
+    };
+  }, []);
 
-const professores = [
+  const professores = [
     "/images/image.jpg",
     "/images/image.jpg",
     "/images/image.jpg",
@@ -62,14 +63,7 @@ const professores = [
     "/images/image.jpg",
   ];
 
-const [noticias, setNoticias] = useState<News[]>([]);
-
-  useEffect(() => {
-    NewsAPI.getAll()
-      .then(setNoticias)
-      .catch(err => console.error("Erro ao carregar notícias:", err));
-  }, []);
-
+  const [noticias, setNoticias] = useState<News[]>([]);
 
   return (
     <main className={styles.main}>
@@ -110,7 +104,8 @@ const [noticias, setNoticias] = useState<News[]>([]);
           desenvolvimento de soluções tecnológicas. Os cursos unem teoria,
           prática em laboratório e participação em eventos como hackathons,
           palestras e feiras tecnológicas.
-        </p><br />
+        </p>
+        <br />
 
         <div className={styles.cursosContainer}>
           {/* CARD 1 - TDS */}
@@ -125,11 +120,13 @@ const [noticias, setNoticias] = useState<News[]>([]);
             />
             <div className={styles.boxCard}>
               <h3>Técnico em Desenvolvimento de Sistemas</h3>
-              <p>Integrado ao Ensino Médio. Capacita estudantes para atuar com programação, banco de dados, aplicações
-                web e lógica computacional. Os alunos aprendem a desenvolver sistemas reais,
-                participar de projetos e trabalhar em equipe utilizando metodologias ágeis.
+              <p>
+                Integrado ao Ensino Médio. Capacita estudantes para atuar com
+                programação, banco de dados, aplicações web e lógica
+                computacional. Os alunos aprendem a desenvolver sistemas reais,
+                participar de projetos e trabalhar em equipe utilizando
+                metodologias ágeis.
               </p>
-
             </div>
           </div>
 
@@ -145,10 +142,11 @@ const [noticias, setNoticias] = useState<News[]>([]);
             />
             <div className={styles.boxCard}>
               <h3>Tecnólogo em Análise e Desenvolvimento de Sistemas</h3>
-              <p>O curso forma profissionais capazes de projetar, desenvolver e gerenciar sistemas de software. O
-                curso possui forte foco em desenvolvimento full stack, redes, bancos
-                de dados, computação em arquitetura de software e inovação
-                tecnológica.
+              <p>
+                O curso forma profissionais capazes de projetar, desenvolver e
+                gerenciar sistemas de software. O curso possui forte foco em
+                desenvolvimento full stack, redes, bancos de dados, computação
+                em arquitetura de software e inovação tecnológica.
               </p>
             </div>
           </div>
@@ -156,12 +154,18 @@ const [noticias, setNoticias] = useState<News[]>([]);
 
         <div className={styles.buttons}>
           <button className={styles.btn}>Veja também os projetos do TDS</button>
-          <button className={styles.btn}>Veja também os projetos do TADS</button>
+          <button className={styles.btn}>
+            Veja também os projetos do TADS
+          </button>
         </div>
 
         <br />
-        <a href="https://www.sapucaia.ifsul.edu.br/" className={styles.linkInstituicao}>
-          Acesse o site do IFSUL Sapucaia para saber mais sobre a instituição &gt; &gt; &gt;
+        <a
+          href="https://www.sapucaia.ifsul.edu.br/"
+          className={styles.linkInstituicao}
+        >
+          Acesse o site do IFSUL Sapucaia para saber mais sobre a instituição
+          &gt; &gt; &gt;
         </a>
       </section>
 
@@ -193,9 +197,7 @@ const [noticias, setNoticias] = useState<News[]>([]);
                 <div key={n.id} className={styles.listNews}>
                   <div>
                     <h2>{n.titulo}</h2>
-                    <span className={styles.dataEvento}>
-                      {n.data}
-                    </span>
+                    <span className={styles.dataEvento}>{n.data}</span>
                   </div>
                   <span className={styles.seta}>→</span>
                 </div>
@@ -245,7 +247,10 @@ const [noticias, setNoticias] = useState<News[]>([]);
                             {chunk.map((f, idx) => {
                               const realIndex = i + idx;
                               return (
-                                <div key={realIndex} className="text-center px-2">
+                                <div
+                                  key={realIndex}
+                                  className="text-center px-2"
+                                >
                                   <img
                                     src={f}
                                     alt={`Professor ${realIndex + 1}`}
@@ -321,23 +326,84 @@ const [noticias, setNoticias] = useState<News[]>([]);
             promover a visibilidade dos cursos oferecidos pela instituição.
           </p>
 
-
           <div className={styles.cardsWrapper}>
             {[
-              { nome: "Mauricio Scheffer", linkedin: "https://www.linkedin.com/in/maur%C3%ADcio-scheffer-silveira-95b972279/", github: "https://github.com/MauricioScheffer" },
-              { nome: "Andrew Mattheus", linkedin: "https://www.linkedin.com/in/andrew-mattheus/", github: "" },
-              { nome: "Bianca Cabral", linkedin: "", github: "https://github.com/BiancaCabral0312" },
-              { nome: "Denis Jesus", linkedin: "https://www.linkedin.com/in/denis-jesus-/", github: "https://github.com/Denio-Jesus2005" },
-              { nome: "Arthur Hoffelder", linkedin: "https://www.linkedin.com/in/arthur-hoffelder-4b22322a0/", github: "https://github.com/cmoficial" },
-              { nome: "Ismael Machado", linkedin: "https://www.linkedin.com/in/ismaelcostamachado/", github: "https://github.com/icmci" },
-              { nome: "Fernanda Walther", linkedin: "https://www.linkedin.com/in/fernanda-walther-fernandes/", github: "https://github.com/aferwf" },
-              { nome: "Bianca Leite", linkedin: "https://www.linkedin.com/in/bianca-leite-14502a212/", github: "" },
-              { nome: "Cauane Santos", linkedin: "https://www.linkedin.com/in/cauane-santos-269a2b215/", github: "https://github.com/cauanesantosinacio" },
-              { nome: "Julio Nascimento", linkedin: "https://www.linkedin.com/in/julio-nascimento-b092811b4/", github: "https://github.com/nascimentoJulio" },
-              { nome: "Guilherme Silva", linkedin: "https://www.linkedin.com/in/guilherme-silva-fagundes-5b99551bb/", github: "https://github.com/guilhermesfagundes04" },
-              { nome: "João Andrey", linkedin: "https://www.linkedin.com/in/joao-andrey/", github: "https://github.com/Antochevis" },
-              { nome: "Rafael Steffen", linkedin: "https://www.linkedin.com/in/rafaeu/", github: "https://github.com/rafasteffen" },
-              { nome: "Rodrigo Remor", linkedin: "https://www.linkedin.com/in/rodrigoremor/", github: "" }
+              {
+                nome: "Mauricio Scheffer",
+                linkedin:
+                  "https://www.linkedin.com/in/maur%C3%ADcio-scheffer-silveira-95b972279/",
+                github: "https://github.com/MauricioScheffer",
+              },
+              {
+                nome: "Andrew Mattheus",
+                linkedin: "https://www.linkedin.com/in/andrew-mattheus/",
+                github: "",
+              },
+              {
+                nome: "Bianca Cabral",
+                linkedin: "",
+                github: "https://github.com/BiancaCabral0312",
+              },
+              {
+                nome: "Denis Jesus",
+                linkedin: "https://www.linkedin.com/in/denis-jesus-/",
+                github: "https://github.com/Denio-Jesus2005",
+              },
+              {
+                nome: "Arthur Hoffelder",
+                linkedin:
+                  "https://www.linkedin.com/in/arthur-hoffelder-4b22322a0/",
+                github: "https://github.com/cmoficial",
+              },
+              {
+                nome: "Ismael Machado",
+                linkedin: "https://www.linkedin.com/in/ismaelcostamachado/",
+                github: "https://github.com/icmci",
+              },
+              {
+                nome: "Fernanda Walther",
+                linkedin:
+                  "https://www.linkedin.com/in/fernanda-walther-fernandes/",
+                github: "https://github.com/aferwf",
+              },
+              {
+                nome: "Bianca Leite",
+                linkedin: "https://www.linkedin.com/in/bianca-leite-14502a212/",
+                github: "",
+              },
+              {
+                nome: "Cauane Santos",
+                linkedin:
+                  "https://www.linkedin.com/in/cauane-santos-269a2b215/",
+                github: "https://github.com/cauanesantosinacio",
+              },
+              {
+                nome: "Julio Nascimento",
+                linkedin:
+                  "https://www.linkedin.com/in/julio-nascimento-b092811b4/",
+                github: "https://github.com/nascimentoJulio",
+              },
+              {
+                nome: "Guilherme Silva",
+                linkedin:
+                  "https://www.linkedin.com/in/guilherme-silva-fagundes-5b99551bb/",
+                github: "https://github.com/guilhermesfagundes04",
+              },
+              {
+                nome: "João Andrey",
+                linkedin: "https://www.linkedin.com/in/joao-andrey/",
+                github: "https://github.com/Antochevis",
+              },
+              {
+                nome: "Rafael Steffen",
+                linkedin: "https://www.linkedin.com/in/rafaeu/",
+                github: "https://github.com/rafasteffen",
+              },
+              {
+                nome: "Rodrigo Remor",
+                linkedin: "https://www.linkedin.com/in/rodrigoremor/",
+                github: "",
+              },
             ].map((pessoa, index) => (
               <div key={index} className={styles.cardPessoas}>
                 <div className={styles.cardContent}>
@@ -365,10 +431,8 @@ const [noticias, setNoticias] = useState<News[]>([]);
               </div>
             ))}
           </div>
-
         </div>
       </section>
-
     </main>
   );
 }

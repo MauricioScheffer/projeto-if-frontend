@@ -1,9 +1,18 @@
-import { getApiConfig } from "../config/api.config"
+import { getApiConfig } from "../config/api.config";
 
-export const login = (email, password) => {
-    const api = getApiConfig()
-    api.post("/users/login", {
-        email, password
-    })
+type LoginResponse = {
+  token: string;
+};
 
-}
+type LoginRequest = {
+  email: string;
+  password: string;
+};
+
+export const login = ({ email, password }: LoginRequest) => {
+  const api = getApiConfig();
+  return api.post<LoginResponse>("/users/login", {
+    email,
+    password,
+  });
+};

@@ -31,9 +31,8 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   //aqui definimos o titulo da aba do navegador e descricao
   title: "IFConecta DEV",
-  description: "Portal do Instituto Federal Sapucaia do Sul"
+  description: "Portal do Instituto Federal Sapucaia do Sul",
 };
-
 
 export default function RootLayout({
   children,
@@ -41,12 +40,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-      <html className={`${styles.body} ${inter.variable} ${poppins.variable}`} lang="pt-br">
+    <html
+      className={`${styles.body} ${inter.variable} ${poppins.variable}`}
+      lang="pt-br"
+    >
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css"
+        ></link>
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <Header/>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css"
+        ></link>
+        <Header />
         {children}
-        <Footer/>
+        <Footer />
       </body>
-      </html>
+    </html>
   );
 }

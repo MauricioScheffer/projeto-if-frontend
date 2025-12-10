@@ -1,4 +1,4 @@
-import { http } from "./http";
+import { getApiConfig } from "../config/api.config";
 
 export interface News {
   id?: number;
@@ -9,19 +9,21 @@ export interface News {
   link?: string;
 }
 
+export const getAllNews = async (): Promise<News[]> => {
+  const api = getApiConfig();
+  const response = await api.get<News[]>("/news");
+  return response.data;
+};
+
 export const NewsAPI = {
-  getAll: () => http<News[]>("/news"),
-
-  getById: (id: number) => http<News>(`/news/${id}`),
-
-  create: (body: News) =>
-    http<News>("/news", {
-      method: "POST",
-      body: JSON.stringify(body),
-    }),
-
-  delete: (id: number) =>
-    http<void>(`/news/${id}`, {
-      method: "DELETE",
-    }),
+  // getById: (id: number) => http<News>(`/news/${id}`),
+  // create: (body: News) =>
+  //   http<News>("/news", {
+  //     method: "POST",
+  //     body: JSON.stringify(body),
+  //   }),
+  // delete: (id: number) =>
+  //   http<void>(`/news/${id}`, {
+  //     method: "DELETE",
+  //   }),
 };
