@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { NewsAPI, News } from "./src/api/news";
+// import { NewsAPI, News } from "./src/api/news";
 
 import styles from "./page.module.css";
 import Image from "next/image";
@@ -62,13 +62,13 @@ const professores = [
     "/images/image.jpg",
   ];
 
-const [noticias, setNoticias] = useState<News[]>([]);
+// const [noticias, setNoticias] = useState<News[]>([]);
 
-  useEffect(() => {
-    NewsAPI.getAll()
-      .then(setNoticias)
-      .catch(err => console.error("Erro ao carregar notícias:", err));
-  }, []);
+//   useEffect(() => {
+//     NewsAPI.getAll()
+//       .then(setNoticias)
+//       .catch(err => console.error("Erro ao carregar notícias:", err));
+//   }, []);
 
 
   return (
@@ -165,7 +165,7 @@ const [noticias, setNoticias] = useState<News[]>([]);
         </a>
       </section>
 
-      {/* NOTÍCIAS E EVENTOS */}
+      {/* NOTÍCIAS E EVENTOS 
       <section className={`${styles.news} reveal`}>
         <h1>Notícias e Eventos</h1>
         <div className={styles.newsContent}>
@@ -206,7 +206,7 @@ const [noticias, setNoticias] = useState<News[]>([]);
             </button>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* PROFESSORES */}
       <section className={`${styles.teachers} bg-primary text-white py-5`}>
