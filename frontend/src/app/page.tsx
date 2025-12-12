@@ -169,7 +169,7 @@ export default function Home() {
         </a>
       </section>
 
-      {/* NOTÍCIAS E EVENTOS */}
+      {/* NOTÍCIAS E EVENTOS 
       <section className={`${styles.news} reveal`}>
         <h1>Notícias e Eventos</h1>
         <div className={styles.newsContent}>
@@ -208,7 +208,7 @@ export default function Home() {
             </button>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* PROFESSORES */}
       <section className={`${styles.teachers} bg-primary text-white py-5`}>

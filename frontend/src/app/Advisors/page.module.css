@@ -1,0 +1,79 @@
+/* Layout da página */
+.pageWrapper {
+  min-height: 100vh;
+  background: #002b45;
+  padding: 40px;
+  text-align: center;
+  color: white;
+}
+
+.title {
+  font-size: 32px;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Card */
+.card {
+  background: #0b3043;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.5);
+}
+
+/* Imagem */
+.profImg {
+  border-radius: 50%;
+  border: 3px solid white;
+  object-fit: cover;
+}
+
+/* Textos */
+.cardName {
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.cardSubtitle {
+  font-size: 15px;
+  color: #b3d9ff;
+}
+
+.cardDesc {
+  font-size: 14px;
+  margin: 10px 0;
+  opacity: 0.85;
+}
+
+/* Links */
+.linksWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+
+.icon {
+  filter: brightness(0) invert(1);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.icon:hover {
+  transform: scale(1.12);
+  opacity: 0.7;
+}
