@@ -40,8 +40,8 @@ export default function Header() {
             <li><Link href="/">Início</Link></li>
             <li><Link href="/about">Cursos</Link></li>
             <li><Link href="/events-news">Eventos</Link></li>
-            <li><Link href="/institution">Instituição</Link></li>
-            <li><Link href="">Orientadores</Link></li>
+            <li><Link href="/institucional">Instituição</Link></li>
+            <li><Link href="/Advisors">Orientadores</Link></li>
             <li><Link href="/contact">Contate-nos</Link></li>
             <li className={styles.mobileLogin}><Link href="/login-sign">Entrar</Link></li>
           </ul>
