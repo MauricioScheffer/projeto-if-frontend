@@ -77,7 +77,7 @@ export default function Home() {
               Se inscreva em Eventos e Participe da Nossa Comunidade de
               Estudantes de T.I!
             </p>
-            <button className={styles.heroButton}>Saiba mais</button>
+            {/*<button className={styles.heroButton}>Saiba mais</button>*/}
           </div>
 
           <div className={styles.heroRight}>
@@ -89,7 +89,7 @@ export default function Home() {
               className={styles.heroImage}
               priority
             />
-            <button className={styles.heroButton}>Nossos cursos</button>
+            {/*<button className={styles.heroButton}>Nossos cursos</button>*/}
           </div>
         </div>
       </section>
@@ -153,10 +153,10 @@ export default function Home() {
         </div>
 
         <div className={styles.buttons}>
-          <button className={styles.btn}>Veja também os projetos do TDS</button>
+          {/*<button className={styles.btn}>Veja também os projetos do TDS</button>
           <button className={styles.btn}>
             Veja também os projetos do TADS
-          </button>
+          </button>*/} 
         </div>
 
         <br />

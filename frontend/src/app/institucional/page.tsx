@@ -120,7 +120,7 @@ export default function InstitucionalPage() {
 
               </div>
                 <div className={styles.cardButtonWrapper}>
-                    <a href="#" className={styles.outlineButton}>Acesse o site oficial</a>
+                    <a href="http://www.sapucaia.ifsul.edu.br/" className={styles.outlineButton}>Acesse o site oficial</a>
                 </div>
                 </div>
             </div>
