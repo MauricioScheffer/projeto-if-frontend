@@ -43,9 +43,9 @@ export default function NoticiasEventos() {
             repellendus.
           </p>
 
-          <button className={styles["botao-eventos"]}>
+          {/*<button className={styles["botao-eventos"]}>
             Veja todos os eventos
-          </button>
+          </button>*/}
         </div>
 
         <div className={styles["noticias-right"]}>
