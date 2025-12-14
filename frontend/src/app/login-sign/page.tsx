@@ -3,7 +3,7 @@
 import { FormEvent, useState } from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
-import { login } from "../../../api/login.api";
+import { login, register } from "../../../api/login.api";
 import { useRouter } from "next/navigation";
 import { Notyf } from "notyf";
 import LoadingSpinner from "../../../components/Spinner";
@@ -14,6 +14,8 @@ export default function LoginRegister() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [name, setName] = useState("");
+  const [type, setType] = useState("");
 
   const router = useRouter();
 
@@ -32,6 +34,23 @@ export default function LoginRegister() {
     router.push("/");
   };
 
+  const doRegister = async (event: FormEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    setIsLoading(true);
+    const data = await register({ email, password, name, type });
+    const notyf = new Notyf();
+    if (!data.data || data.status !== 200) {
+      notyf.error("Erro ao realizar cadastro. Verifique suas credenciais.");
+      return;
+    }
+    notyf.success("Cadastro realizado com sucesso!");
+    setIsLoading(false);
+    setIsActive(false);
+    setShowLogin(true);
+  };
+
+
+
   return (
     <div className={styles.loginPage}>
       <div className={`${styles.container} ${isActive ? styles.active : ""}`}>
@@ -44,7 +63,7 @@ export default function LoginRegister() {
               <div className={styles.inputBox}>
                 <input
                   type="text"
-                  placeholder="Nome"
+                  placeholder="E-mail"
                   name="email"
                   required
                   onChange={(event) => setEmail(event.target.value)}
@@ -69,18 +88,7 @@ export default function LoginRegister() {
                   src="/icons/iconPassWord.png"
                   alt="Icon PassWord"
                 />
-              </div>
-
-              <div className={styles.inputBox}>
-                <select>
-                  <option value=" " disabled selected>
-                    Ocupação
-                  </option>
-                  <option value="Aluno">Aluno</option>
-                  <option value="Docente">Docente</option>
-                  <option value="Egresso">Egresso</option>
-                </select>
-              </div>
+              </div>      
 
               <div className={styles.forgotLink}>
                 <a href="#">Esqueceu a sua senha?</a>
@@ -105,7 +113,7 @@ export default function LoginRegister() {
               <h1>Cadastre-se</h1>
 
               <div className={styles.inputBox}>
-                <input type="text" placeholder="Nome" required />
+                <input type="text" placeholder="Nome" required onChange={(event)=> setName(event.target.value)}/>
                 <img
                   className={styles.icon}
                   src="/icons/iconProfile.png"
@@ -114,7 +122,7 @@ export default function LoginRegister() {
               </div>
 
               <div className={styles.inputBox}>
-                <input type="email" placeholder="Email" required />
+                <input type="email" placeholder="Email" required onChange={(event)=> setEmail(event.target.value)}/>
                 <img
                   className={styles.icon}
                   src="/icons/iconEmail.png"
@@ -123,7 +131,7 @@ export default function LoginRegister() {
               </div>
 
               <div className={styles.inputBox}>
-                <input type="password" placeholder="Senha" required />
+                <input type="password" placeholder="Senha" required onChange={(event)=> setPassword(event.target.value)}/>
                 <img
                   className={styles.icon}
                   src="/icons/iconPassWord.png"
@@ -132,18 +140,19 @@ export default function LoginRegister() {
               </div>
 
               <div className={styles.inputBox}>
-                <select>
+                <select onChange={(event)=> setType(event.target.value)}>
                   <option value=" " disabled selected>
                     Ocupação
                   </option>
-                  <option value="Aluno">Aluno</option>
-                  <option value="Docente">Docente</option>
-                  <option value="Egresso">Egresso</option>
+                  <option value="ALUNO">Aluno</option>
+                  <option value="PROFESSOR">Docente</option>
+                  <option value="EGRESSO">Egresso</option>
+                  <option value="COORDENADOR">Coordenador</option>
                 </select>
               </div>
 
-              <button type="submit" className={styles.btn}>
-                Concluir
+              <button type="submit" className={styles.btn} onClick={doRegister} disabled={isLoading}>
+                Concluir {isLoading && <LoadingSpinner />}
               </button>
             </form>
           </div>
