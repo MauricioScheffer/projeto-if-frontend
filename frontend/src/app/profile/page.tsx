@@ -1,10 +1,13 @@
 "use client";
 
-import React, { useState, ChangeEvent, FormEvent, useRef } from "react";
+import React, {
+  useState,
+  ChangeEvent,
+  FormEvent,
+  useEffect,
+  useRef,
+} from "react";
 import styles from "./page.module.css";
-import fotoPerfilPadrão from "../icons/fotoPerfilPadrão.webp";
-import { Life_Savers } from "next/font/google";
-
 
 interface UserData {
   nomeCompleto: string;
@@ -15,19 +18,35 @@ interface UserData {
   sobreMim: string;
 }
 
+const PROFILE_KEY = "user_profile";
+const IMAGE_KEY = "user_profile_image";
+
 export default function ProfilePage() {
   const [user, setUser] = useState<UserData>({
     nomeCompleto: "",
     email: "",
     linkedin: "",
     github: "",
-    ocupacao: " ",
-    sobreMim
-      : "",
+    ocupacao: "",
+    sobreMim: "",
   });
 
   const [preview, setPreview] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  // 🔹 CARREGAR DADOS AO ENTRAR NA TELA
+  useEffect(() => {
+    const savedProfile = localStorage.getItem(PROFILE_KEY);
+    const savedImage = localStorage.getItem(IMAGE_KEY);
+
+    if (savedProfile) {
+      setUser(JSON.parse(savedProfile));
+    }
+
+    if (savedImage) {
+      setPreview(savedImage);
+    }
+  }, []);
 
   function handleChange(
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -36,30 +55,32 @@ export default function ProfilePage() {
     setUser((prev) => ({ ...prev, [name]: value }));
   }
 
-  // abrir explorador de arquivos
   function openFilePicker() {
     fileInputRef.current?.click();
   }
 
-  // pegar foto escolhida
   function handleSelectedImage(e: ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    const url = URL.createObjectURL(file);
-    setPreview(url);
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const base64 = reader.result as string;
+      setPreview(base64);
+      localStorage.setItem(IMAGE_KEY, base64);
+    };
+    reader.readAsDataURL(file);
   }
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    console.log(user);
-    alert("Dados atualizados com sucesso!");
+    localStorage.setItem(PROFILE_KEY, JSON.stringify(user));
+    alert("Dados salvos com sucesso!");
   }
 
   return (
     <div className={styles.wrapper}>
-
-      {/* COLUNA 1 - FOTO */}
+      {/* FOTO */}
       <div className={styles.left}>
         <h3 className={styles.sectionTitle}>Foto de perfil</h3>
 
@@ -77,17 +98,20 @@ export default function ProfilePage() {
           style={{ display: "none" }}
         />
 
-        <button className={styles.changeButton} onClick={openFilePicker}>
+        <button
+          type="button"
+          className={styles.changeButton}
+          onClick={openFilePicker}
+        >
           Trocar imagem
         </button>
       </div>
 
-      {/* COLUNA 2 - FORMULÁRIO */}
+      {/* FORMULÁRIO */}
       <div className={styles.right}>
         <h1 className={styles.title}>Dados pessoais</h1>
 
         <form onSubmit={handleSubmit} className={styles.form}>
-
           <div className={styles.field}>
             <label>Nome completo</label>
             <input
@@ -112,15 +136,17 @@ export default function ProfilePage() {
           <div className={styles.field}>
             <label>Ocupação</label>
             <select
-              name="Ocupação"
+              name="ocupacao"
               value={user.ocupacao}
               onChange={handleChange}
               className={styles.input}
             >
-              <option selected disabled> </option>
-              <option>Aluno</option>
-              <option>Egresso</option>
-              <option>Docente</option>
+              <option value="" disabled>
+                Selecione
+              </option>
+              <option value="Aluno">Aluno</option>
+              <option value="Egresso">Egresso</option>
+              <option value="Docente">Docente</option>
             </select>
           </div>
 
@@ -128,7 +154,6 @@ export default function ProfilePage() {
             <label>Github</label>
             <input
               name="github"
-              type="github"
               value={user.github}
               onChange={handleChange}
               className={styles.input}
@@ -136,10 +161,9 @@ export default function ProfilePage() {
           </div>
 
           <div className={styles.field}>
-            <label>Linkedin</label>
+            <label>LinkedIn</label>
             <input
               name="linkedin"
-              type="linkedin"
               value={user.linkedin}
               onChange={handleChange}
               className={styles.input}

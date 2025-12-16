@@ -1,18 +1,12 @@
 import { getApiConfig } from "../config/api.config";
 
-type LoginResponse = {
-  token: string;
-};
-
 type LoginRequest = {
   email: string;
   password: string;
 };
 
-type RegisterResponse = {
-  email: string;
-  name: string;
-  type: string;
+type LoginResponse = {
+  token: string;
 };
 
 type RegisterRequest = {
@@ -30,9 +24,14 @@ export const login = ({ email, password }: LoginRequest) => {
   });
 };
 
-export const register = ({ email, password, name, type }: RegisterRequest) => {
+export const register = ({
+  email,
+  password,
+  name,
+  type,
+}: RegisterRequest) => {
   const api = getApiConfig();
-  return api.post<RegisterResponse>("/users/new", {
+  return api.post("/users/new", {
     email,
     password,
     name,

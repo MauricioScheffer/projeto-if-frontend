@@ -2,7 +2,6 @@
 
 import { FormEvent, useState } from "react";
 import styles from "./page.module.css";
-import Image from "next/image";
 import { login, register } from "../../../api/login.api";
 import { useRouter } from "next/navigation";
 import { Notyf } from "notyf";
@@ -11,49 +10,113 @@ import LoadingSpinner from "../../../components/Spinner";
 export default function LoginRegister() {
   const [isActive, setIsActive] = useState(false);
   const [showLogin, setShowLogin] = useState(true);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [name, setName] = useState("");
-  const [type, setType] = useState("");
+
+  const [loginData, setLoginData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [registerData, setRegisterData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    type: "",
+  });
 
   const router = useRouter();
+  const notyf = new Notyf();
 
-  const doLogin = async (event: FormEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    setIsLoading(true);
-    const data = await login({ email, password });
-    const notyf = new Notyf();
-    if (!data.data || data.status !== 200) {
-      notyf.error("Erro ao realizar login. Verifique suas credenciais.");
-      return;
-    }
-    localStorage.setItem("token", data.data.token);
-    notyf.success("Login realizado com sucesso!");
-    setIsLoading(false);
-    router.push("/");
+  const isLoginValid = () => {
+    return loginData.email && loginData.password;
   };
+
+  const isRegisterValid = () => {
+    return (
+      registerData.name &&
+      registerData.email &&
+      registerData.password &&
+      registerData.type
+    );
+  };
+
+const doLogin = async (event: FormEvent<HTMLButtonElement>) => {
+  event.preventDefault();
+
+  if (!isLoginValid()) {
+    notyf.error("Preencha e-mail e senha.");
+    return;
+  }
+
+  setIsLoading(true);
+
+  try {
+    const { data } = await login(loginData);
+
+    localStorage.setItem("token", data.token);
+
+    notyf.success("Login realizado com sucesso!");
+    router.push("/");
+  } catch (error: any) {
+    notyf.error(
+      error?.response?.data?.message ||
+        "Erro ao realizar login. Verifique suas credenciais."
+    );
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   const doRegister = async (event: FormEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    setIsLoading(true);
-    const data = await register({ email, password, name, type });
-    const notyf = new Notyf();
-    if (!data.data || data.status !== 200) {
-      notyf.error("Erro ao realizar cadastro. Verifique suas credenciais.");
-      return;
-    }
+  event.preventDefault();
+
+  if (!isRegisterValid()) {
+    notyf.error("Preencha todos os campos.");
+    return;
+  }
+
+  setIsLoading(true);
+
+  try {
+    const { data } = await register(registerData);
+
+    // 🔹 salva dados vindos do backend
+    localStorage.setItem(
+      "user_profile",
+      JSON.stringify({
+        nomeCompleto: data.name,
+        email: data.email,
+        ocupacao: data.type,
+        linkedin: "",
+        github: "",
+        sobreMim: "",
+      })
+    );
+
     notyf.success("Cadastro realizado com sucesso!");
-    setIsLoading(false);
+
+    setRegisterData({
+      name: "",
+      email: "",
+      password: "",
+      type: "",
+    });
+
     setIsActive(false);
     setShowLogin(true);
-  };
-
-
+  } catch (error: any) {
+    notyf.error(
+      error?.response?.data?.message || "Erro ao realizar cadastro."
+    );
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   return (
     <div className={styles.loginPage}>
       <div className={`${styles.container} ${isActive ? styles.active : ""}`}>
+
         {/* LOGIN */}
         {showLogin && (
           <div className={`${styles.formBox} ${styles.login}`}>
@@ -62,11 +125,13 @@ export default function LoginRegister() {
 
               <div className={styles.inputBox}>
                 <input
-                  type="text"
+                  type="email"
                   placeholder="E-mail"
-                  name="email"
+                  value={loginData.email}
+                  onChange={(e) =>
+                    setLoginData({ ...loginData, email: e.target.value })
+                  }
                   required
-                  onChange={(event) => setEmail(event.target.value)}
                 />
                 <img
                   className={styles.icon}
@@ -78,29 +143,31 @@ export default function LoginRegister() {
               <div className={styles.inputBox}>
                 <input
                   type="password"
-                  name="password"
                   placeholder="Senha"
+                  value={loginData.password}
+                  onChange={(e) =>
+                    setLoginData({ ...loginData, password: e.target.value })
+                  }
                   required
-                  onChange={(event) => setPassword(event.target.value)}
                 />
                 <img
                   className={styles.icon}
                   src="/icons/iconPassWord.png"
                   alt="Icon PassWord"
                 />
-              </div>      
+              </div>
 
               <div className={styles.forgotLink}>
                 <a href="#">Esqueceu a sua senha?</a>
               </div>
+
               <button
                 type="submit"
-                disabled={isLoading}
                 className={styles.btn}
                 onClick={doLogin}
+                disabled={isLoading}
               >
-                Entrar
-                {isLoading && <LoadingSpinner />}
+                {isLoading ? <LoadingSpinner /> : "Entrar"}
               </button>
             </form>
           </div>
@@ -109,11 +176,19 @@ export default function LoginRegister() {
         {/* REGISTER */}
         {!showLogin && (
           <div className={`${styles.formBox} ${styles.register}`}>
-            <form onSubmit={(e) => e.preventDefault()}>
+            <form>
               <h1>Cadastre-se</h1>
 
               <div className={styles.inputBox}>
-                <input type="text" placeholder="Nome" required onChange={(event)=> setName(event.target.value)}/>
+                <input
+                  type="text"
+                  placeholder="Nome"
+                  value={registerData.name}
+                  onChange={(e) =>
+                    setRegisterData({ ...registerData, name: e.target.value })
+                  }
+                  required
+                />
                 <img
                   className={styles.icon}
                   src="/icons/iconProfile.png"
@@ -122,7 +197,15 @@ export default function LoginRegister() {
               </div>
 
               <div className={styles.inputBox}>
-                <input type="email" placeholder="Email" required onChange={(event)=> setEmail(event.target.value)}/>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  value={registerData.email}
+                  onChange={(e) =>
+                    setRegisterData({ ...registerData, email: e.target.value })
+                  }
+                  required
+                />
                 <img
                   className={styles.icon}
                   src="/icons/iconEmail.png"
@@ -131,7 +214,18 @@ export default function LoginRegister() {
               </div>
 
               <div className={styles.inputBox}>
-                <input type="password" placeholder="Senha" required onChange={(event)=> setPassword(event.target.value)}/>
+                <input
+                  type="password"
+                  placeholder="Senha"
+                  value={registerData.password}
+                  onChange={(e) =>
+                    setRegisterData({
+                      ...registerData,
+                      password: e.target.value,
+                    })
+                  }
+                  required
+                />
                 <img
                   className={styles.icon}
                   src="/icons/iconPassWord.png"
@@ -140,8 +234,17 @@ export default function LoginRegister() {
               </div>
 
               <div className={styles.inputBox}>
-                <select onChange={(event)=> setType(event.target.value)}>
-                  <option value=" " disabled selected>
+                <select
+                  value={registerData.type}
+                  onChange={(e) =>
+                    setRegisterData({
+                      ...registerData,
+                      type: e.target.value,
+                    })
+                  }
+                  required
+                >
+                  <option value="" disabled>
                     Ocupação
                   </option>
                   <option value="ALUNO">Aluno</option>
@@ -151,14 +254,19 @@ export default function LoginRegister() {
                 </select>
               </div>
 
-              <button type="submit" className={styles.btn} onClick={doRegister} disabled={isLoading}>
-                Concluir {isLoading && <LoadingSpinner />}
+              <button
+                type="submit"
+                className={styles.btn}
+                onClick={doRegister}
+                disabled={isLoading}
+              >
+                {isLoading ? <LoadingSpinner /> : "Concluir"}
               </button>
             </form>
           </div>
         )}
 
-        {/* TOGGLE AREA */}
+        {/* TOGGLE */}
         <div className={styles.toggleBox}>
           <div className={`${styles.togglePanel} ${styles.toggleLeft}`}>
             <h1>Boas vindas!</h1>
@@ -188,6 +296,7 @@ export default function LoginRegister() {
             </button>
           </div>
         </div>
+
       </div>
     </div>
   );
