@@ -5,13 +5,13 @@ import { useEffect, useState } from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import "bootstrap/dist/css/bootstrap.min.css"; // rodar o carousel no lado do cliente
-import { News, NewsAPI } from "../../api/news.api";
+import { getAllNews, News, NewsAPI } from "../../api/news.api";
 
 export default function Home() {
   useEffect(() => {
     import("bootstrap/dist/js/bootstrap.bundle.min.js");
 
-    // intersection observer para revelar elementos
+    // observer para revelar elementos
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -63,7 +63,15 @@ export default function Home() {
     "/images/image.jpg",
   ];
 
-  const [noticias, setNoticias] = useState<News[]>([]);
+  const [news, setNews] = useState<News[]>([]);
+
+  const fetchNews = async () => {
+    const data = await getAllNews();
+    setNews(data);
+  };
+  useEffect(() => {
+    fetchNews();
+  }, []);
 
   return (
     <main className={styles.main}>
@@ -93,10 +101,10 @@ export default function Home() {
           </div>
         </div>
       </section>
-
+      {/* bg-primary */}
       {/* SOBRE OS CURSOS */}
-      <section className={styles.sobre}>
-        <h2>Sobre os cursos</h2>
+      <section className={`${styles.sobre} `}>
+        <h2 className="fw-bold">Sobre os cursos</h2>
         <p className={styles.sobreCurso}>
           O Campus Sapucaia do Sul do IFSUL oferece formações completas na área
           de Tecnologia da Informação, preparando estudantes para o mercado de
@@ -156,7 +164,7 @@ export default function Home() {
           {/*<button className={styles.btn}>Veja também os projetos do TDS</button>
           <button className={styles.btn}>
             Veja também os projetos do TADS
-          </button>*/} 
+          </button>*/}
         </div>
 
         <br />
@@ -169,7 +177,7 @@ export default function Home() {
         </a>
       </section>
 
-      {/* NOTÍCIAS E EVENTOS 
+      {/* NOTÍCIAS E EVENTOS  */}
       <section className={`${styles.news} reveal`}>
         <h1>Notícias e Eventos</h1>
         <div className={styles.newsContent}>
@@ -178,8 +186,8 @@ export default function Home() {
               src="/images/image.jpg"
               alt="Notícias e Eventos"
               width={400}
-              height={300}
-              className={styles.cardImage}
+              height={0}
+              className={styles.ImageNews}
             />
             <p className={styles.descricao}>
               O IFSUL promove anualmente diversos eventos voltados à área de
@@ -191,13 +199,37 @@ export default function Home() {
             </p>
           </div>
 
+          {/* <div className={styles["noticias-right"]}>
+          <div className={styles["lista-eventos"]}>
+            {news.map((event, i) => (
+              <div key={i} className={styles["evento-item"]}>
+                <h3>
+                  {event.titulo} <span>{event.resumo}</span>
+                </h3>
+                <span className={styles.data}>{event.data}</span>
+                <span className={styles.seta}>→</span>
+              </div>
+            ))}
+          </div> */}
+
           <div className={styles.cardRight}>
             <div className={styles.list}>
-              {noticias.map((n) => (
+
+              {/* {news.map((n) => (
                 <div key={n.id} className={styles.listNews}>
                   <div>
                     <h2>{n.titulo}</h2>
                     <span className={styles.dataEvento}>{n.data}</span>
+                  </div>
+                  <span className={styles.seta}>→</span>
+                </div>
+              ))} */}
+              {news.map((event, i) => (
+                <div key={i} className={styles.listNews}>
+                  <div>
+                    <h3>{event.titulo}</h3>
+                    <p>{event.resumo}</p>
+                    <span className={styles.dataEvento}>{event.data}</span>
                   </div>
                   <span className={styles.seta}>→</span>
                 </div>
@@ -208,7 +240,7 @@ export default function Home() {
             </button>
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* PROFESSORES */}
       <section className={`${styles.teachers} bg-primary text-white py-5`}>
@@ -433,6 +465,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <script src='https://cdn.jotfor.ms/agent/embedjs/019b28e18b5b709ba17802be440c4471322b/embed.js'>
+      </script>
     </main>
   );
 }
