@@ -4,81 +4,109 @@ import { useState } from 'react';
 import styles from './page.module.css';
 
 // --- CONFIGURAÇÃO DAS IMAGENS ---
-const heroImage = '/images/image.jpg';
-const projectImg1 = '/images/image.jpg';
-const projectImg2 = '/images/image.jpg';
-const projectImg3 = '/images/image.jpg';
+const heroImage = '/images/image.jpg'; 
+const tdsImage = '/images/image.jpg';  
 
-// --- CONFIGURAÇÃO DO CONTEÚDO DOS MODAIS ---
-const conteudoModais: Record<string, { titulo: string; links: string[] }[]> = {
-  
+
+type LinkItem = { nome: string; url: string };
+type SecaoModal = { titulo: string; links: LinkItem[] };
+
+// --- CONTEÚDO DOS MODAIS ---
+const conteudoModais: Record<string, SecaoModal[]> = {
   "Inscrições & Admissão": [
     {
       titulo: "Processo Seletivo",
-      links: ["Edital Vigente", "Acompanhar Inscrição"]
+      links: [
+        { nome: "Edital Vigente", url: "https://processoseletivo.ifsul.edu.br" },
+      ]
     },
     {
       titulo: "Matrículas",
-      links: ["Documentação Necessária", "Cronograma", "Resultado Final"]
+      links: [
+        { nome: "Resultado Final", url: "https://processoseletivo.ifsul.edu.br" }
+      ]
     }
   ],
-
   "Acadêmico": [
     {
       titulo: "TDS - Técnico",
-      links: ["Grade Curricular", "Emendas", "Horários"]
+      links: [
+        { nome: "Documentação", url: "https://intranet.ifsul.edu.br/catalogo/curso/328" },
+      ]
     },
     {
       titulo: "TADS - Tecnólogo",
-      links: ["Grade Curricular", "Emendas", "Horários"]
+      links: [
+        { nome: "Documentação", url: "https://intranet.ifsul.edu.br/catalogo/curso/331" },
+      ]
     }
   ],
-
   "Plataformas & Ferramentas": [
     {
       titulo: "Sistemas",
-      links: ["Moodle", "SUAP", "Biblioteca Virtual"]
+      links: [
+        { nome: "Moodle", url: "https://apnp.ifsul.edu.br/login/index.php" },
+        { nome: "SUAP", url: "https://suap.ifsul.edu.br" },
+        { nome: "Biblioteca Virtual", url: "https://biblioteca.ifsul.edu.br" }
+      ]
     },
     {
-      titulo: "Comuidade",
-      links: ["Discord", "WhatsApp"]
+      titulo: "Comunidade",
+      links: [
+        { nome: "Discord", url: "https://discord.gg/QJWGMzYVA5" },
+      ]
     }
   ],
-
   "Apoio & Oportunidades": [
     {
       titulo: "Assistência Estudantil",
-      links: ["Editais de Auxílio", "Alimentação", "Transporte"]
+      links: [
+        { nome: "Solicitação de Auxílio", url: "https://suap.ifsul.edu.br" }
+      ]
     },
-    {
-      titulo: "Carreira",
-      links: ["Mural de Estágios", "Monitoria", "Bolsas de Pesquisa"]
+    {  
+      titulo: "Oportunidades",
+      links: [
+        { nome: "Monitorias", url: "https://docs.google.com/spreadsheets/d/1IZVEy4u3YC3V5PCAXgjzDjcJRz33UqjozGvinktk_nc/edit?gid=0#gid=0" },
+        { nome: "Estágios", url: "https://www.sapucaia.ifsul.edu.br/estagio" }
+      ]
     }
   ],
-
   "Documentação & Regulamentos": [
     {
       titulo: "Institucional",
-      links: ["Regulamento Didático", "PPC do Curso", "Regimento Interno"]
+      links: [
+        { nome: "Regulamentos Institucionais", url: "https://www.sapucaia.ifsul.edu.br/regulamentos-institucionais" },
+        { nome: "Calendários Acadêmicos", url: "https://www.sapucaia.ifsul.edu.br/calendarios" }
+      ]
     },
+
     {
       titulo: "Formulários",
-      links: ["Requerimento Geral", "Aproveitamento de Disciplinas", "Validação de ACs"]
+      links: [
+        { nome: "Aproveitamento de Disciplinas", url: "https://www.sapucaia.ifsul.edu.br/editaisedocumentos/2024/itemlist/category/98-editaisedocs-2025" },
+      ]
     }
-  ],
 
+  ],
   "Galeria": [
     {
       titulo: "Eventos",
-      links: ["Semana Acadêmica", "Hackathon", "Visitas Técnicas"]
+      links: [
+        { nome: "Semana Acadêmica", url: "/semana-academica" },
+        { nome: "Hackathon", url: "/hackathon" },
+        { nome: "Visitas Técnicas", url: "/visitas" }
+      ]
     },
     {
       titulo: "Projetos",
-      links: ["Extensão", "TCCs Destaque"]
+      links: [
+        { nome: "Extensão", url: "/extensao" },
+        { nome: "TCCs Destaque", url: "/tcc" }
+      ]
     }
   ]
 };
-
 
 export default function HomePage() {
   
@@ -111,18 +139,29 @@ export default function HomePage() {
       <div className={styles.pageWrapper}>
         <main className={styles.container}>
 
-          {/* --- 1. Seção Hero --- */}
+          {/* --- 1. Seção Hero TADS --- */}
           <section className={styles.hero}>
             <div className={styles.heroContent}>
               <h1>Tecnólogo em Análise e Desenvolvimento de Sistemas</h1>
               <p>O curso de Análise e Desenvolvimento de Sistemas do IFSul prepara profissionais para desenvolver e manter softwares, com foco em programação, bancos de dados e soluções tecnológicas.</p>
             </div>
             <div className={styles.heroImageWrapper}>
-              <img src={heroImage} alt="Imagem principal" /> 
+              <img src={heroImage} alt="Turma TADS" /> 
             </div>
           </section>
 
-          {/* --- 2. Seção de Botões --- */}
+          {/* --- 2. Seção TDS --- */}
+          <section className={styles.tdsSection}>
+            <div className={styles.heroContent}>
+                <h2>Técnico em Desenvolvimento de Sistemas</h2>
+                <p>O curso Técnico em Desenvolvimento de Sistemas do IFSul capacita estudantes do ensino médio para criar e manter sistemas computacionais, desenvolvendo habilidades em lógica de programação, desenvolvimento de aplicações, bancos de dados e uso de tecnologias atuais.</p>
+            </div>
+            <div className={styles.heroImageWrapper}>
+                <img src={tdsImage} alt="Turma TDS" />
+            </div>
+          </section>
+
+          {/* --- 3. Seção de Botões --- */}
           <section className={styles.quickNav}>
             <div className={styles.buttonGrid}>
               <button className={styles.navButton} onClick={() => openModal('Inscrições & Admissão')}>Inscrições & Admissão</button>
@@ -133,62 +172,10 @@ export default function HomePage() {
               <button className={styles.navButton} onClick={() => openModal('Galeria')}>Galeria</button>
             </div>
           </section>
-          
-          {/* --- 3. Seção de Projetos --- */}
-          <section className={styles.projects}>
-            <h2>Confira os projetos do TADS</h2>
-            <p>Confira os projetos desenvolvidos pelos alunos do curso de TADS, que unem criatividade, tecnologia e soluções práticas para desafios reais. Aqui você encontra sistemas, aplicações e ideias inovadoras que mostram na prática o que é aprendido em sala de aula.</p>
 
-            <div className={styles.filters}>
-              <select name="ano">
-                <option value="">Selecione o ano</option>
-                <option value="2025">2025</option>
-                <option value="2024">2024</option>
-              </select>
-              <select name="disciplina">
-                <option value="">Selecione a disciplina</option>
-                <option value="psc">Projeto de Sistemas Computacionais</option>
-                <option value="cs1">Computação e Sociedade</option>
-              </select>
-              <select name="tipo">
-                <option value="">Selecione o tipo</option>
-                <option value="tcc">TCC</option>
-                <option value="pi">Projeto Integrador</option>
-              </select>
-              <button className={styles.filterButton}>Filtrar</button>
-            </div>
-
-            <div className={styles.projectList}>
-              <article className={styles.projectCard}>
-                <img src={projectImg1} alt="Código" />
-                <div className={styles.projectInfo}>
-                  <h3>Título do Projeto: Subtítulo</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                  <a href="#" className={styles.projectLink}>Ver projeto &rarr;</a>
-                </div>
-              </article>
-              <article className={styles.projectCard}>
-                <img src={projectImg2} alt="Mobile" />
-                <div className={styles.projectInfo}>
-                  <h3>Título do Projeto: Subtítulo</h3>
-                  <p>Duis aute irure dolor in reprehenderit in voluptate velit.</p>
-                  <a href="#" className={styles.projectLink}>Ver projeto &rarr;</a>
-                </div>
-              </article>
-              <article className={styles.projectCard}>
-                <img src={projectImg3} alt="Dashboard" />
-                <div className={styles.projectInfo}>
-                  <h3>Título do Projeto: Subtítulo</h3>
-                  <p>Excepteur sint occaecat cupidatat non proident.</p>
-                  <a href="#" className={styles.projectLink}>Ver projeto &rarr;</a>
-                </div>
-              </article>
-            </div>
-          </section>
         </main>
       </div>
 
-      {/* --- Modal Fly-out Dinâmico --- */}
       <div 
         className={`${styles.modalOverlay} ${isModalOpen ? styles.active : ''}`}
         onClick={handleOverlayClick}
@@ -205,7 +192,14 @@ export default function HomePage() {
               <h3>{secao.titulo}</h3>
               <div className={styles.menuLinks}>
                 {secao.links.map((link, linkIndex) => (
-                  <a key={linkIndex} href="#">{link}</a>
+                  <a 
+                    key={linkIndex} 
+                    href={link.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                  >
+                    {link.nome}
+                  </a>
                 ))}
               </div>
             </div>
