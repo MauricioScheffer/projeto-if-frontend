@@ -4,8 +4,8 @@ import { useState } from 'react';
 import styles from './page.module.css';
 
 // --- CONFIGURAÇÃO DAS IMAGENS ---
-const heroImage = '/images/image.jpg'; 
-const tdsImage = '/images/image.jpg';  
+const heroImage = '/imagensIfsul/_MG_9518.jpg'; 
+const tdsImage = '/imagensIfsul/IMG_1659.jpg';  
 
 
 type LinkItem = { nome: string; url: string };
