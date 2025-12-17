@@ -29,7 +29,7 @@ export default function InstitucionalPage() {
         {/* --- CABEÇALHO --- */}
         <header className={styles.header}>
           <div className={styles.logoContainer}>
-             <img src="/images/logoIFbranca" alt="IFSul Logo" className={styles.logo} />
+             <img src="/images/logoIFbranca.png" alt="IFSul Logo" className={styles.logo} />
           </div>
           <h1>IFSul – Câmpus Sapucaia do Sul</h1>
           <p className={styles.subtitle}>Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Sul</p>
@@ -45,7 +45,7 @@ export default function InstitucionalPage() {
             </a>
           </div>
           <div className={styles.infoImage}>
-            <img src="/images/image.jpg" alt="Sala de aula" />
+            <img src="/imagensIfsul/ifsul-parede.jpg" alt="Sala de aula" />
           </div>
         </section>
 
@@ -56,7 +56,7 @@ export default function InstitucionalPage() {
             <p>O câmpus do IFSul exerce um papel significativo na comunidade ao oferecer ensino público gratuito e formar profissionais capacitados para atender às demandas locais. Além das aulas, o câmpus promove projetos de pesquisa, extensão e ações comunitárias que aproximam alunos, moradores e empresas, gerando soluções práticas para problemas reais da região.</p>
           </div>
           <div className={styles.infoImage}>
-            <img src="/images/image.jpg" alt="Corredor da escola" />
+            <img src="/imagensIfsul/IMG_0561.jpg" alt="Corredor da escola" />
           </div>
         </section>
 
@@ -139,9 +139,9 @@ export default function InstitucionalPage() {
 
             {/* Container das Imagens */}
             <div className={styles.infraGallery} ref={carouselRef}>
-              <img src="/images/image.jpg" alt="Infra 1" />
-              <img src="/images/image.jpg" alt="Infra 2" />
-              <img src="/images/image.jpg" alt="Infra 3" />
+              <img src="/imagensIfsul/IMG_1642.jpg" alt="Infra 1" />
+              <img src="/imagensIfsul/IMG_1504.jpg" alt="Infra 2" />
+              <img src="/imagensIfsul/IMG_1570.jpg" alt="Infra 3" />
               <img src="/images/image.jpg" alt="Infra 4" />
               <img src="/images/image.jpg" alt="Infra 5" />
               <img src="/images/image.jpg" alt="Infra 6" />
