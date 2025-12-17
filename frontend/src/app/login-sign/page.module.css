@@ -59,6 +59,8 @@
 
 /* INPUTS */
 .inputBox {
+    display: flex;
+      align-items: center;
   position: relative;
   margin: 30px 0;
   width: 100%;
@@ -66,7 +68,7 @@
 
 .inputBox input {
   width: 100%;
-  padding: 13px 50px 13px 20px;
+  padding: 13px 80px 13px 20px; /* espaço para dois ícones */
   background: #eee;
   border-radius: 8px;
   border: none;
@@ -93,7 +95,7 @@
 }
 
 .icon {
-  position: absolute;
+  position: static;
   right: 20px;
   top: 50%;
   transform: translateY(-50%);
@@ -101,6 +103,17 @@
   color: #666;
   opacity: 30%;
   height: 30px;
+  margin-left: 5px;
+}
+
+.iconGroup {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 
 .forgotLink {
