@@ -29,7 +29,7 @@ export default function InstitucionalPage() {
         {/* --- CABEÇALHO --- */}
         <header className={styles.header}>
           <div className={styles.logoContainer}>
-             <img src="/images/logo-ifsul.png" alt="IFSul Logo" className={styles.logo} />
+             <img src="/images/logoIFbranca" alt="IFSul Logo" className={styles.logo} />
           </div>
           <h1>IFSul – Câmpus Sapucaia do Sul</h1>
           <p className={styles.subtitle}>Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Sul</p>
@@ -73,11 +73,12 @@ export default function InstitucionalPage() {
                   <div className={styles.courseItem}>
                     <strong>Manhã:</strong>
                     <p>Desenvolvimento de sistemas (Ensino Médio integrado)</p>
+                    <p>Eventos (Ensino Médio integrado)</p>
                   </div>
                   <div className={styles.courseItem}>
                     <strong>Tarde:</strong>
                     <p>Plástico (Ensino Médio integrado)</p>
-                    <p>Eventos (Ensino Médio integrado)</p>
+                    <p>Mecânica (Ensino Médio integrado)</p>
                   </div>
                 </div>
 
@@ -112,7 +113,7 @@ export default function InstitucionalPage() {
                     <h4>Educação de Jovens e Adultos</h4>
                     <div className={styles.courseItem}>
                       <strong>Noite:</strong>
-                      <p>Administração (EJA - Ensino Médio integrado)</p>
+                      <p>Administração (PROEJA - Ensino Médio integrado)</p>
                     </div>
                   </div>
 
