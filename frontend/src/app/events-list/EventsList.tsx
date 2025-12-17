@@ -19,7 +19,7 @@ const EventsList: React.FC = () => {
       id: 1,
       titulo: "CODA",
       descricao:
-        "Evento que reuniu desenvolvedores e entusiastas para criar soluções inovadoras em tecnologia. Durante o encontro, equipes colaboraram em projetos que exploraram novas formas de aplicar a tecnologia em problemas do mundo real.",
+        "Evento que reuniu desenvolvedores e entusiastas para criar soluções inovadoras em tecnologia.",
       imagem: "/images/image.jpg",
       publico: "Interno (Acadêmico)",
       data: "2025-10-15",
@@ -28,19 +28,21 @@ const EventsList: React.FC = () => {
     },
     {
       id: 2,
-      titulo: "Evento",
+      titulo: "Codigo Aberto",
       descricao:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur viverra lacus non lectus fringilla, in maximus erat congue.",
+        "Teste 1",
       imagem: "/images/image.jpg",
-      publico: "Interno (Acadêmico)",
-      data: "2025-10-15",
-      hora: "09:00",
-      local: "Auditório Central - Campus I",
+      publico: "Externo",
+      data: "2025-11-20",
+      hora: "14:00",
+      local: "Bloco B",
     },
   ]);
 
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   const [createModalOpen, setCreateModalOpen] = useState(false);
+  const [search, setSearch] = useState("");
+
   const [titulo, setTitulo] = useState("");
   const [descricao, setDescricao] = useState("");
   const [publico, setPublico] = useState("");
@@ -59,18 +61,7 @@ const EventsList: React.FC = () => {
   }
 
   function salvarNovoEvento() {
-    if (!titulo.trim()) {
-      alert("O título é obrigatório");
-      return;
-    }
-    if (!data) {
-      alert("A data é obrigatória");
-      return;
-    }
-    if (!hora) {
-      alert("O horário é obrigatório");
-      return;
-    }
+    if (!titulo.trim() || !data || !hora) return;
 
     const novoEvento: Event = {
       id: Date.now(),
@@ -98,24 +89,34 @@ const EventsList: React.FC = () => {
   }
 
   function formatarDataISO(iso: string) {
-    if (!iso) return "";
     return new Date(iso).toLocaleDateString("pt-BR");
   }
+
+  const eventosFiltrados = events.filter((event) =>
+    event.titulo.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <div className={styles.eventsContainer}>
       <h2>Notícias e Eventos</h2>
 
       <div className={styles.searchbar}>
-        <input type="text" placeholder="PESQUISAR EVENTOS" />
+        <input
+          type="text"
+          placeholder="PESQUISAR EVENTOS"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
       </div>
 
       <div className={styles.eventsgrid}>
-        {events.map((event) => (
+        {eventosFiltrados.map((event) => (
           <div className={styles.eventcard} key={event.id}>
             <img src={event.imagem} alt={event.titulo} />
+
+            <div className={styles.tag}>{event.publico}</div>
+
             <div className={styles.cardoverlay}>
-              {/* REMOVIDO PUBLICO */}
               <h3>{event.titulo}</h3>
               <p>{event.descricao}</p>
 
@@ -154,21 +155,15 @@ const EventsList: React.FC = () => {
               className={styles.modalImage}
             />
             <h3 className={styles.modalTitle}>{selectedEvent.titulo}</h3>
-            <p className={styles.modalDescricao}>{selectedEvent.descricao}</p>
+            <p className={styles.modalDescricao}>
+              {selectedEvent.descricao}
+            </p>
 
             <div className={styles.modalDetails}>
-              <p>
-                <strong>📅 Data:</strong> {formatarDataISO(selectedEvent.data)}
-              </p>
-              <p>
-                <strong>🕒 Horário:</strong> {selectedEvent.hora}
-              </p>
-              <p>
-                <strong>📍 Local:</strong> {selectedEvent.local}
-              </p>
-              <p>
-                <strong>👥 Público:</strong> {selectedEvent.publico}
-              </p>
+              <p>📅 {formatarDataISO(selectedEvent.data)}</p>
+              <p>🕒 {selectedEvent.hora}</p>
+              <p>📍 {selectedEvent.local}</p>
+              <p>👥 {selectedEvent.publico}</p>
             </div>
 
             <button
@@ -184,7 +179,7 @@ const EventsList: React.FC = () => {
       {createModalOpen && (
         <div className={styles.modalOverlay}>
           <div className={styles.modalContent}>
-            <h2 style={{ marginBottom: "15px" }}>Criar Novo Evento</h2>
+            <h2>Criar Novo Evento</h2>
 
             <input
               className={styles.input}
@@ -236,17 +231,22 @@ const EventsList: React.FC = () => {
             />
 
             {imagemPreview && (
-              <img src={imagemPreview} className={styles.previewImage} />
+              <img
+                src={imagemPreview}
+                className={styles.previewImage}
+              />
             )}
 
-            <button className={styles.saveBtn} onClick={salvarNovoEvento}>
+            <button
+              className={styles.saveBtn}
+              onClick={salvarNovoEvento}
+            >
               Salvar Evento
             </button>
 
             <button
               className={styles.modalClose}
               onClick={() => setCreateModalOpen(false)}
-              style={{ marginTop: "10px" }}
             >
               Cancelar
             </button>

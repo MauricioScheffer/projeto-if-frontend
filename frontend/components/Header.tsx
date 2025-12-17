@@ -39,7 +39,7 @@ export default function Header() {
           <ul className={`${styles["nav-links"]} ${open ? styles.open : ""}`}>
             <li><Link href="/">Início</Link></li>
             <li><Link href="/about">Cursos</Link></li>
-            <li><Link href="/events-news">Eventos</Link></li>
+            <li><Link href="/events-list">Eventos</Link></li>
             <li><Link href="/institucional">Instituição</Link></li>
             <li><Link href="/Advisors">Orientadores</Link></li>
             <li><Link href="/contact">Contate-nos</Link></li>
