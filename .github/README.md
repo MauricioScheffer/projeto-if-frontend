@@ -26,6 +26,7 @@ Desenvolver um sistema completo que envolva:
 
 ### Backend
 - **Java**
+- Spring Boot
 
 ### Banco de Dados
 - **PostgreSQL**
