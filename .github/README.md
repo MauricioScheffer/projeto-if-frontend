@@ -119,7 +119,7 @@ Projeto desenvolvido sob orientação do professor:
 
 ## Autores
 
-Projeto desenvolvido pelos alunos da **Turma 3A** no semestre **2025/2**
+Projeto desenvolvido pelos alunos da **Turma 3A** no semestre **2025/2**  
 Curso de **Análise e Desenvolvimento de Sistemas**  
 **IFSul – Campus Sapucaia do Sul**
 
