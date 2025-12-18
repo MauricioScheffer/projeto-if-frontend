@@ -34,8 +34,8 @@
 
   color: var(--light);
   width: 100%;
-  min-height: 100vh;
-  padding: 80px 20px;
+  min-height: 70vh;
+  padding: 60px 20px;
   box-sizing: border-box;
 
   display: flex;
@@ -48,7 +48,7 @@
   position: absolute;
   inset: 0;
 
-  background-image: url("../../public/imagensIfsul/IMG_1659.JPG");
+  background-image: url("/imagensIfsul/13.JPG");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -63,9 +63,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1300px;
+  max-width: 1400px;
   width: 100%;
-  gap: 40px;
+  gap: 32px;
   animation: fadeUp 4s ease-out forwards;
 }
 
@@ -81,11 +81,19 @@
 }
 
 .heroLeft p {
-  font-size: 1.1rem;
   line-height: 1.6;
-  margin-bottom: 30px;
   font-weight: 200;
   color: white;
+
+  background: rgba(0, 0, 0, 0.4);
+  padding: 10px 16px;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  line-height: 1.5;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: var(--font-inter);
+  font-weight: 600;
 }
 
 .heroButton {
@@ -106,18 +114,20 @@
   color: var(--dark-blue);
 }
 
-.heroRight{
-  margin-right: 100px;
-  width: 40%;
-  display: block;
+.heroRight {
+  position: relative;
+  height: 500px;
+  max-width: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.heroImage{
-  border-radius: 100% ;
+.heroImage {
   opacity: 0;
-  transform: translateY(30px);
+  object-fit: contain;
+  opacity: 0;
   animation: fadeUp 4s ease-out forwards;
-  margin: 0;
 }
 
 @keyframes fadeUp {
@@ -139,15 +149,15 @@
    /* background-image: url("../../public/images/testeMauricio/business1Edited.jpg");  */
   /* background-image: url("../../public/images/testeMauricio/business2.jpg"); 
   /* background-image: url("../../public/images/testeMauricio/peopleBlur.jpg"); */
-  background-image: url("../../public/imagensIfsul/IMG_1642.JPG"); 
+  background-image: url("../../public/imagensIfsul/8.JPG"); 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
   color: rgb(255, 255, 255);
   width: 100%;
-  min-height: 100vh;
-  padding: 80px 20px;
+  min-height: auto;
+  padding: 60px 20px;
   box-sizing: border-box;
 }
 
@@ -191,13 +201,10 @@
 }
 
 .cardCursos {
-  position: relative;
   background-color: var(--light);
   border-radius: 12px;
   width: 400px;
-  min-height: 420px; /* altura mínima para manter o padrão */
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  overflow: hidden;
+  height: auto;
   display: flex;
   flex-direction: column;
   border: 2px solid #0c3c57;
@@ -211,17 +218,23 @@
               var(--light-blue) 20px 20px ,var(--light) 25px 25px;
 }
 
+.imageWrapperCursos {
+  position: relative;
+  width: 100%;
+}
+
 .tag {
   position: absolute;
   top: 12px;
   left: 12px;
+  z-index: 2;
+
   background: var(--light-blue);
   color: var(--dark-blue);
   font-weight: bold;
   padding: 6px 14px;
   border-radius: 30px;
   font-size: 0.85rem;
-  z-index: 2;
 }
 
 .cardImage {
@@ -292,7 +305,9 @@
 .news {
   padding: 50px 20px;
   width: 100%;
-  margin: 0 30px;
+  margin: 0;
+  height: 800px;
+
   position: relative;
   overflow: hidden;
 
@@ -311,9 +326,7 @@
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 20px;
-  background-color: #0c3c57;
-  width: 320px;
+  margin-top: 10px;
 }
 
 .news .newsContent {
@@ -324,7 +337,8 @@
   gap: 23px;
   /* background-color: var(--dark-blue); */
   border-radius: 12px;
-  padding: 80px;
+  padding: 40px;
+  height: calc(100% - 80px);
   /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); */
 }
 
@@ -335,12 +349,19 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  height: 50vh;
+  height: auto;
+  min-height: 300px;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 6;
+  overflow: hidden;
 }
 
 .news .cardLeft .ImageNews {
-  width: 100%;
-  height: 260px;
+  height: 230px;
   object-fit: cover;
 }
 
@@ -362,7 +383,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 520px; 
+  height: 100%;
+  min-height: 300px;
 }
 
 .news .cardRight .list {
@@ -395,7 +417,19 @@
   background-color: var(--blue);
 }
 
-.listNews h2 {
+.conteudo {
+  min-width: 70%;
+  text-align: left;
+}
+
+.listNews h3 {
+  font-size: (1rem, 2vw, 3rem);
+  font-weight: 650;
+  margin: 0 0 6px 0;
+  color: var(--light);
+}
+
+.listNews p {
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--light);
@@ -437,7 +471,7 @@
   justify-content: center;
   align-items: center;
   padding: 4rem 5vw;
-  min-height: 50vh;
+  min-height: 20vh;
   color: var(--light);
   width: 100%;
 }
@@ -535,14 +569,41 @@
   width: 100%;
   background-color: #0c3c57;
   padding: 60px 20px;
+  min-height: 450px;
+  height: auto;
   display: flex;
   justify-content: center;
 }
 
-.portal .containerPortal{
+
+.portal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: url("../../public/imagensIfsul/14.JPG");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  filter: blur(6px);
+  transform: scale(1.1);
+  z-index: -1;
+}
+
+.portalContainer {
   width: 100%;
+  max-width: 1200px;
+  /* CONTROLE REAL DA LARGURA */
+  padding: 4rem 2rem;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+
   text-align: center;
-  color: #fff;
+  position: relative;
+
 }
 
 .portal .containerPortal h1{
@@ -561,22 +622,25 @@
   padding: 0 15px;
 }
 
-.cardsWrapper{
-  display: flex;
-  flex-wrap: wrap;
+
+.cardsWrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   justify-content: center;
-  gap: 15px;
+  align-items: center;
+  gap: 16px;
 }
 
 .cardsWrapper .cardPessoas{
   background: transparent;
   border: 2px solid #fff;
-  border-radius: 50px;
-  padding: 8px 18px;
+  border-radius: 32px;
+  padding: 10px 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 23%;
+  width: 100%;
+  max-width: 230px;
   cursor: default;
   transition: 0.3s;
 }
@@ -592,9 +656,21 @@
   box-shadow: none;
 }
 
-.cardsWrapper .cardContent span{
-  font-size: 17px;
+.cardsWrapper .cardContent span {
+  /* font-size: 17px; */
+  font-size: 0.9rem;
   font-weight: 500;
+  white-space: nowrap;
+}
+
+.iconsP {
+  filter: brightness(0) invert(1);
+  width: 18px;
+  height: 18px;
+}
+
+.iconsP:hover {
+  filter: invert(23%) sepia(92%) saturate(789%) hue-rotate(168deg) brightness(99%) contrast(92%);
 }
 
 .reveal {
@@ -618,17 +694,16 @@
 @media (max-width: 600px) {
 
   .inicio {
-    padding: 40px 20px;
+    padding: 80px 0;
   }
 
   .heroContent {
     flex-direction: column;
-    gap: 25px;
     text-align: center;
   }
 
   .heroLeft h1 {
-    font-size: 1.9rem;
+    font-size: 1.7rem;
   }
 
   .heroLeft p {
@@ -637,11 +712,8 @@
 
   .heroRight {
     margin: 0;
-    width: 80%;
-  }
-
-  .heroImage {
     width: 100%;
+    height: 200px;
   }
 
   /* CURSOS */
@@ -655,17 +727,39 @@
   }
 
   /* NEWS */
+
+  .news {
+    height: auto;
+  }
+
   .news .newsContent {
     flex-direction: column;
     padding: 24px;
     gap: 20px;
   }
 
-  .news .cardLeft,
+  .news .cardRight .list {
+    max-height: 260px;
+    overflow: auto;
+  }
+
+  .listNews {
+    padding: 12px;
+  }
+
+  .listNews h3 {
+    font-size: 0.95rem;
+  }
+
+  .listNews p {
+    font-size: 0.85rem;
+  }
+
+  /* .news .cardLeft,
   .news .cardRight {
     width: 100%;
     height: auto;
-  }
+  } */
 
   /* PROFESSORES */
   .teachers {
@@ -681,13 +775,39 @@
     height: 80px;
   }
 
-  /* PORTAL */
-  .portal .containerPortal h1 {
-    font-size: 26px;
+  .portal {
+    padding: 60px 12px;
+  }
+
+  .portalContainer {
+    padding: 2rem 1rem;
+  }
+
+  .cardsWrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 🔥 2 por linha */
+    gap: 12px;
   }
 
   .cardsWrapper .cardPessoas {
-    width: 80%;
+    width: 100%; /* ocupa a coluna */
+    padding: 10px 12px;
+    border-radius: 30px;
+    max-width: none;
+  }
+  .cardsWrapper .cardContent {
+    gap: 6px;
+  }
+
+  .cardsWrapper .cardContent span {
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .iconsP {
+    width: 18px;
+    height: 18px;
   }
 }
 
@@ -706,25 +826,16 @@
     width: 60%;
   }
 
-  /* CURSOS */
-  .cursosContainer .cardCursos {
-    width: 80%;
-  }
-
   /* NEWS */
   .news .newsContent {
     flex-direction: column;
     padding: 50px;
   }
 
-  .news .cardLeft,
+  /* .news .cardLeft,
   .news .cardRight {
     width: 100%;
-  }
-
-  .news h1 {
-    font-size: 1.5rem;
-  }
+  } */
 
   /* PROFESSORES */
   .teacherCard {
@@ -734,7 +845,33 @@
 
   /* PORTAL */
   .cardsWrapper .cardPessoas {
-    width: 40%;
+    width: 70%;
+  }
+
+  /* Grid portal */
+  .cardsWrapper {
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  }
+
+  /* Font size inválido */
+  .listNews h3 {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+  }
+
+  /* Portal background */
+  .portal {
+    position: relative;
+
+  }
+
+  .portal::before {
+    z-index: -1;
+  } 
+
+  /* Título news responsivo */
+  .news h1 {
+    max-width: 600px;
+    width: 100%;
   }
 }
 
@@ -754,22 +891,46 @@
     font-size: 2.4rem;
   }
 
-  .sobre{
-    padding: 10px 0 23px 0;
+
+  .sobre {
+    padding: 50px 20px;
   }
 
-  .cursosContainer .cardCursos {
-    width: 450px;
-    height: 380px;
+  .sobre h2 {
+    margin: 0 0 1.5rem 0;
+    font-size: 2.2rem;
+  }
+
+  .sobre .sobreCurso {
+    max-width: 1020px;
+    font-size: 0.85rem;
+  }
+
+  .cursosContainer {
+    gap: 25px;
+  }
+
+  .cardCursos {
+    width: 320px;
+  }
+
+  .cardCursos .cardImage {
+    height: 180px;
+  }
+
+  .boxCard {
+    padding: 12px;
+    padding: 1.2rem;
   }
 
   .news .newsContent {
     padding: 20px;
   }
 
-  .news .cardLeft{
+  /* .news .cardLeft {
+>>>>>>> Stashed changes
     height: 67vh;
-  }
+  } */
 
   .listNews{
     padding: 12px 7px;
@@ -794,14 +955,14 @@
     height: 110px;
   }
 
-  .cardsWrapper .cardPessoas {
-    width: 28%;
-  }
-
 }
 
 /* MONITORES GRANDES */
 @media (min-width: 1366px) {
+
+  .heroContent{
+    height: 850px;
+  }
 
   .heroLeft h1 {
     font-size: 3.2rem;
@@ -815,53 +976,33 @@
     width: 45%;
   }
 
+  .cursosContainer{
+    height: 500px;
+  }
+
   .cursosContainer .cardCursos {
     width: 600px;
     height: 420px;
+  }
+
+  .news{
+    height: 900px;
   }
 
   .news .newsContent {
     padding: 90px;
   }
 
+  .teachers{
+    height: 45vh;
+  }
+
   .teacherCard {
     width: 130px;
     height: 130px;
   }
-}
-
-/* PARA TELAS MENORES */
-@media (max-width: 768px) {
-  .heroContent {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .heroRight {
-    margin-right: 0;
-    width: 70%;
-  }
-
-  .sobre .sobreCurso {
-    max-width: 100%;
-    padding: 0 20px;
-  }
-
-  .cursosContainer {
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-  }
-
-  .cardCursos {
-    width: 90%;
-    max-width: 400px;
-  }
 
   .portal{
-    max-width: 100%;
-    text-align: center;
+    height: 700px;
   }
 }
-
-

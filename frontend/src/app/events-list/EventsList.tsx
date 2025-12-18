@@ -11,6 +11,7 @@ interface Event {
   data: string;
   hora: string;
   local: string;
+  link: string;
 }
 
 const EventsList: React.FC = () => {
@@ -18,24 +19,73 @@ const EventsList: React.FC = () => {
     {
       id: 1,
       titulo: "CODA",
-      descricao:
-        "Evento que reuniu desenvolvedores e entusiastas para criar soluções inovadoras em tecnologia. Durante o encontro, equipes colaboraram em projetos que exploraram novas formas de aplicar a tecnologia em problemas do mundo real.",
+      descricao: "Evento que reuniu desenvolvedores e entusiastas para criar soluções inovadoras em tecnologia. Durante o encontro, equipes colaboraram em projetos que exploraram novas formas de aplicar a tecnologia em problemas do mundo real.",
       imagem: "/images/image.jpg",
       publico: "Interno (Acadêmico)",
       data: "2025-10-15",
       hora: "09:00",
       local: "Auditório Central - Campus I",
+      
+      link: "https://l1nk.dev/jornada-academica-ifsul-sapucaia",
     },
     {
       id: 2,
       titulo: "Evento",
+      descricao: "A Jornada Acadêmica Integrada ADS e TDS é um evento promovido no campus Sapucaia do Sul do IFSul e que abrange palestras, oficinas e minicursos destinados aos discentes dos cursos Técnico em Desenvolvimento de Sistemas e Tecnólogo em Análise e Desenvolvimento de Sistemas, bem como à comunidade acadêmica em geral.",
+      imagem: "/imagensIfsul/6.JPG",
+      publico: "Externo",
+      data: "2025-09-08",
+      hora: "14:00",
+      local: "Auditório - IFSul Campus Sapucaia do Sul",
+      link: "https://l1nk.dev/jornada-academica-ifsul-sapucaia",
+    },
+    {
+      id: 3,
+      titulo: "Integração ADS",
       descricao:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur viverra lacus non lectus fringilla, in maximus erat congue.",
-      imagem: "/images/image.jpg",
-      publico: "Interno (Acadêmico)",
-      data: "2025-10-15",
-      hora: "09:00",
-      local: "Auditório Central - Campus I",
+        "No dia 21 de agosto de 2025, aconteceu a integração do segundo semestre de 2025, reunindo estudantes e professores do curso de Análise e Desenvolvimento de Sistemas do campus Sapucaia do Sul.",
+      imagem: "/imagensIfsul/13.JPG",
+      publico: "Interno",
+      data: "2025-02-21",
+      hora: "19:00",
+      local: "IFSul Campus Sapucaia do Sul - Casa Lazer",
+      link: "https://l1nk.dev/confra-ads-ifsul",
+    },
+    {
+      id: 4,
+      titulo: "Visita Técnica SAP",
+      descricao:
+        "No dia 03 de abril de 2025, ocorreu a visita técnica dos alunos do IFSUL, dos cursos de TADS e TDS, do campus Sapucaia do Sul, à SAP, em São Leopoldo.",
+      imagem: "/imagensIfsul/16.jpg",
+      publico: "Interno",
+      data: "2025-02-21",
+      hora: "19:00",
+      local: "SAP Labs Latin America",
+      link: "https://acesse.one/visita-sap-ads-ifsul",
+    },
+    {
+      id: 5,
+      titulo: "Projeto de Extensão ADS | 2025/1",
+      descricao:
+        "Extensão: Disciplina do curso de Análise e Desenvolvimento de Sistemas realizou, no dia 24 de junho de 2025, um workshop voltado ao auxílio na criação de currículos para alunos do EJA. Confira as fotos no link.",
+      imagem: "/imagensIfsul/2.jpg",
+      publico: "Interno",
+      data: "2025-02-21",
+      hora: "19:00",
+      local: "IFSul Campus Sapucaia do Sul",
+      link: "https://l1nk.dev/projeto-extensao-ifsul",
+    },
+    {
+      id: 6,
+      titulo: "Disciplina Projeto de Sistemas Computacionais 2025/2",
+      descricao:
+        "Ao longo do semestre, os alunos da turma 3A participaram da disciplina Projeto de Sistemas Computacionais, na qual desenvolveram uma aplicação completa utilizando a metodologia ágil. O trabalho integrou conceitos de projeto de sistemas, programação orientada a objetos em Java e banco de dados, em um ambiente interdisciplinar que simula o ciclo de desenvolvimento de software em equipe. Confira alguns registros da turma ao longo do semestre.",
+      imagem: "/logos/Logo5.png",
+      publico: "Interno",
+      data: "2025-02-21",
+      hora: "19:00",
+      local: "IFSul Campus Sapucaia do Sul ",
+      link: "https://l1nk.dev/turma-3A",
     },
   ]);
 
@@ -47,6 +97,7 @@ const EventsList: React.FC = () => {
   const [data, setData] = useState("");
   const [hora, setHora] = useState("");
   const [local, setLocal] = useState("");
+  const [link, setLink] = useState("");
   const [imagemPreview, setImagemPreview] = useState<string | null>(null);
   const [imagemArquivo, setImagemArquivo] = useState<File | null>(null);
 
@@ -80,6 +131,7 @@ const EventsList: React.FC = () => {
       data,
       hora,
       local,
+      link,
       imagem: imagemPreview ?? "/images/image.jpg",
     };
 
@@ -114,6 +166,7 @@ const EventsList: React.FC = () => {
         {events.map((event) => (
           <div className={styles.eventcard} key={event.id}>
             <img src={event.imagem} alt={event.titulo} />
+
             <div className={styles.cardoverlay}>
               {/* REMOVIDO PUBLICO */}
               <h3>{event.titulo}</h3>

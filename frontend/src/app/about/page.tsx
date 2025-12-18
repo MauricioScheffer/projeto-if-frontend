@@ -2,12 +2,15 @@
 
 import { useState } from 'react';
 import styles from './page.module.css';
+import Image from "next/image";
+
 
 // --- CONFIGURAÇÃO DAS IMAGENS ---
-const heroImage = '/images/image.jpg';
 const projectImg1 = '/images/image.jpg';
 const projectImg2 = '/images/image.jpg';
 const projectImg3 = '/images/image.jpg';
+const heroImage = "/imagensIfsul/_MG_9518.jpg"; 
+const tdsImage = "/imagensIfsul/IMG_1659.jpg";  
 
 // --- CONFIGURAÇÃO DO CONTEÚDO DOS MODAIS ---
 const conteudoModais: Record<string, { titulo: string; links: string[] }[]> = {
@@ -118,11 +121,30 @@ export default function HomePage() {
               <p>O curso de Análise e Desenvolvimento de Sistemas do IFSul prepara profissionais para desenvolver e manter softwares, com foco em programação, bancos de dados e soluções tecnológicas.</p>
             </div>
             <div className={styles.heroImageWrapper}>
-              <img src={heroImage} alt="Imagem principal" /> 
+            
+
+          {/* --- 2. Seção de Botões --- */}
+              <Image src="/imagensIfsul/IMG2803.jpg" width={350}
+                height={220} className={styles.imgHero} alt="Turma TADS" /> 
             </div>
           </section>
 
-          {/* --- 2. Seção de Botões --- */}
+          {/* --- 2. Seção TDS --- */}
+          <section className={styles.tdsSection}>
+            <div className={styles.heroContent}>
+                <h2>Técnico em Desenvolvimento de Sistemas</h2>
+                <p>O curso Técnico em Desenvolvimento de Sistemas do IFSul capacita estudantes do ensino médio para criar e manter sistemas computacionais...</p>
+                {/* ADICIONE O BOTÃO AQUI */}
+                <a href="https://intranet.ifsul.edu.br/catalogo/curso/328" target="_blank" className={styles.learnMoreBtn}>
+                  Saiba mais
+                </a>
+            </div>
+            <div className={styles.heroImageWrapper}>
+                <Image src="/imagensIfsul/IMG_0561.jpg" width={350}
+                height={220} className={styles.imgHero} alt="Turma TDS" />
+            </div>
+</section>
+
           <section className={styles.quickNav}>
             <div className={styles.buttonGrid}>
               <button className={styles.navButton} onClick={() => openModal('Inscrições & Admissão')}>Inscrições & Admissão</button>

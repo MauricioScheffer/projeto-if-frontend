@@ -34,7 +34,7 @@
     display: block;
 }
 
-.heroImageWrapper img {
+.heroImageWrapper .imgHero {
     border-radius: 12px;
     width: 100%;
     height: 200px;
@@ -112,9 +112,6 @@
     max-width: 800px;      
 }
 
-
-
-/* --- Filtros (Dentro do Envelope) --- */
 .filters {
     display: flex;
     gap: 1rem;
