@@ -139,6 +139,75 @@
   margin-left: 6px; /* reduzido para aproximar do botão */
 }
 
+.avatarContainer {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.avatarMenu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: #ffffff;
+  color: #0f172a;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+  padding: 8px;
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 2000;
+}
+
+.avatarMenuItem, .avatarMenuItemButton {
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  color: inherit;
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.avatarMenuItem:hover, .avatarMenuItemButton:hover {
+  background: rgba(22,66,94,0.06);
+}
+
+.mobileLogout {
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.08);
+} 
+.logoutButton {
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 150ms ease, background 150ms ease, box-shadow 200ms ease;
+}
+
+.logoutButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  background: rgba(255,255,255,0.06);
+}
+
+.mobileLogout {
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.08);
+}
 .profileAccess {
   display: inline-flex;
   align-items: center;

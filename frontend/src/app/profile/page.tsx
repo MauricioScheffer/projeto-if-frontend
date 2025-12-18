@@ -7,7 +7,8 @@ import React, {
   useEffect,
   useRef,
 } from "react";
-import styles from "./page.module.css";
+import { useRouter } from "next/navigation";
+import styles from "./page.module.css"; 
 
 interface UserData {
   nomeCompleto: string;
@@ -33,8 +34,14 @@ export default function ProfilePage() {
 
   const [preview, setPreview] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const router = useRouter();
 
-  // 🔹 CARREGAR DADOS AO ENTRAR NA TELA
+  function handleLogout() {
+    localStorage.removeItem("token");
+    window.dispatchEvent(new Event("authChanged"));
+    router.push("/");
+  }
+
   useEffect(() => {
     const savedProfile = localStorage.getItem(PROFILE_KEY);
     const savedImage = localStorage.getItem(IMAGE_KEY);
@@ -181,7 +188,11 @@ export default function ProfilePage() {
           </div>
 
           <button className={styles.button} type="submit">
-            Concluir
+            Salvar
+          </button>
+
+          <button type="button" className={styles.logoutBtn} onClick={handleLogout}>
+            Desconectar
           </button>
         </form>
       </div>
