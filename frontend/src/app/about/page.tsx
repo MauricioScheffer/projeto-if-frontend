@@ -2,10 +2,15 @@
 
 import { useState } from 'react';
 import styles from './page.module.css';
+import Image from "next/image";
+
 
 // --- CONFIGURAÇÃO DAS IMAGENS ---
-const heroImage = '/imagensIfsul/_MG_9518.jpg'; 
-const tdsImage = '/imagensIfsul/IMG_1659.jpg';  
+const projectImg1 = '/images/image.jpg';
+const projectImg2 = '/images/image.jpg';
+const projectImg3 = '/images/image.jpg';
+const heroImage = "/imagensIfsul/_MG_9518.jpg"; 
+const tdsImage = "/imagensIfsul/IMG_1659.jpg";  
 
 
 type LinkItem = { nome: string; url: string };
@@ -171,7 +176,11 @@ export default function HomePage() {
               </a>
             </div>
             <div className={styles.heroImageWrapper}>
-              <img src={heroImage} alt="Turma TADS" /> 
+            
+
+          {/* --- 2. Seção de Botões --- */}
+              <Image src="/imagensIfsul/IMG2803.jpg" width={350}
+                height={220} className={styles.imgHero} alt="Turma TADS" /> 
             </div>
           </section>
 
@@ -186,11 +195,11 @@ export default function HomePage() {
                 </a>
             </div>
             <div className={styles.heroImageWrapper}>
-                <img src={tdsImage} alt="Turma TDS" />
+                <Image src="/imagensIfsul/IMG_0561.jpg" width={350}
+                height={220} className={styles.imgHero} alt="Turma TDS" />
             </div>
 </section>
 
-          {/* --- 3. Seção de Botões --- */}
           <section className={styles.quickNav}>
             <div className={styles.buttonGrid}>
               <button className={styles.navButton} onClick={() => openModal('Inscrições & Admissão')}>Inscrições & Admissão</button>

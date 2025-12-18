@@ -139,12 +139,13 @@ export default function InstitucionalPage() {
 
             {/* Container das Imagens */}
             <div className={styles.infraGallery} ref={carouselRef}>
-              <img src="/imagensIfsul/IMG_1642.jpg" alt="Infra 1" />
-              <img src="/imagensIfsul/IMG_1504.jpg" alt="Infra 2" />
-              <img src="/imagensIfsul/IMG_1570.jpg" alt="Infra 3" />
-              <img src="/images/image.jpg" alt="Infra 4" />
-              <img src="/images/image.jpg" alt="Infra 5" />
-              <img src="/images/image.jpg" alt="Infra 6" />
+
+              <Image src="/imagensIfsul/11.JPG" width={350} height={220} className={styles.imgHero} alt="Infra 1" />
+              <Image src="/imagensIfsul/8.JPG" width={350} height={220} className={styles.imgHero} alt="Infra 2" />
+              <Image src="/imagensIfsul/15.jpg" width={350} height={220} className={styles.imgHero}  alt="Infra 3" />
+              <Image src="/imagensIfsul/4.JPG" width={350} height={220} className={styles.imgHero} alt="Infra 4" />
+              <Image src="/imagensIfsul/16.jpg"  width={350} height={220} className={styles.imgHero} alt="Infra 5" />
+              <Image src="/imagensIfsul/IMG2803.JPG" width={350} height={220} className={styles.imgHero}  alt="Infra 6" />
             </div>
 
             <button className={`${styles.navBtn} ${styles.nextBtn}`} onClick={scrollRight}>

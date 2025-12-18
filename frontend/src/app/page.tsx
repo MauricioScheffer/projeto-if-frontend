@@ -38,7 +38,6 @@ export default function Home() {
     };
     // observa os já existentes
     observeAll();
-
     // observa se novos nós com .reveal aparecem (útil em apps SPA)
     const mo = new MutationObserver((mutations) => {
       observeAll();
@@ -119,8 +118,9 @@ export default function Home() {
             <Image
               src="/icons/fotoPerfilPadrão.webp"
               alt="Imagem Institucional"
-              width={490}
-              height={370}
+              // width={490}
+              // height={370}
+              fill
               className={styles.heroImage}
               priority
             />
@@ -128,6 +128,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+
       {/* bg-primary */}
       {/* SOBRE OS CURSOS */}
       <section className={`${styles.sobre} `}>
@@ -145,14 +147,16 @@ export default function Home() {
         <div className={styles.cursosContainer}>
           {/* CARD 1 - TDS */}
           <div className={styles.cardCursos}>
-            <div className={styles.tag}>TDS</div>
-            <Image
-              src="/images/image.jpg"
-              alt="Curso Técnico em Desenvolvimento de Sistemas"
-              width={350}
-              height={220}
-              className={styles.cardImage}
-            />
+            <div className={styles.imageWrapperCursos}>
+              <div className={styles.tag}>TDS</div>
+              <Image
+                src="/imagensIfsul/15.jpg"
+                alt="Curso Técnico em Desenvolvimento de Sistemas"
+                width={350}
+                height={220}
+                className={styles.cardImage}
+              />
+            </div>
             <div className={styles.boxCard}>
               <h3>Técnico em Desenvolvimento de Sistemas</h3>
               <p>
@@ -167,14 +171,17 @@ export default function Home() {
 
           {/* CARD 2 - TADS */}
           <div className={styles.cardCursos}>
-            <div className={styles.tag}>TADS</div>
-            <Image
-              src="/images/image.jpg"
-              alt="Curso de Análise e Desenvolvimento de Sistemas"
-              width={350}
-              height={220}
-              className={styles.cardImage}
-            />
+            <div className={styles.imageWrapperCursos}>
+              <div className={styles.tag}>TADS</div>
+              <Image
+                src="/imagensIfsul/2.jpg"
+
+                alt="Curso de Análise e Desenvolvimento de Sistemas"
+                width={350}
+                height={220}
+                className={styles.cardImage}
+              />
+            </div>
             <div className={styles.boxCard}>
               <h3>Tecnólogo em Análise e Desenvolvimento de Sistemas</h3>
               <p>
