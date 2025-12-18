@@ -138,12 +138,37 @@ export default function HomePage() {
     <>
       <div className={styles.pageWrapper}>
         <main className={styles.container}>
+          {/* --- 0. Seção de Chegada (Landing) --- */}
+          <section className={styles.welcomeSection}>
+            <div className={styles.welcomeBadge}>
+              <span className={styles.badgeDot}></span>
+              Instituto Federal Sul-rio-grandense
+            </div>
+            
+            <h1 className={styles.welcomeTitle}>
+              Educação pública <br /> 
+              <span>e de exelência.</span>
+            </h1>
+            
+            <p className={styles.welcomeSubtitle}>
+              A área de tecnologia do IFSul reúne cursos que promovem ensino de excelência, formação cidadã e qualificação profissional. Com uma proposta pedagógica atualizada e foco na prática, os cursos capacitam estudantes para atuar de forma ética, competente e inovadora no mercado de tecnologia.
+            </p>
 
-          {/* --- 1. Seção Hero TADS --- */}
+            <div className={styles.scrollIndicator}>
+              <span>Explorar cursos</span>
+              <div className={styles.arrowIcon}>↓</div>
+            </div>
+          </section>
+
+         {/* --- 1. Seção Hero TADS --- */}
           <section className={styles.hero}>
             <div className={styles.heroContent}>
               <h1>Tecnólogo em Análise e Desenvolvimento de Sistemas</h1>
               <p>O curso de Análise e Desenvolvimento de Sistemas do IFSul prepara profissionais para desenvolver e manter softwares, com foco em programação, bancos de dados e soluções tecnológicas.</p>
+              {/* ADICIONE O BOTÃO AQUI */}
+              <a href="https://intranet.ifsul.edu.br/catalogo/curso/331" target="_blank" className={styles.learnMoreBtn}>
+                Saiba mais
+              </a>
             </div>
             <div className={styles.heroImageWrapper}>
               <img src={heroImage} alt="Turma TADS" /> 
@@ -154,12 +179,16 @@ export default function HomePage() {
           <section className={styles.tdsSection}>
             <div className={styles.heroContent}>
                 <h2>Técnico em Desenvolvimento de Sistemas</h2>
-                <p>O curso Técnico em Desenvolvimento de Sistemas do IFSul capacita estudantes do ensino médio para criar e manter sistemas computacionais, desenvolvendo habilidades em lógica de programação, desenvolvimento de aplicações, bancos de dados e uso de tecnologias atuais.</p>
+                <p>O curso Técnico em Desenvolvimento de Sistemas do IFSul capacita estudantes do ensino médio para criar e manter sistemas computacionais...</p>
+                {/* ADICIONE O BOTÃO AQUI */}
+                <a href="https://intranet.ifsul.edu.br/catalogo/curso/328" target="_blank" className={styles.learnMoreBtn}>
+                  Saiba mais
+                </a>
             </div>
             <div className={styles.heroImageWrapper}>
                 <img src={tdsImage} alt="Turma TDS" />
             </div>
-          </section>
+</section>
 
           {/* --- 3. Seção de Botões --- */}
           <section className={styles.quickNav}>
@@ -173,6 +202,68 @@ export default function HomePage() {
             </div>
           </section>
 
+          {/* --- Seção de Números e Depoimentos --- */}
+        <section className={styles.statsSection}>
+          <div className={styles.statsGrid}>
+            <div className={styles.statItem}>
+              <h3>500+</h3>
+              <p>Alunos formados</p>
+            </div>
+            <div className={styles.statItem}>
+              <h3>15+</h3>
+              <p>Anos de experiência</p>
+            </div>
+            <div className={styles.statItem}>
+              <h3>95%</h3>
+              <p>Empregabilidade</p>
+            </div>
+            <div className={styles.statItem}>
+              <h3>20+</h3>
+              <p>Professores especializados</p>
+            </div>
+          </div>
+
+          <div className={styles.testimonialsHeader}>
+            <div className={styles.welcomeBadge}>
+              <span className={styles.badgeDot}></span>
+              Depoimentos
+            </div>
+            <h2 className={styles.sectionTitle}>O que nossos <span>ex-alunos</span> dizem</h2>
+            <p className={styles.sectionSubtitle}>Histórias de sucesso de quem já passou pelos nossos cursos.</p>
+          </div>
+
+          <div className={styles.testimonialsGrid}>
+            <div className={styles.testimonialCard}>
+              <p>"O curso me deu toda a base necessária para entrar no mercado de trabalho. Hoje trabalho em uma empresa incrível graças à formação que recebi."</p>
+              <div className={styles.testimonialAuthor}>
+                <div>
+                  <h4>Lucas Oliveira</h4>
+                  <span>Desenvolvedor Full Stack • Tech Solutions</span>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.testimonialCard}>
+              <p>"Os professores são excepcionais e sempre dispostos a ajudar. A infraestrutura dos laboratórios é de primeira qualidade."</p>
+              <div className={styles.testimonialAuthor}>
+                <div>
+                  <h4>Maria Santos</h4>
+                  <span>Analista de Sistemas • Banco Digital</span>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.testimonialCard}>
+              <p>"A metodologia de ensino focada em projetos práticos fez toda a diferença na minha carreira. Recomendo demais!"</p>
+              <div className={styles.testimonialAuthor}>
+                <div>
+                  <h4>Pedro Henrique</h4>
+                  <span>Tech Lead • Startup Hub</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
         </main>
       </div>
 

@@ -12,6 +12,116 @@
     margin: 0 auto;
 }
 
+/* --- 0. Seção de Chegada --- */
+.welcomeSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8rem 0 6rem 0; 
+    min-height: 80vh; 
+}
+
+.welcomeBadge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    color: var(--light-blue);
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+.welcomeTitle {
+    font-size: 4rem;
+    line-height: 1.1;
+    font-weight: 800;
+    max-width: 900px;
+    margin-bottom: 1.5rem;
+}
+
+.welcomeTitle span {
+    color: var(--light-blue);
+    background: linear-gradient(90deg, #fff, var(--light-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.welcomeSubtitle {
+    font-size: 1.2rem;
+    max-width: 650px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 3rem;
+}
+
+.scrollIndicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: var(--light-blue);
+    font-size: 0.9rem;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.scrollIndicator:hover {
+    opacity: 1;
+}
+
+.arrowIcon {
+    font-size: 1.5rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-5px);}
+    60% {transform: translateY(-3px);}
+}
+
+@media (max-width: 768px) {
+    .welcomeTitle {
+        font-size: 2.5rem;
+    }
+}
+
+
+/* --- Botoes tds e tads saiba mais --- */
+.learnMoreBtn {
+    display: inline-block;
+    margin-top: 1.5rem;
+    background-color: transparent;
+    color: #98C1C3;
+    border: 1.5px solid #98C1C3;
+    padding: 0.6rem 2.5rem;
+    border-radius: 9999px;  
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: none; 
+    
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: fit-content;
+}
+
+.learnMoreBtn:hover {
+    background-color: #98C1C3;
+    color: var(--dark-blue); 
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(152, 193, 195, 0.2);
+}
+
+
 /* --- 1. Seção Hero (TADS) --- */
 .hero {
     display: flex;
@@ -46,9 +156,8 @@
     flex-direction: row-reverse; 
     align-items: center;
     gap: 3rem;
-    padding: 4rem 0;
+    padding: 6rem 0; 
     margin-bottom: 0; 
-    border-top: 1px solid rgba(255,255,255, 0.1); 
 }
 
 
@@ -104,6 +213,8 @@
 .navButton:hover::after {
     width: 100%;
 }
+
+
 
 
 /* --- Modal Centralizado --- */
@@ -209,6 +320,112 @@
 
 .modalClose:hover {
     color: var(--light-blue); 
+}
+
+.statsSection {
+    padding: 6rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Grid de Números */
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    text-align: center;
+    margin-bottom: 8rem;
+}
+
+.statItem h3 {
+    font-size: 2.5rem;
+    color: var(--light-blue);
+    margin-bottom: 0.5rem;
+}
+
+.statItem p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Cabeçalho Depoimentos */
+.testimonialsHeader {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 4rem;
+}
+
+.sectionTitle {
+    font-size: 2.5rem;
+    margin: 1.5rem 0 1rem;
+}
+
+.sectionTitle span {
+    color: var(--light-blue);
+}
+
+.sectionSubtitle {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Grid de Depoimentos */
+.testimonialsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.testimonialCard {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.testimonialCard p {
+    font-style: italic;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 2rem;
+}
+
+.testimonialAuthor {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.authorAvatar {
+    width: 45px;
+    height: 45px;
+    background-color: #0b3d3d;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--light-blue);
+    font-size: 0.8rem;
+}
+
+.testimonialAuthor h4 {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.testimonialAuthor span {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    .statsGrid { grid-template-columns: repeat(2, 1fr); }
+    .testimonialsGrid { grid-template-columns: 1fr; }
 }
 
 
