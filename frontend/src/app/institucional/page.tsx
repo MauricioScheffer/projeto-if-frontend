@@ -108,7 +108,7 @@ export default function InstitucionalPage() {
                     </div>
                   </div>
                 <br></br><br></br>
-                  {/* Bloco de EJA (Agora embaixo da Pós-graduação na mesma coluna) */}
+                  {/* Bloco de EJA */}
                   <div>
                     <h4>Educação de Jovens e Adultos</h4>
                     <div className={styles.courseItem}>
