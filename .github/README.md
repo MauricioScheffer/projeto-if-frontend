@@ -123,6 +123,20 @@ Projeto desenvolvido pelos alunos da **Turma 3A** no semestre **2025/2**
 Curso de **Análise e Desenvolvimento de Sistemas**  
 **IFSul – Campus Sapucaia do Sul**
 
+Andrew Mattheüs Alves da Silveira
+Arthur Hoffelder
+Bianca Aparecida Ramos Cabral
+Bianca Prestes Leite
+Cauane dos Santos Inacio
+Denis Jesus Oliveira Silva de Freitas
+Fernanda Walther Fernandes
+Guilherme Silva Fagundes
+Ismael Costa Machado
+João Andrey Antochevis Oliveira
+Júlio Cesar da Costa Nascimento
+Mauricio Scheffer Silveira
+Rafael da Silva Steffen
+
 ---
 
 ## Licença
