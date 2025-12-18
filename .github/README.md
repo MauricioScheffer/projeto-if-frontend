@@ -6,7 +6,7 @@ O projeto tem como objetivo aplicar, de forma prática, os conhecimentos adquiri
 
 ---
 
-## 🧠 Objetivo do Projeto
+## Objetivo do Projeto
 
 Desenvolver um sistema completo que envolva:
 - Arquitetura cliente-servidor
@@ -16,7 +16,7 @@ Desenvolver um sistema completo que envolva:
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 ### Frontend
 - **React**
