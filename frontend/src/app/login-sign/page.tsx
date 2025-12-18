@@ -58,6 +58,7 @@ export default function LoginRegister() {
       const { data } = await login(loginData);
 
       localStorage.setItem("token", data.token);
+      window.dispatchEvent(new Event("authChanged"));
 
       notyf.success("Login realizado com sucesso!");
       router.push("/");
