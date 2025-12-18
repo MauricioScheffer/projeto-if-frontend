@@ -29,7 +29,7 @@ export default function InstitucionalPage() {
         {/* --- CABEÇALHO --- */}
         <header className={styles.header}>
           <div className={styles.logoContainer}>
-             <img src="/images/logo-ifsul.png" alt="IFSul Logo" className={styles.logo} />
+             <img src="/images/logoIFbranca.png" alt="IFSul Logo" className={styles.logo} />
           </div>
           <h1>IFSul – Câmpus Sapucaia do Sul</h1>
           <p className={styles.subtitle}>Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Sul</p>
@@ -45,7 +45,7 @@ export default function InstitucionalPage() {
             </a>
           </div>
           <div className={styles.infoImage}>
-            <img src="/images/image.jpg" alt="Sala de aula" />
+            <img src="/imagensIfsul/ifsul-parede.jpg" alt="Sala de aula" />
           </div>
         </section>
 
@@ -56,7 +56,7 @@ export default function InstitucionalPage() {
             <p>O câmpus do IFSul exerce um papel significativo na comunidade ao oferecer ensino público gratuito e formar profissionais capacitados para atender às demandas locais. Além das aulas, o câmpus promove projetos de pesquisa, extensão e ações comunitárias que aproximam alunos, moradores e empresas, gerando soluções práticas para problemas reais da região.</p>
           </div>
           <div className={styles.infoImage}>
-            <img src="/images/image.jpg" alt="Corredor da escola" />
+            <img src="/imagensIfsul/IMG_0561.jpg" alt="Corredor da escola" />
           </div>
         </section>
 
@@ -73,11 +73,12 @@ export default function InstitucionalPage() {
                   <div className={styles.courseItem}>
                     <strong>Manhã:</strong>
                     <p>Desenvolvimento de sistemas (Ensino Médio integrado)</p>
+                    <p>Eventos (Ensino Médio integrado)</p>
                   </div>
                   <div className={styles.courseItem}>
                     <strong>Tarde:</strong>
                     <p>Plástico (Ensino Médio integrado)</p>
-                    <p>Eventos (Ensino Médio integrado)</p>
+                    <p>Mecânica (Ensino Médio integrado)</p>
                   </div>
                 </div>
 
@@ -107,12 +108,12 @@ export default function InstitucionalPage() {
                     </div>
                   </div>
                 <br></br><br></br>
-                  {/* Bloco de EJA (Agora embaixo da Pós-graduação na mesma coluna) */}
+                  {/* Bloco de EJA */}
                   <div>
                     <h4>Educação de Jovens e Adultos</h4>
                     <div className={styles.courseItem}>
                       <strong>Noite:</strong>
-                      <p>Administração (EJA - Ensino Médio integrado)</p>
+                      <p>Administração (PROEJA - Ensino Médio integrado)</p>
                     </div>
                   </div>
 

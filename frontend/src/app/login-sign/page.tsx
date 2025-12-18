@@ -24,6 +24,10 @@ export default function LoginRegister() {
     type: "",
   });
 
+  // estados para controlar visibilidade da senha
+  const [showPasswordLogin, setShowPasswordLogin] = useState(false);
+  const [showPasswordRegister, setShowPasswordRegister] = useState(false);
+
   const router = useRouter();
   const notyf = new Notyf();
 
@@ -40,78 +44,78 @@ export default function LoginRegister() {
     );
   };
 
-const doLogin = async (event: FormEvent<HTMLButtonElement>) => {
-  event.preventDefault();
+  const doLogin = async (event: FormEvent<HTMLButtonElement>) => {
+    event.preventDefault();
 
-  if (!isLoginValid()) {
-    notyf.error("Preencha e-mail e senha.");
-    return;
-  }
+    if (!isLoginValid()) {
+      notyf.error("Preencha e-mail e senha.");
+      return;
+    }
 
-  setIsLoading(true);
+    setIsLoading(true);
 
-  try {
-    const { data } = await login(loginData);
+    try {
+      const { data } = await login(loginData);
 
-    localStorage.setItem("token", data.token);
+      localStorage.setItem("token", data.token);
+      window.dispatchEvent(new Event("authChanged"));
 
-    notyf.success("Login realizado com sucesso!");
-    router.push("/");
-  } catch (error: any) {
-    notyf.error(
-      error?.response?.data?.message ||
+      notyf.success("Login realizado com sucesso!");
+      router.push("/");
+    } catch (error: any) {
+      notyf.error(
+        error?.response?.data?.message ||
         "Erro ao realizar login. Verifique suas credenciais."
-    );
-  } finally {
-    setIsLoading(false);
-  }
-};
+      );
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const doRegister = async (event: FormEvent<HTMLButtonElement>) => {
-  event.preventDefault();
+    event.preventDefault();
 
-  if (!isRegisterValid()) {
-    notyf.error("Preencha todos os campos.");
-    return;
-  }
+    if (!isRegisterValid()) {
+      notyf.error("Preencha todos os campos.");
+      return;
+    }
 
-  setIsLoading(true);
+    setIsLoading(true);
 
-  try {
-    const { data } = await register(registerData);
+    try {
+      const { data } = await register(registerData);
 
-    // 🔹 salva dados vindos do backend
-    localStorage.setItem(
-      "user_profile",
-      JSON.stringify({
-        nomeCompleto: data.name,
-        email: data.email,
-        ocupacao: data.type,
-        linkedin: "",
-        github: "",
-        sobreMim: "",
-      })
-    );
+      localStorage.setItem(
+        "user_profile",
+        JSON.stringify({
+          nomeCompleto: data.name,
+          email: data.email,
+          ocupacao: data.type,
+          linkedin: "",
+          github: "",
+          sobreMim: "",
+        })
+      );
 
-    notyf.success("Cadastro realizado com sucesso!");
+      notyf.success("Cadastro realizado com sucesso!");
 
-    setRegisterData({
-      name: "",
-      email: "",
-      password: "",
-      type: "",
-    });
+      setRegisterData({
+        name: "",
+        email: "",
+        password: "",
+        type: "",
+      });
 
-    setIsActive(false);
-    setShowLogin(true);
-  } catch (error: any) {
-    notyf.error(
-      error?.response?.data?.message || "Erro ao realizar cadastro."
-    );
-  } finally {
-    setIsLoading(false);
-  }
-};
+      setIsActive(false);
+      setShowLogin(true);
+    } catch (error: any) {
+      notyf.error(
+        error?.response?.data?.message || "Erro ao realizar cadastro."
+      );
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className={styles.loginPage}>
@@ -142,7 +146,7 @@ const doLogin = async (event: FormEvent<HTMLButtonElement>) => {
 
               <div className={styles.inputBox}>
                 <input
-                  type="password"
+                  type={showPasswordLogin ? "text" : "password"}
                   placeholder="Senha"
                   value={loginData.password}
                   onChange={(e) =>
@@ -150,13 +154,27 @@ const doLogin = async (event: FormEvent<HTMLButtonElement>) => {
                   }
                   required
                 />
-                <img
-                  className={styles.icon}
-                  src="/icons/iconPassWord.png"
-                  alt="Icon PassWord"
-                />
-              </div>
 
+                <div className={styles.iconGroup}>
+                  <img
+                    className={styles.icon}
+                    src={
+                      showPasswordLogin
+                        ? "/icons/iconEyeOpen.svg"
+                        : "/icons/iconEyeClosed.svg"
+                    }
+                    alt="Mostrar/Ocultar senha"
+                    onClick={() => setShowPasswordLogin(!showPasswordLogin)}
+                    style={{ cursor: "pointer" }}
+                  />
+
+                  <img
+                    className={styles.icon}
+                    src="/icons/iconPassWord.png"
+                    alt="Icon Password"
+                  />
+                </div>
+              </div>
               <div className={styles.forgotLink}>
                 <a href="#">Esqueceu a sua senha?</a>
               </div>
@@ -215,7 +233,7 @@ const doLogin = async (event: FormEvent<HTMLButtonElement>) => {
 
               <div className={styles.inputBox}>
                 <input
-                  type="password"
+                  type={showPasswordRegister ? "text" : "password"}
                   placeholder="Senha"
                   value={registerData.password}
                   onChange={(e) =>
@@ -226,11 +244,28 @@ const doLogin = async (event: FormEvent<HTMLButtonElement>) => {
                   }
                   required
                 />
-                <img
-                  className={styles.icon}
-                  src="/icons/iconPassWord.png"
-                  alt="Icon PassWord"
-                />
+
+                <div className={styles.iconGroup}>
+                  <img
+                    className={styles.icon}
+                    src={
+                      showPasswordRegister
+                        ? "/icons/iconEyeOpen.svg"
+                        : "/icons/iconEyeClosed.svg"
+                    }
+                    alt="Mostrar/Ocultar senha"
+                    onClick={() =>
+                      setShowPasswordRegister(!showPasswordRegister)
+                    }
+                    style={{ cursor: "pointer" }}
+                  />
+
+                  <img
+                    className={styles.icon}
+                    src="/icons/iconPassWord.png"
+                    alt="Icon Password"
+                  />
+                </div>
               </div>
 
               <div className={styles.inputBox}>

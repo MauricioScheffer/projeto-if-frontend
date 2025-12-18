@@ -5,6 +5,9 @@
   padding: 40px;
   text-align: center;
   color: white;
+  background-image: url(/icons/fundo.png);
+  background-size: 150%;
+  animation: gradient 50s ease-in-out infinite;
 }
 
 .title {
@@ -59,9 +62,10 @@
   font-size: 14px;
   margin: 10px 0;
   opacity: 0.85;
+  text-align: justify;
+  text-justify: inter-word; 
 }
 
-/* Links */
 .linksWrapper {
   display: flex;
   justify-content: center;
@@ -76,4 +80,10 @@
 .icon:hover {
   transform: scale(1.12);
   opacity: 0.7;
+}
+
+@keyframes gradient {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
 }

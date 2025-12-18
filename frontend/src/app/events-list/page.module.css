@@ -5,6 +5,9 @@
   font-family: "Montserrat", sans-serif;
   min-height: 100vh;
   padding: 50px 80px;
+  background-image: url(/icons/fundo.png);
+  background-size: 150%;
+  animation: gradient 50s ease-in-out infinite;
 }
 
 .eventsContainer h2 {
@@ -377,4 +380,10 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes gradient {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
 }

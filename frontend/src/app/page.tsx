@@ -51,15 +51,42 @@ export default function Home() {
   }, []);
 
   const professores = [
-    "/images/image.jpg",
-    "/images/image.jpg",
-    "/images/image.jpg",
-    "/images/image.jpg",
-    "/images/image.jpg",
-    "/images/image.jpg",
-    "/images/image.jpg",
-    "/images/image.jpg",
-    "/images/image.jpg",
+    {
+      nome: "Rodrigo Remor",
+      foto: "/images/professores/remor.PNG",
+    },
+    {
+      nome: "Alex Orozco",
+      foto: "/images/professores/orozco.PNG",
+    },
+    {
+      nome: "Renata Porcher",
+      foto: "/images/professores/renata.png",
+    },
+    {
+      nome: "Fernanda Guedes",
+      foto: "/images/professores/Fernanda.png",
+    },
+    {
+      nome: "Adriano Fiad",
+      foto: "/images/professores/adriano.png",
+    },
+    {
+      nome: "Lourenço de Oliveira",
+      foto: "/images/professores/lourenço.png"
+    },
+    {
+      nome: "Mauricio Escobar",
+      foto: "/images/professores/mauricioEscobar.png",
+    },
+    {
+      nome: "João Tury",
+      foto: "/images/professores/tury.png",
+    },
+    {
+      nome: "Ismael Silva",
+      foto: "/images/professores/ismael.png",
+    },
   ];
 
   const [news, setNews] = useState<News[]>([]);
@@ -189,25 +216,24 @@ export default function Home() {
         <h1>Notícias e Eventos</h1>
         <div className={styles.newsContent}>
           <div className={styles.cardLeft}>
-
             <div className={styles.imageWrapper}>
-              <Image
-                src="/images/image.jpg"
-                alt="Notícias e Eventos"
-                fill
-                className={styles.ImageNews}
-              />
+            <Image
+              src="/images/image.jpg"
+              alt="Notícias e Eventos"
+              fill
+              className={styles.ImageNews}
+            />
             </div>
 
             <div className={styles.textContent}>
-              <p className={styles.descricao}>
-                O IFSUL promove anualmente diversos eventos voltados à área de
-                tecnologia, como feiras de inovação, semanas acadêmicas e
-                competições de programação. Nossos estudantes participam de
-                projetos de extensão, maratonas de desenvolvimento e palestras
-                ministradas por profissionais da indústria, fortalecendo a
-                integração entre ensino e mercado de trabalho.
-              </p>
+            <p className={styles.descricao}>
+              O IFSUL promove anualmente diversos eventos voltados à área de
+              tecnologia, como feiras de inovação, semanas acadêmicas e
+              competições de programação. Nossos estudantes participam de
+              projetos de extensão, maratonas de desenvolvimento e palestras
+              ministradas por profissionais da indústria, fortalecendo a
+              integração entre ensino e mercado de trabalho.
+            </p>
             </div>
           </div>
 
@@ -238,12 +264,15 @@ export default function Home() {
               ))} */}
               {news.map((event, i) => (
                 <div key={i} className={styles.listNews}>
-                  <div>
+                  <div className={styles.conteudo}>
                     <h3>{event.titulo}</h3>
                     <p>{event.resumo}</p>
-                    <span className={styles.dataEvento}>{event.data}</span>
                   </div>
-                  <span className={styles.seta}>→</span>
+
+                  <div className={styles.infoDireita}>
+                    <span className={styles.dataEvento}>{event.data}</span>
+                    <span className={styles.seta}>→</span>
+                  </div>
                 </div>
               ))}
             </div>
@@ -288,7 +317,7 @@ export default function Home() {
                           className={`carousel-item ${i === 0 ? "active" : ""}`}
                         >
                           <div className="d-flex justify-content-center gap-4 flex-wrap">
-                            {chunk.map((f, idx) => {
+                            {chunk.map((professor, idx) => {
                               const realIndex = i + idx;
                               return (
                                 <div
@@ -296,8 +325,8 @@ export default function Home() {
                                   className="text-center px-2"
                                 >
                                   <img
-                                    src={f}
-                                    alt={`Professor ${realIndex + 1}`}
+                                    src={professor.foto}
+                                    alt={professor.nome}
                                     className="rounded-circle shadow"
                                     width="150"
                                     height="150"
@@ -308,7 +337,7 @@ export default function Home() {
                                     }}
                                   />
                                   <p className="mt-3 fw-semibold">
-                                    Professor {realIndex + 1}
+                                    {professor.nome}
                                   </p>
                                 </div>
                               );
@@ -359,7 +388,7 @@ export default function Home() {
       {/* sobre o portal */}
       <section className={styles.portal}>
         <div className={styles.containerPortal}>
-          <h1>Sobre o Portal</h1>
+          <h2>Sobre o Portal</h2>
           <p>
             Este portal foi desenvolvido pelos estudantes dos cursos Técnico em
             Informática e Tecnólogo em Análise e Desenvolvimento de Sistemas do
@@ -454,7 +483,7 @@ export default function Home() {
                   <a href={pessoa.linkedin}>
                     <Image
                       className={styles.iconsP}
-                      src="/images/linkedin.png"
+                      src="/images/linkedin.svg"
                       alt="Linkedin"
                       width={28}
                       height={28}
@@ -464,7 +493,7 @@ export default function Home() {
                   <a href={pessoa.github}>
                     <Image
                       className={styles.iconsP}
-                      src="/images/github.png"
+                      src="/images/github.svg"
                       alt="Linkedin"
                       width={28}
                       height={28}
