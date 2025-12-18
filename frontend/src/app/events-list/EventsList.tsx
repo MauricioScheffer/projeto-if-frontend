@@ -11,31 +11,34 @@ interface Event {
   data: string;
   hora: string;
   local: string;
+  link: string;
 }
 
 const EventsList: React.FC = () => {
   const [events, setEvents] = useState<Event[]>([
     {
       id: 1,
-      titulo: "CODA",
+      titulo: "IF CODE",
       descricao:
-        "Evento que reuniu desenvolvedores e entusiastas para criar soluções inovadoras em tecnologia.",
+        "O IFCode é um evento promovido pelo IFSul Sapucaia do Sul que busca incentivar e proporcionar aos alunos o desenvolvimento de habilidades de programação e criatividade. O evento atual consistirá no desenvolvimento da modalidades Hackathon, a qual é uma atividade de programação em regime intensivo onde as equipes combinam habilidades de programação, prototipagem, criatividade e colaboração para desenvolver soluções tecnológicas para um dado tema.",
       imagem: "/images/image.jpg",
       publico: "Interno (Acadêmico)",
-      data: "2025-10-15",
-      hora: "09:00",
-      local: "Auditório Central - Campus I",
+      data: "2025-09-13",
+      hora: "18:00",
+      local: "IFSul Campus Sapucaia do Sul",
+      link: "https://l1nk.dev/ifcode2025",
     },
     {
       id: 2,
-      titulo: "Codigo Aberto",
+      titulo: "Jornada Acadêmica 2025",
       descricao:
-        "Teste 1",
+        "A Jornada Acadêmica Integrada ADS e TDS é um evento promovido no campus Sapucaia do Sul do IFSul e que abrange palestras, oficinas e minicursos destinados aos discentes dos cursos Técnico em Desenvolvimento de Sistemas e Tecnólogo em Análise e Desenvolvimento de Sistemas, bem como à comunidade acadêmica em geral.",
       imagem: "/images/image.jpg",
       publico: "Externo",
-      data: "2025-11-20",
+      data: "2025-09-08",
       hora: "14:00",
-      local: "Bloco B",
+      local: "Auditório - IFSul Campus Sapucaia do Sul",
+      link: "https://l1nk.dev/jornada-academica-ifsul-sapucaia",
     },
   ]);
 
@@ -72,6 +75,7 @@ const EventsList: React.FC = () => {
       hora,
       local,
       imagem: imagemPreview ?? "/images/image.jpg",
+      link: ""
     };
 
     setEvents([...events, novoEvento]);
@@ -82,6 +86,7 @@ const EventsList: React.FC = () => {
     setData("");
     setHora("");
     setLocal("");
+    setLink("");
     setImagemPreview(null);
     setImagemArquivo(null);
 
@@ -164,6 +169,16 @@ const EventsList: React.FC = () => {
               <p>🕒 {selectedEvent.hora}</p>
               <p>📍 {selectedEvent.local}</p>
               <p>👥 {selectedEvent.publico}</p>
+              <p>
+                📸
+                <a
+                  href={selectedEvent.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {selectedEvent.link}
+                </a>
+              </p>
             </div>
 
             <button
@@ -258,3 +273,7 @@ const EventsList: React.FC = () => {
 };
 
 export default EventsList;
+function setLink(arg0: string) {
+  throw new Error("Function not implemented.");
+}
+
