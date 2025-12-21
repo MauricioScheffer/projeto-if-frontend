@@ -4,8 +4,8 @@ import { useState } from 'react';
 import styles from './page.module.css';
 
 // --- CONFIGURAÇÃO DAS IMAGENS ---
-const heroImage = '/imagensIfsul/_MG_9518.jpg'; 
-const tdsImage = '/imagensIfsul/IMG_1659.jpg';  
+const heroImage = '/imagensIfsul/2.jpg'; 
+const tdsImage = '/imagensIfsul/13.jpg';  
 
 
 type LinkItem = { nome: string; url: string };
@@ -165,7 +165,6 @@ export default function HomePage() {
             <div className={styles.heroContent}>
               <h1>Tecnólogo em Análise e Desenvolvimento de Sistemas</h1>
               <p>O curso de Análise e Desenvolvimento de Sistemas do IFSul prepara profissionais para desenvolver e manter softwares, com foco em programação, bancos de dados e soluções tecnológicas.</p>
-              {/* ADICIONE O BOTÃO AQUI */}
               <a href="https://intranet.ifsul.edu.br/catalogo/curso/331" target="_blank" className={styles.learnMoreBtn}>
                 Saiba mais
               </a>
@@ -180,7 +179,6 @@ export default function HomePage() {
             <div className={styles.heroContent}>
                 <h2>Técnico em Desenvolvimento de Sistemas</h2>
                 <p>O curso Técnico em Desenvolvimento de Sistemas do IFSul capacita estudantes do ensino médio para criar e manter sistemas computacionais...</p>
-                {/* ADICIONE O BOTÃO AQUI */}
                 <a href="https://intranet.ifsul.edu.br/catalogo/curso/328" target="_blank" className={styles.learnMoreBtn}>
                   Saiba mais
                 </a>
@@ -210,7 +208,7 @@ export default function HomePage() {
               <p>Alunos formados</p>
             </div>
             <div className={styles.statItem}>
-              <h3>15+</h3>
+              <h3>29+</h3>
               <p>Anos de experiência</p>
             </div>
             <div className={styles.statItem}>
@@ -228,7 +226,7 @@ export default function HomePage() {
               <span className={styles.badgeDot}></span>
               Depoimentos
             </div>
-            <h2 className={styles.sectionTitle}>O que nossos <span>ex-alunos</span> dizem</h2>
+            <h2 className={styles.sectionTitle}>O que os <span>ex-alunos</span> dizem</h2>
             <p className={styles.sectionSubtitle}>Histórias de sucesso de quem já passou pelos nossos cursos.</p>
           </div>
 
